@@ -243,7 +243,7 @@
               
             </ul>
           </div>
-          <form action="index.php?c=clientes&a=pass&id=<?= $id ?>" method="POST">
+          <form action="index.php?c=clientes&a=pass&id=<?= $cliente->id_clientes ?>&tipo=perfil ?>" method="POST">
           <div class="modal-body" >
             <p><input type="password" placeholder="Contraseña" name="Clientes[pass]" required="" >
             </div>
