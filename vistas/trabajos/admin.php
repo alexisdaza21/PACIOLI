@@ -90,7 +90,9 @@
                               <th style="text-align: center;" >fecha de inicio</th>
                               <th style="text-align: center;" >Tipo</th>
                               <th style="text-align: center;" >Trabajador</th>
-                              <th style="text-align: center;" >Nit de la empresa</th>
+                               <th style="text-align: center;" >Trabajador</th>
+                              <th style="text-align: center;" >Trabajador</th>
+                               <th style="text-align: center;" >Costos</th>
                               <th style="text-align: center;" colspan="2" >Acciones</th>
                             </tr>
                             </thead>
@@ -103,7 +105,10 @@
     <td align="center"><?= $trabajo->fechaInicio;?></td>
     <td align="center"><?= $trabajo->tipo;?></td>
     <td align="center"><?= $trabajo->Trab->nombres;?></td>
-    <td align="center"><?= $trabajo->Clie->nit;?></td>
+    <td align="center"><?= $trabajo->Trab2->nombres;?></td>
+    <td align="center"><?= $trabajo->Trab3->nombres;?></td>
+    <td align="center"><?= $trabajo->costos;?></td>
+    
                                 <td align="center">
                                   <div class="btn-group open" >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
