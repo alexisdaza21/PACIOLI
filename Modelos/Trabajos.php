@@ -8,22 +8,27 @@ class Trabajos extends Conexion{
 	public $fechaInicio;
 	public $tipo;
 	public $id_trabajadores;
+	public $id_trabajadores2;
+	public $id_trabajadores3;
 	public $id_clientes;
 
 	public function __construct(){
 	
 		parent::__construct();
 	}
-	public function save($feIni,$tip,$tra,$cli){
+	public function save($feIni,$tip,$tra,$tra2,$tra3,$cos,$cli){
 
 	$this->fechaInicio = $feIni;
 	$this->tipo = $tip;
 	$this->id_trabajadores = $tra;
+	$this->id_trabajadores2 = $tra2;
+	$this->id_trabajadores3 = $tra3;
+	$this->costos = $cos;
 	$this->id_clientes = $cli;
 	
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO trabajos VALUES (:id_trabajos,:fechaInicio,:tipo,:id_trabajadores,:id_clientes)");
+		$stm = $conexion-> prepare("INSERT INTO trabajos VALUES (:id_trabajos,:fechaInicio,:tipo,:id_trabajadores,:id_trabajadores2,:id_trabajadores3,:id_clientes,:costos)");
 		try{
 			 $stm->execute((array) $this);
 			 return true;
@@ -35,12 +40,15 @@ class Trabajos extends Conexion{
 	public function update(){
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE trabajos SET fechaInicio = :fechaInicio,tipo = :tipo,id_trabajadores = :id_trabajadores,id_clientes = :id_clientes WHERE id_trabajos= :id");
+		$stm = $conexion-> prepare("UPDATE trabajos SET fechaInicio = :fechaInicio,tipo = :tipo,id_trabajadores = :id_trabajadores,id_trabajadores2 = :id_trabajadores2,id_trabajadores3 = :id_trabajadores3,id_clientes = :id_clientes,costos = :costos WHERE id_trabajos= :id");
 		 
 	
 		 $stm->bindParam(":fechaInicio",$this->fechaInicio);
 		 $stm->bindParam(":tipo",$this->tipo);
 		 $stm->bindParam(":id_trabajadores",$this->id_trabajadores);
+		  $stm->bindParam(":id_trabajadores2",$this->id_trabajadores2);
+		   $stm->bindParam(":id_trabajadores3",$this->id_trabajadores3);
+		   $stm->bindParam(":costos",$this->costos);
 		 $stm->bindParam(":id_clientes",$this->id_clientes);
 		
 		 $stm->bindParam(":id",$this->id_trabajos);
@@ -99,6 +107,7 @@ class Trabajos extends Conexion{
 				$tra = new Trabajadores();
 				$tra->findByPk($obj->id_trabajadores);
 				$obj->Trab = $tra;
+
 				$cli = new Clientes();
 				$cli->findByPk($obj->id_clientes);
 				$obj->Clie = $cli;

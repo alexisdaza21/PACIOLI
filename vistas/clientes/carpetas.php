@@ -101,6 +101,7 @@
                     </header>
                     <div class="card-body">
                      <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
+                     <center>
                      <table  style="margin: 0%; overflow: hidden;"  id="datos" >
                           <thead>
                             <tr>
@@ -115,12 +116,12 @@
                                 </tr>
                                  
                                 <tr>
-<?php foreach ($clientes as $cliente) {?>
+                      <?php foreach ($clientes as $cliente) {?>
                                 <td align="center">
                                 
                                     <div class="card card-folder card-item enable-context-menu" data-item-selected="false" data-item-type="Folder" data-item-size="72 KB" data-item-location="Projects" data-item-modified="Jan 3, 2017" data-item-opened="Jan 5, 2017" data-item-created="Jan 1, 2017"
-                                    data-item-offline="true">
-                                    <div class="card-heading">
+                                    data-item-offline="true" >
+                                    <div class="card-heading" > 
                                       <i class="zmdi zmdi-folder"></i>
                                     </div>
                                     <div class="card-body">
@@ -133,7 +134,7 @@
                                 <span class="caret"></span>
                                   <div class="ripple-container"></div></a>
                                   <ul class="dropdown-menu">
-                                   <li><a  href="index.php?c=clientes&a=trabajos&id=<?= $cliente->id_clientes; ?>" class="btn btn-info btn-flat" >Trabajos</a></li>
+                                   <li><a  href="index.php?c=clientes&a=subcarpetas&id=<?= $cliente->id_clientes; ?>" class="btn btn-info btn-flat" >Sub Carpetas</a></li>
                                          <li><a data-toggle="modal" data-target="#toolabr_modal" class="btn btn-primary btn-flat"  >Cambio Contraseña</a>
                                          
                                          </li>
@@ -155,7 +156,7 @@
 
                               </tr>
                            </tbody>
-                        </table><br><br><br>
+                        </table></center><br><br><br>
                      
                     
 
