@@ -30,11 +30,12 @@
         <form action="index.php?c=trabajos&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="card">
                   <div class="card-body">
+                   <div class="col-xs-6">
                         <div class="form-group is-empty">
                           <div class="input-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                            <input type="text" class="form-control datepicker" id="datepicker-theme" placeholder="Pikaday dark..." aria-label="Use the arrow keys to pick a date" name="Trabajos[fechaInicio]"   value="" required>
-                         
+                            <input type="text" class="form-control datepicker" id="datepicker-theme" placeholder="Fecha inicio..." aria-label="Use the arrow keys to pick a date" name="Trabajos[fechaInicio]"   value="" required>
+                         </div>
                         </div>
                       </div>
                             <div class="form-group is-empty">
@@ -43,11 +44,43 @@
                             <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[tipo]"   value="" required/>
                         </div>
                         </div>
-
+                          <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <label >Costos</label>
+                            <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[costos]" onkeypress="return numeros(event)"  value="" required/>
+                        </div>
+                        </div>
+                        </div>
                  <div class="form-group is-empty">
                           <div class="input-group">
                            <label >Trabajador</label>
                            <select class="select form-control" required="" name="Trabajos[id_trabajadores]">
+                           <option>Seleccion-</option>
+                               <?php foreach ( $trabajadores as $trabajador) {?>
+                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
+                                    <?php } ?>
+                        </select>
+                          </div>
+             
+              </div>
+                <div class="col-xs-6">
+                  <div class="form-group is-empty">
+                          <div class="input-group">
+                           <label >Trabajador</label>
+                           <select class="select form-control" required="" name="Trabajos[id_trabajadores2]">
+                           <option>Seleccion-</option>
+                               <?php foreach ( $trabajadores as $trabajador) {?>
+                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
+                                    <?php } ?>
+                        </select>
+                          </div>
+             </div>
+              </div>
+               <div class="form-group is-empty">
+                          <div class="input-group">
+                           <label >Trabajador</label>
+                           <select class="select form-control" required="" name="Trabajos[id_trabajadores3]">
                            <option>Seleccion-</option>
                                <?php foreach ( $trabajadores as $trabajador) {?>
                            <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
@@ -90,7 +123,9 @@
                               <th style="text-align: center;" >fecha de inicio</th>
                               <th style="text-align: center;" >Tipo</th>
                               <th style="text-align: center;" >Trabajador</th>
-                              <th style="text-align: center;" >Nit de la empresa</th>
+                               <th style="text-align: center;" >Trabajador</th>
+                              <th style="text-align: center;" >Trabajador</th>
+                               <th style="text-align: center;" >Costos</th>
                               <th style="text-align: center;" colspan="2" >Acciones</th>
                             </tr>
                             </thead>
@@ -103,7 +138,10 @@
     <td align="center"><?= $trabajo->fechaInicio;?></td>
     <td align="center"><?= $trabajo->tipo;?></td>
     <td align="center"><?= $trabajo->Trab->nombres;?></td>
-    <td align="center"><?= $trabajo->Clie->nit;?></td>
+    <td align="center"><?= $trabajo->Trab2->nombres;?></td>
+    <td align="center"><?= $trabajo->Trab3->nombres;?></td>
+    <td align="center"><?= $trabajo->costos;?></td>
+    
                                 <td align="center">
                                   <div class="btn-group open" >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
