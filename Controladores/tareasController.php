@@ -2,6 +2,8 @@
 //clase
 require_once("modelos/Tareas.php");
 require_once("modelos/Trabajadores.php");
+require_once("modelos/Clientes.php");
+require_once("modelos/Trabajos.php");
 
 class tareasController{
 	public static function main ($action){
@@ -19,7 +21,8 @@ class tareasController{
 			case "admin":
 				$_this->admin();
 			break;
-			
+
+
 			
 			default:
 				throw new Exception("Accion no definido");
@@ -42,6 +45,9 @@ class tareasController{
 
 		$trab = new Trabajadores();
 		$trabajadores = $trab->view();
+
+		$clien = new Clientes();
+		$clientes = $clien->admin();
 			
 		$tar = new Tareas();
 	    $tareas = $tar->admin();
@@ -62,13 +68,14 @@ class tareasController{
 			$nomtar = $_POST["Tareas"]["nombreTarea"];
 			$fechin = $_POST["Tareas"]["fechaInicio"];
 			$fefin = $_POST["Tareas"]["fechaFin"];
-			$est = "activa";
+			$est = "Activa";
 			$trab = $_POST["Tareas"]["id_trabajadores"];
-			
+			$clien = $_POST["Tareas"]["id_clientes"];
+			$tra = $_POST["Tareas"]["id_trabajos"];
 			$tareas = new Tareas();
 			
 			
-			$guardo = $tareas->save($nomtar,$fechin,$fefin,$est,$trab);
+			$guardo = $tareas->save($nomtar, $fechin, $fefin, $est, $trab, $clien, $tra);
 			if ($guardo){
 					header("Location:index.php?c=tareas&a=admin");
 				}else{
@@ -84,16 +91,13 @@ class tareasController{
 		private function update(){
 		$tareas = new Tareas();
 		$tareas->findByPk($_GET["id"]);
-
-
-
-
 		if(isset($_POST["Tareas"])){
 			$tareas->nombreTarea = $_POST["Tareas"]["nombreTarea"];
 			$tareas->fechaInicio = $_POST["Tareas"]["fechaInicio"];
 			$tareas->fechaFin = $_POST["Tareas"]["fechaFin"];
 			$tareas->estado = $_POST["Tareas"]["estado"];
 			$tareas->id_trabajadores = $_POST["Tareas"]["id_trabajadores"];
+			$tareas->id_clientes = $_POST["Tareas"]["id_clientes"];
 			
 			$tareas->update();
 			header("Location: index.php?c=tareas&a=admin");
@@ -101,6 +105,9 @@ class tareasController{
 
 			$trab = new Trabajadores();
 			$trabajadores = $trab->view();
+			$clien = new Clientes();
+			$clientes = $clien->admin();
+
 			require "Vistas/tareas/update.php";
 		}
 	}	

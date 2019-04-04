@@ -97,7 +97,7 @@
    </div>   
 
 
-<!--
+<
 
 <br>
     <p><div style="overflow: auto ;">
@@ -105,6 +105,7 @@
             <tr>
                 <th >Id</th>
                 <th >Nombre de la tarea</th>
+                <th >Cliente</th>
                 <th >Fecha de Inicio</th>
                  <th >Fecha de Finalizaciòn</th>
                 <th>Estado</th>   
@@ -115,10 +116,11 @@
 		<tr>
 			<td ><?= $tarea->id_tareas; ?></td>
 			<td ><?= $tarea->nombreTarea; ?></td>
+       <td ><?= $tarea->Clien->nit ?> &nbsp;<?= $tarea->Clien->razonSocial ?></td></td>
 			<td ><?= $tarea->fechaInicio; ?></td>
 			<td ><?= $tarea->fechaFin; ?></td>
      		 <td ><?= $tarea->estado; ?></td>
-     		 <td ><?= $tarea->Trab->nombres ?></td>
+     		 <td ><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
 			<td >
  
                   <button
@@ -129,7 +131,7 @@
         </tr>
 			<?php } ?>
 	</table>
-</div>-->
+</div>
 <?php include("footer.php"); ?>
 	</div>
 </div>
@@ -192,6 +194,19 @@
                    required="">
                  </div>
               </div>
+               <div class="row">
+                  <div class="col-sm-4">
+                     <label for="" class="control-label">Cliente</label>
+                        <select class="select form-control" required="" name="Tareasid_clientes[]">
+                           <option>-Seleccion-</option>
+                               <?php foreach ( $clientes as $cliente) {?>
+                           <option value="<?= $cliente->id_clientes; ?>"><?=$cliente->id_clientes; ?> &nbsp; <?=$cliente->nit; ?> &nbsp;  <?=$cliente->razonSocial; ?> 
+
+                             </option>
+                                    <?php } ?>
+                        </select>
+                  </div>
+              </div>
 
               <div class="row">
                   <div class="col-sm-4">
@@ -199,11 +214,12 @@
                         <select class="select form-control" required="" name="Tareas[id_trabajadores]">
                            <option>-Seleccion-</option>
                                <?php foreach ( $trabajadores as $trabajador) {?>
-                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
+                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?> &nbsp;<?=$trabajador->apellidos; ?>   </option>
                                     <?php } ?>
                         </select>
                   </div>
               </div>
+
               <div class="card">
                   <div class="card-body">
                     <div class="row">
