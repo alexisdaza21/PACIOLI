@@ -15,6 +15,10 @@
 		//if (!isset($_SESSION["u"]) && $_GET["a"]!="home" && $_GET["a"]!="login" ) 
 		//		header("location:index.php?c=home&a=home");
 		switch ($controller) {
+			case 'carpetas':
+				require "Controladores/carpetasController.php";
+					carpetasController::main($action);
+			break;	
 			case 'trabajadores':
 				require "Controladores/trabajadoresController.php";
 					trabajadoresController::main($action);
@@ -30,10 +34,6 @@
 			case 'tareas':
 				require "Controladores/tareasController.php";
 					tareasController::main($action);
-			break;
-			case 'pagos':
-				require "Controladores/pagosController.php";
-					pagosController::main($action);
 			break;
 			case 'visitas':
 				require "Controladores/visitasController.php";
