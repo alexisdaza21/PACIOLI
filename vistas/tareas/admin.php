@@ -102,26 +102,26 @@
 <br>
     <p><div style="overflow: auto ;">
         <table id="datos" align="center" width="80%" border="1" style="color: black;">
-            <tr>
-                <th >Id</th>
-                <th >Nombre de la tarea</th>
-                <th >Cliente</th>
-                <th >Fecha de Inicio</th>
-                 <th >Fecha de Finalizaciòn</th>
-                <th>Estado</th>   
-                <th>Trabajador Encargado</th>   
-                <th  colspan="2">Acciones</th>
+            <tr >
+                <th align="center">Id</th>
+                <th align="center">Nombre de la tarea</th>
+                <th align="center">Cliente</th>
+                <th align="center">Fecha de Inicio</th>
+                 <th align="center">Fecha de Finalizaciòn</th>
+                <th align="center">Estado</th>   
+                <th align="center">Trabajador Encargado</th>   
+                <th  colspan="2" align="center">Acciones</th>
             </tr>
             <?php foreach($tareas as $tarea) {?>
 		<tr>
 			<td ><?= $tarea->id_tareas; ?></td>
-			<td ><?= $tarea->nombreTarea; ?></td>
-       <td ><?= $tarea->Clien->nit ?> &nbsp;<?= $tarea->Clien->razonSocial ?></td></td>
-			<td ><?= $tarea->fechaInicio; ?></td>
-			<td ><?= $tarea->fechaFin; ?></td>
-     		 <td ><?= $tarea->estado; ?></td>
-     		 <td ><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
-			<td >
+			<td align="center"><?= $tarea->nombreTarea; ?></td>
+       <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
+			<td align="center"><?= $tarea->fechaInicio; ?></td>
+			<td align="center"><?= $tarea->fechaFin; ?></td>
+     		 <td align="center"><?= $tarea->estado; ?></td>
+     		 <td align="center"><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
+			<td align="center" >
  
                   <button
                     style="height:20px; line-height:2px; margin-left; margin:  3%;" onclick="editar(<?= $tarea->id_tareas; ?>)">Editar</button>
@@ -197,7 +197,7 @@
                <div class="row">
                   <div class="col-sm-4">
                      <label for="" class="control-label">Cliente</label>
-                        <select class="select form-control" required="" name="Tareasid_clientes[]">
+                        <select class="select form-control" required="" name="Tareas[id_clientes]">
                            <option>-Seleccion-</option>
                                <?php foreach ( $clientes as $cliente) {?>
                            <option value="<?= $cliente->id_clientes; ?>"><?=$cliente->id_clientes; ?> &nbsp; <?=$cliente->nit; ?> &nbsp;  <?=$cliente->razonSocial; ?> 
