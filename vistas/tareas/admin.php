@@ -106,6 +106,7 @@
                 <th align="center">Id</th>
                 <th align="center">Nombre de la tarea</th>
                 <th align="center">Cliente</th>
+                 <th align="center">Trabajo</th>
                 <th align="center">Fecha de Inicio</th>
                  <th align="center">Fecha de Finalizaciòn</th>
                 <th align="center">Estado</th>   
@@ -117,6 +118,8 @@
 			<td ><?= $tarea->id_tareas; ?></td>
 			<td align="center"><?= $tarea->nombreTarea; ?></td>
        <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
+
+      <td align="center"> <?= $tarea->Trabajo->tipo ?> </td>
 			<td align="center"><?= $tarea->fechaInicio; ?></td>
 			<td align="center"><?= $tarea->fechaFin; ?></td>
      		 <td align="center"><?= $tarea->estado; ?></td>
@@ -186,8 +189,13 @@
             </ul>
           </div>
           <div class="modal-body">
-            <form action="index.php?c=tareas&a=create" method="post"> 
+            <form action="index.php?c=tareas&a=create" method="post" autocomplete="off"> 
               <div class="form-group label-floating is-empty">
+                <div class="row">
+
+                 
+                  
+              </div>
                  <div class="row">
                    <label class="control-label">Nombre de la Tarea</label>
                    <input type="text" class="form-control"  name="Tareas[nombreTarea]" 
@@ -206,9 +214,19 @@
                                     <?php } ?>
                         </select>
                   </div>
-              </div>
 
-              <div class="row">
+                   <div class="col-sm-4">
+                     <label for="" class="control-label">Seleccione el Trabajo</label>
+                        <select class="select form-control" required="" name="Tareas[id_trabajos]">
+                           <option>-Seleccion-</option>
+                               <?php foreach ( $trabajos as $trabajo) {?>
+                           <option value="<?= $trabajo->id_trabajos; ?>"><?=$trabajo->id_trabajos; ?> &nbsp; <?=$trabajo->tipo; ?> &nbsp;   
+
+                             </option>
+                                    <?php } ?>
+                        </select>
+                  </div>
+
                   <div class="col-sm-4">
                      <label for="" class="control-label">Responsable</label>
                         <select class="select form-control" required="" name="Tareas[id_trabajadores]">
@@ -218,6 +236,10 @@
                                     <?php } ?>
                         </select>
                   </div>
+              </div>
+
+              <div class="row">
+                  
               </div>
 
               <div class="card">
