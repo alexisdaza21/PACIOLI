@@ -79,11 +79,14 @@ private function admintra (){
 			$feIni = $_POST["Trabajos"]["fechaInicio"];
 			$tip = $_POST["Trabajos"]["tipo"];
 			$tra = $_POST["Trabajos"]["id_trabajadores"];
+			$tra2 = $_POST["Trabajos"]["id_trabajadores2"];
+			$tra3 = $_POST["Trabajos"]["id_trabajadores3"];
+			$cos = $_POST["Trabajos"]["costos"];
 			$cli = $_POST["Trabajos"]["id_clientes"];
 			$id = $_POST["Trabajos"]["id_clientes"];
 			$trabajos = new Trabajos();
 			
-			$guardo = $trabajos->save($feIni,$tip,$tra,$cli);
+			$guardo = $trabajos->save($feIni,$tip,$tra,$tra2,$tra3,$cos,$cli);
 			if ($guardo){
 					header("Location:index.php?c=clientes&a=trabajos&id=".$id);
 				}else{
