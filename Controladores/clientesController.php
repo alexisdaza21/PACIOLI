@@ -30,6 +30,9 @@ class clientesController{
 			case "carpetas":
 				$_this->carpetas();
 			break;
+			case "subcarpetas":
+				$_this->subcarpetas();
+			break;
 			default:
 				throw new Exception("Accion no definido");
 				break;
@@ -54,6 +57,23 @@ class clientesController{
 			require"vistas/clientes/perfil.php";
 		}
 
+private function subcarpetas (){
+	
+		$id =$_GET["id"];
+		$tra = new Clientes();
+		$trabajos =	$tra->fkeyTra($id);
+
+		$clientes = new Clientes();
+		$clientes->findByPk($id);
+
+		$trab = new Trabajos();
+		$trabajo = $trab->admin($id);
+		$trab = new Trabajadores();
+		$trabajadores = $trab->view();
+
+		require"Vistas/clientes/subcarpetas.php";
+
+	}
 private function trabajos (){
 	
 		$id =$_GET["id"];
@@ -110,6 +130,10 @@ private function trabajos (){
 			$BCRYPT = password_hash($pass, PASSWORD_DEFAULT);
 			
 			$guardo = $clientes->save($nit,$dir,$raSo,$ema,$tel,$BCRYPT);
+
+			//CREAR CARPETA FISICA
+			mkdir(__DIR__."/../documentos/".$nit, 0777, true);
+
 			if ($guardo){
 					header("Location:index.php?c=clientes&a=admin");
 				}else{
