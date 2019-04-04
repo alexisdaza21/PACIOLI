@@ -2,7 +2,8 @@
 
 require_once("Conexion.php");
 require_once("Trabajadores.php");
-
+require_once("Clientes.php");
+require_once("Trabajos.php");
 class Tareas extends Conexion{ 
 
 	public $id_tareas;
@@ -11,34 +12,40 @@ class Tareas extends Conexion{
 	public $fechaFin;
 	public $estado;
 	public $id_trabajadores;
-
+	public $id_clientes;
+	public $id_trabajos;
 	public function __construct(){
 	
 		parent::__construct();
 	}
-	public function save($nomtar, $fechin, $fefin, $est, $trab){
+	public function save($nomtar, $fechin, $fefin, $est, $trab, $clien , $tra){
 
 	$this->nombreTarea= $nomtar;
 	$this->fechaInicio = $fechin;
 	$this->fechaFin = $fefin;
 	$this->estado = $est;
 	$this->id_trabajadores = $trab;
-	
+	$this->id_clientes = $clien;
+	$this->id_trabajos = $tra;
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO tareas VALUES (:id_tareas,:nombreTarea,:fechaInicio,:fechaFin, :estado, :id_trabajadores)");
-		try{
-			 $stm->execute((array) $this);
-			 return true;
-		}catch(Exception  $e){
-			return false;
+		$stm = $conexion-> prepare("INSERT INTO tareas VALUES (:id_tareas,:nombreTarea,:fechaInicio,:fechaFin, :estado, :id_trabajadores, :id_clientes, :id_trabajos)");
+		try {
+
+				return $stm->execute((array) $this);
+		} 
+
+			catch (Exception $e) {
+			
 		}
-		}
+
+		
+	}
 		
 	public function update(){ 
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE tareas SET nombreTarea = :nombreTarea ,fechaInicio = :fechaInicio,fechaFin = :fechaFin, estado = :estado, id_trabajadores = :id_trabajadores WHERE id_tareas= :id");
+		$stm = $conexion-> prepare("UPDATE tareas SET nombreTarea = :nombreTarea ,fechaInicio = :fechaInicio,fechaFin = :fechaFin, estado = :estado, id_trabajadores = :id_trabajadores, id_clientes = :id_clientes WHERE id_tareas= :id");
 		 
 	
 		 $stm->bindParam(":nombreTarea",$this->nombreTarea);
@@ -46,7 +53,7 @@ class Tareas extends Conexion{
 		 $stm->bindParam(":fechaFin",$this->fechaFin);
 		 $stm->bindParam(":estado",$this->estado);
 		 $stm->bindParam(":id_trabajadores",$this->id_trabajadores);
-		
+		 $stm->bindParam(":id_clientes",$this->id_clientes);
 		 $stm->bindParam(":id",$this->id_tareas);
 
 		 $stm->execute();
@@ -88,6 +95,10 @@ class Tareas extends Conexion{
 				$tra->findByPk($obj->id_trabajadores);
 				$obj->Trab = $tra;
 
+				$clien = new Clientes();
+				$clien->findByPk($obj->id_clientes);
+				$obj->Clien = $clien;
+
 				$tareas[]=$obj;
 			}
 			
@@ -117,6 +128,28 @@ class Tareas extends Conexion{
 			return $tareas;
 
 }
+
+public function adminClien($id){
+		$conexion = $this->getConexion();
+		$stm =$conexion->prepare("SELECT * FROM tareas WHERE id_clientes = :id");
+		$stm->setFetchMode(PDO::FETCH_CLASS,'Tareas');
+			$stm->bindParam(":id",$id);
+		$tareas = array();	
+		$stm->execute();
+
+			
+			while ($obj = $stm->fetch()) {
+
+				$clien = new Clientes();
+				$clien->findByPk($obj->id_clientes);
+				$obj->Clien = $clien;
+
+				$tareas[]=$obj;
+			}
+			
+			return $tareas;
+
+	}
 }
 
 
