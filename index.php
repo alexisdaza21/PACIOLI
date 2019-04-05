@@ -19,6 +19,10 @@
 				require "Controladores/carpetasController.php";
 					carpetasController::main($action);
 			break;	
+			case 'archivos':
+				require "Controladores/archivosController.php";
+					archivosController::main($action);
+			break;	
 			case 'trabajadores':
 				require "Controladores/trabajadoresController.php";
 					trabajadoresController::main($action);
