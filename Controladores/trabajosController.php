@@ -51,6 +51,7 @@ private function admintra (){
 
 		$id = $_SESSION["id"];
 
+		
 		$trab = new Clientes();
 		$trabajos =  $trab->fkeyTra($id);
 		$trab = new Trabajadores();
@@ -97,6 +98,14 @@ private function admintra (){
 			
 			$guardo = $trabajos->save($feIni,$tip,$tra,$tra2,$tra3,$cos,$cli);
 			if ($guardo){
+
+				$clientes = new Clientes();
+				$clientes->findByPk($_POST["Trabajos"]["id_clientes"]);
+				$nit = $clientes->nit;
+
+				    
+
+				 mkdir(__DIR__."/../documentos/".$nit."/".$guardo, 0777, true);
 					header("Location:index.php?c=clientes&a=trabajos&id=".$id);
 				}else{
 					

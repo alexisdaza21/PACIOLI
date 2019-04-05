@@ -31,7 +31,7 @@ class Trabajos extends Conexion{
 		$stm = $conexion-> prepare("INSERT INTO trabajos VALUES (:id_trabajos,:fechaInicio,:tipo,:id_trabajadores,:id_trabajadores2,:id_trabajadores3,:id_clientes,:costos)");
 		try{
 			 $stm->execute((array) $this);
-			 return true;
+			 return $conexion->LastInsertId();
 		}catch(Exception  $e){
 			return false;
 		}

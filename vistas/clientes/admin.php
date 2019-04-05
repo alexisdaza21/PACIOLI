@@ -142,8 +142,8 @@
                                 </ul>
                                 </div>
                                 </td>
-                              </tr>
-                           <?php } ?>
+                              </tr><?php } ?>
+                           
                            </tbody>
                         </table><br><br><br>
                      

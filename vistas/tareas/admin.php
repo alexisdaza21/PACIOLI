@@ -86,8 +86,7 @@
               </li>
             </ul>
           </div>     
-
-                            
+     
  
             <div id='calendar'></div>
           </div>
@@ -97,40 +96,73 @@
    </div>   
 
 
-<
+ <div class="row">
+                <div class="col-xs-12">
+                  <div class="card">
+                    <header class="card-heading ">
+                      <h2 class="card-title">Listado de Tareas</h2>
+                      
+                      <ul class="card-actions icons right-top">
+                        <li>
+                          <a href="javascript:void(0)" data-toggle="refresh">
+                            <i class="zmdi zmdi-refresh-alt"></i>
+                          </a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="javascript:void(0)" data-toggle="dropdown">
+                            <i class="zmdi zmdi-more-vert"></i>
+                          </a>
+                          
+                        </li>
+                      </ul>
+                    </header>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th align="center">Id</th>
+                              <th align="center">Nombre de la tarea</th>
+                              <th align="center">Cliente</th>
+                              <th align="center">Fecha de Inicio</th>
+                              <th align="center">Fecha de Finalizaciòn</th>
+                              <th align="center">Estado</th>   
+                              <th align="center">Trabajador Encargado</th>   
+                              <th  colspan="2" align="center">Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                             <?php foreach($tareas as $tarea) {?>
+                                 <tr>
+                               <td ><?= $tarea->id_tareas; ?></td>
+                              <td align="center"><?= $tarea->nombreTarea; ?></td>
+                             <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
 
-<br>
-    <p><div style="overflow: auto ;">
-        <table id="datos" align="center" width="80%" border="1" style="color: black;">
-            <tr>
-                <th >Id</th>
-                <th >Nombre de la tarea</th>
-                <th >Cliente</th>
-                <th >Fecha de Inicio</th>
-                 <th >Fecha de Finalizaciòn</th>
-                <th>Estado</th>   
-                <th>Trabajador Encargado</th>   
-                <th  colspan="2">Acciones</th>
-            </tr>
-            <?php foreach($tareas as $tarea) {?>
-		<tr>
-			<td ><?= $tarea->id_tareas; ?></td>
-			<td ><?= $tarea->nombreTarea; ?></td>
-       <td ><?= $tarea->Clien->nit ?> &nbsp;<?= $tarea->Clien->razonSocial ?></td></td>
-			<td ><?= $tarea->fechaInicio; ?></td>
-			<td ><?= $tarea->fechaFin; ?></td>
-     		 <td ><?= $tarea->estado; ?></td>
-     		 <td ><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
-			<td >
+      
+                             <td align="center"><?= $tarea->fechaInicio; ?></td>
+                             <td align="center"><?= $tarea->fechaFin; ?></td>
+                             <td align="center"><?= $tarea->estado; ?></td>
+                            <td align="center"><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
+                       <td align="center" >
  
-                  <button
+                     <button
                     style="height:20px; line-height:2px; margin-left; margin:  3%;" onclick="editar(<?= $tarea->id_tareas; ?>)">Editar</button>
 
                     <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar(<?= $tarea->id_tareas; ?>)">Eliminar</button>
-                </td>
-        </tr>
-			<?php } ?>
-	</table>
+                      </td>
+                 </tr>
+      <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+   
 </div>
 <?php include("footer.php"); ?>
 	</div>
@@ -186,18 +218,36 @@
             </ul>
           </div>
           <div class="modal-body">
-            <form action="index.php?c=tareas&a=create" method="post"> 
+            <form action="index.php?c=tareas&a=create" method="post" autocomplete="off"> 
               <div class="form-group label-floating is-empty">
-                 <div class="row">
-                   <label class="control-label">Nombre de la Tarea</label>
-                   <input type="text" class="form-control"  name="Tareas[nombreTarea]" 
-                   required="">
-                 </div>
-              </div>
-               <div class="row">
-                  <div class="col-sm-4">
-                     <label for="" class="control-label">Cliente</label>
-                        <select class="select form-control" required="" name="Tareasid_clientes[]">
+                <div class="row">
+
+         
+
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+
+                      <div class="">
+                        <div class="form-group is-empty">
+                          <div class="">
+                            <span class=""><i class=""></i></span>
+                            <label class="control-label" >Descripcion de la tarea</label>
+                            <br>
+                             <input type="text" class="form-control"  name="Tareas[nombreTarea]" 
+                             required="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            
+                             <label for="" class="control-label">Cliente</label>
+                             <br>
+                     
+                        <select class="select form-control" required="" name="Tareas[id_clientes]">
                            <option>-Seleccion-</option>
                                <?php foreach ( $clientes as $cliente) {?>
                            <option value="<?= $cliente->id_clientes; ?>"><?=$cliente->id_clientes; ?> &nbsp; <?=$cliente->nit; ?> &nbsp;  <?=$cliente->razonSocial; ?> 
@@ -205,24 +255,26 @@
                              </option>
                                     <?php } ?>
                         </select>
-                  </div>
-              </div>
-
-              <div class="row">
-                  <div class="col-sm-4">
-                     <label for="" class="control-label">Responsable</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            <label for="" class="control-label">Responsable</label>
+                            <br>
                         <select class="select form-control" required="" name="Tareas[id_trabajadores]">
                            <option>-Seleccion-</option>
                                <?php foreach ( $trabajadores as $trabajador) {?>
                            <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?> &nbsp;<?=$trabajador->apellidos; ?>   </option>
                                     <?php } ?>
                         </select>
-                  </div>
-              </div>
-
-              <div class="card">
-                  <div class="card-body">
-                    <div class="row">
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
                       <div class="col-xs-6">
                         <div class="form-group is-empty">
                           <div class="input-group">
@@ -244,8 +296,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Ok</button>
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </div>
           <!-- modal-content -->
