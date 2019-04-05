@@ -56,16 +56,16 @@
                 <!--  <i class="zmdi zmdi-menu"></i>-->
                 </a>
               </li>
-            </ul>
+            </ul> 
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xs-12">
                   <header id="header">
-                    <h1> Carpetas</h1>
+                    <h1> Archivos</h1>
                     <ol class="breadcrumb">
                       <li><a href="javascript:void(0)"><?=  $_GET["nit"]; ?></a></li>
                       <li><a href="javascript:void(0)"><?= $trabajos->tipo; ?></a></li>
-                      <li class="active">Projects</li>
+                      <li class="active"><?=  $_GET["carpeta"]; ?></li>
                     </ol>
                   </header>
                 </div>
@@ -112,31 +112,27 @@
           
           <div id="content" class="container-fluid">
             <div class="content-body">
-              <section id="gridview" class="m-t-30">
-                <h3>Folders</h3>
-                <ul class="folders">
-                   <?php
-                         foreach ($carpetas as $carpeta) 
-                        {?>
-                  <li>
-                    <div class="card card-folder card-item enable-context-menu" data-item-selected="false" data-item-type="Folder" data-item-size="72 KB" data-item-location="Projects" data-item-modified="<?= $carpeta->fechaCre;?>" data-item-opened="<?= $carpeta->Trab->documento;?>" data-item-created="<?= $carpeta->fechaCre;?>"
-                    data-item-offline="true">
-                    <div class="card-heading">
-                      <i class="zmdi zmdi-folder"></i>
-                    </div>
-                    <div class="card-body">
-                      <span class="title"><?= $carpeta->nombre;?></span>
-                    </div>
-                    <div class="card-footer">
-                        <a href="index.php?c=archivos&a=admin&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"]; ?>&carpeta=<?= $carpeta->id_carpetas;  ?>"><i class="zmdi zmdi-info"></i></a>
-
-                      
-                    </div>
-                  </div>
-                </li>
-              <?php } ?>
-          </ul>
-        </section>
+        <section id="files">
+          <h3>Files</h3>
+          <ul class="files">
+            <?php foreach ($archivos as $archivo) {
+              ?>
+            
+            <li>
+              <div class="card card-file card-item enable-context-menu selected" data-item-selected="true" data-item-type="Image" data-item-size="2 MB" data-item-location="Projects" data-item-modified="Feb 9, 2017" data-item-opened="Feb 11, 2017" data-item-created="Feb 3, 2017"
+              data-item-offline="true" data-item-image="assets/img/gallery/thumbs/thumb-1.jpg">
+              <div class="card-body">
+                <img src="assets/img/gallery/thumbs/thumb-1.jpg" alt="" />
+              </div>
+              <div class="card-footer">
+                <i class="zmdi zmdi-image"></i>
+                <span class="title"><?=  $archivo->nombre; ?> </span>
+              </div>
+            </div>
+          </li>
+         <?php }?>
+</ul>
+</section>
       
 <aside id="rightnav" class="item-panel p-15 scrollbar">
   <h3 id="item-title"><i class="zmdi zmdi-image pink-text"></i> <span class="title">Photos</span></h3>

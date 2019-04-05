@@ -108,7 +108,7 @@
      </div>
      </font>
       
-      <a href="index.php?c=clientes&a=admin"><h4>Volver a clientes</h4></a>
+      <a  href="index.php?c=clientes&a=admin" ><h4>Volver a clientes</h4></a>
   <h2><b><center> Trabajos del cliente <?= $clientes->nit ?></b></center></h2>
 <br>
 <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
@@ -148,7 +148,7 @@
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
-                                   <li><a  href="index.php?c=trabajos&a=pagos&id=<?= $trabajo->id_trabajos; ?>" class="btn btn-info btn-flat">Carpetas</a></li>
+                                   <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos; ?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>" class="btn btn-primary btn-flat">Visitas</a></li>
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
@@ -161,6 +161,8 @@
                                 </td> 
                                </tr>
                            <?php } ?>
+                           <tr>
+                           <a target="_blank" href="index.php?c=trabajos&a=reporte&id=<?= $trabajo->id_clientes; ?>">pdf</a>
                            </tbody>
                         </table>
                     </div>
