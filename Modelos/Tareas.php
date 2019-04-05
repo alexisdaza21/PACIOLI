@@ -45,7 +45,7 @@ class Tareas extends Conexion{
 	public function update(){ 
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE tareas SET nombreTarea = :nombreTarea ,fechaInicio = :fechaInicio,fechaFin = :fechaFin, estado = :estado, id_trabajadores = :id_trabajadores, id_clientes = :id_clientes WHERE id_tareas= :id");
+		$stm = $conexion-> prepare("UPDATE tareas SET nombreTarea = :nombreTarea ,fechaInicio = :fechaInicio,fechaFin = :fechaFin, estado = :estado, id_trabajadores = :id_trabajadores, id_clientes = :id_clientes, id_trabajos = :id_trabajos WHERE id_tareas= :id");
 		 
 	
 		 $stm->bindParam(":nombreTarea",$this->nombreTarea);
@@ -54,6 +54,7 @@ class Tareas extends Conexion{
 		 $stm->bindParam(":estado",$this->estado);
 		 $stm->bindParam(":id_trabajadores",$this->id_trabajadores);
 		 $stm->bindParam(":id_clientes",$this->id_clientes);
+		 $stm->bindParam(":id_trabajos",$this->id_trabajos);
 		 $stm->bindParam(":id",$this->id_tareas);
 
 		 $stm->execute();
@@ -99,6 +100,10 @@ class Tareas extends Conexion{
 				$clien->findByPk($obj->id_clientes);
 				$obj->Clien = $clien;
 
+				$traba = new Trabajos();
+				$traba->findByPk($obj->id_trabajos);
+				$obj->Trabajo = $traba;
+
 				$tareas[]=$obj;
 			}
 			
@@ -143,6 +148,28 @@ public function adminClien($id){
 				$clien = new Clientes();
 				$clien->findByPk($obj->id_clientes);
 				$obj->Clien = $clien;
+
+				$tareas[]=$obj;
+			}
+			
+			return $tareas;
+
+	}
+
+public function adminTrab($id){
+		$conexion = $this->getConexion();
+		$stm =$conexion->prepare("SELECT * FROM tareas WHERE id_trabajos = :id");
+		$stm->setFetchMode(PDO::FETCH_CLASS,'Tareas');
+			$stm->bindParam(":id",$id);
+		$tareas = array();	
+		$stm->execute();
+
+			
+			while ($obj = $stm->fetch()) {
+
+				$traba = new Trabajos();
+				$traba->findByPk($obj->id_trabajos);
+				$obj->Trabajo = $traba;
 
 				$tareas[]=$obj;
 			}
