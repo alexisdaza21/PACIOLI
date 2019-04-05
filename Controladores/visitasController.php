@@ -23,21 +23,13 @@
 			break;		
 			case "createTra":
 				$_this->createTra();
-			break;	
-			case "reporte":
-				$_this->reporte();
 			break;		
 			default:
 				throw new Exception("Accion no definido");
 				break;
 			}
 		}
-private function reporte(){
 
-				
-			require"Vistas/visitas/pdf/index.php";
-		}
-			
 		private function trabajos (){
 		
  		$id = $_GET["id"]; 
