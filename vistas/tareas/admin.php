@@ -86,8 +86,7 @@
               </li>
             </ul>
           </div>     
-
-                            
+     
  
             <div id='calendar'></div>
           </div>
@@ -97,42 +96,73 @@
    </div>   
 
 
-<
-
-<br>
-    <p><div style="overflow: auto ;">
-        <table id="datos" align="center" width="80%" border="1" style="color: black;">
-            <tr >
-                <th align="center">Id</th>
-                <th align="center">Nombre de la tarea</th>
-                <th align="center">Cliente</th>
-                <th align="center">Fecha de Inicio</th>
-                <th align="center">Fecha de Finalizaciòn</th>
-                <th align="center">Estado</th>   
-                <th align="center">Trabajador Encargado</th>   
-                <th  colspan="2" align="center">Acciones</th>
-            </tr>
-            <?php foreach($tareas as $tarea) {?>
-		<tr>
-			<td ><?= $tarea->id_tareas; ?></td>
-			<td align="center"><?= $tarea->nombreTarea; ?></td>
-       <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
+ <div class="row">
+                <div class="col-xs-12">
+                  <div class="card">
+                    <header class="card-heading ">
+                      <h2 class="card-title">Listado de Tareas</h2>
+                      
+                      <ul class="card-actions icons right-top">
+                        <li>
+                          <a href="javascript:void(0)" data-toggle="refresh">
+                            <i class="zmdi zmdi-refresh-alt"></i>
+                          </a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="javascript:void(0)" data-toggle="dropdown">
+                            <i class="zmdi zmdi-more-vert"></i>
+                          </a>
+                          
+                        </li>
+                      </ul>
+                    </header>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th align="center">Id</th>
+                              <th align="center">Nombre de la tarea</th>
+                              <th align="center">Cliente</th>
+                              <th align="center">Fecha de Inicio</th>
+                              <th align="center">Fecha de Finalizaciòn</th>
+                              <th align="center">Estado</th>   
+                              <th align="center">Trabajador Encargado</th>   
+                              <th  colspan="2" align="center">Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                             <?php foreach($tareas as $tarea) {?>
+                                 <tr>
+                               <td ><?= $tarea->id_tareas; ?></td>
+                              <td align="center"><?= $tarea->nombreTarea; ?></td>
+                             <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
 
       
-			<td align="center"><?= $tarea->fechaInicio; ?></td>
-			<td align="center"><?= $tarea->fechaFin; ?></td>
-     		 <td align="center"><?= $tarea->estado; ?></td>
-     		 <td align="center"><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
-			<td align="center" >
+                             <td align="center"><?= $tarea->fechaInicio; ?></td>
+                             <td align="center"><?= $tarea->fechaFin; ?></td>
+                             <td align="center"><?= $tarea->estado; ?></td>
+                            <td align="center"><?= $tarea->Trab->nombres ?>&nbsp;<?= $tarea->Trab->apellidos ?></td>
+                       <td align="center" >
  
-                  <button
+                     <button
                     style="height:20px; line-height:2px; margin-left; margin:  3%;" onclick="editar(<?= $tarea->id_tareas; ?>)">Editar</button>
 
                     <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar(<?= $tarea->id_tareas; ?>)">Eliminar</button>
-                </td>
-        </tr>
-			<?php } ?>
-	</table>
+                      </td>
+                 </tr>
+      <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+   
 </div>
 <?php include("footer.php"); ?>
 	</div>
