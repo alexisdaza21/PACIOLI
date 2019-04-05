@@ -106,9 +106,8 @@
                 <th align="center">Id</th>
                 <th align="center">Nombre de la tarea</th>
                 <th align="center">Cliente</th>
-                 <th align="center">Trabajo</th>
                 <th align="center">Fecha de Inicio</th>
-                 <th align="center">Fecha de Finalizaciòn</th>
+                <th align="center">Fecha de Finalizaciòn</th>
                 <th align="center">Estado</th>   
                 <th align="center">Trabajador Encargado</th>   
                 <th  colspan="2" align="center">Acciones</th>
@@ -119,7 +118,7 @@
 			<td align="center"><?= $tarea->nombreTarea; ?></td>
        <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
 
-      <td align="center"> <?= $tarea->Trabajo->tipo ?> </td>
+      
 			<td align="center"><?= $tarea->fechaInicio; ?></td>
 			<td align="center"><?= $tarea->fechaFin; ?></td>
      		 <td align="center"><?= $tarea->estado; ?></td>
@@ -193,18 +192,31 @@
               <div class="form-group label-floating is-empty">
                 <div class="row">
 
-                 
-                  
-              </div>
-                 <div class="row">
-                   <label class="control-label">Nombre de la Tarea</label>
-                   <input type="text" class="form-control"  name="Tareas[nombreTarea]" 
-                   required="">
-                 </div>
-              </div>
-               <div class="row">
-                  <div class="col-sm-4">
-                     <label for="" class="control-label">Cliente</label>
+         
+
+              <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+
+                      <div class="">
+                        <div class="form-group is-empty">
+                          <div class="">
+                            <span class=""><i class=""></i></span>
+                            <label class="control-label" >Descripcion de la tarea</label>
+                            <br>
+                             <input type="text" class="form-control"  name="Tareas[nombreTarea]" 
+                             required="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            
+                             <label for="" class="control-label">Cliente</label>
+                             <br>
+                     
                         <select class="select form-control" required="" name="Tareas[id_clientes]">
                            <option>-Seleccion-</option>
                                <?php foreach ( $clientes as $cliente) {?>
@@ -213,38 +225,26 @@
                              </option>
                                     <?php } ?>
                         </select>
-                  </div>
-
-                   <div class="col-sm-4">
-                     <label for="" class="control-label">Seleccione el Trabajo</label>
-                        <select class="select form-control" required="" name="Tareas[id_trabajos]">
-                           <option>-Seleccion-</option>
-                               <?php foreach ( $trabajos as $trabajo) {?>
-                           <option value="<?= $trabajo->id_trabajos; ?>"><?=$trabajo->id_trabajos; ?> &nbsp; <?=$trabajo->tipo; ?> &nbsp;   
-
-                             </option>
-                                    <?php } ?>
-                        </select>
-                  </div>
-
-                  <div class="col-sm-4">
-                     <label for="" class="control-label">Responsable</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            <label for="" class="control-label">Responsable</label>
+                            <br>
                         <select class="select form-control" required="" name="Tareas[id_trabajadores]">
                            <option>-Seleccion-</option>
                                <?php foreach ( $trabajadores as $trabajador) {?>
                            <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?> &nbsp;<?=$trabajador->apellidos; ?>   </option>
                                     <?php } ?>
                         </select>
-                  </div>
-              </div>
-
-              <div class="row">
-                  
-              </div>
-
-              <div class="card">
-                  <div class="card-body">
-                    <div class="row">
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
                       <div class="col-xs-6">
                         <div class="form-group is-empty">
                           <div class="input-group">
@@ -266,8 +266,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Ok</button>
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </div>
           <!-- modal-content -->
