@@ -20,9 +20,18 @@
 
 
 
-   <label > Nombre de la Tarea </label><br>
+   <label > Descripci&oacute;n de la tarea</label><br>
     <input type="text" name="Tareas[nombreTarea]" id="dummyText" class="form-control"  value="<?= $tareas->nombreTarea ?>" />
+
     <br>
+
+    <label > Cliente </label>
+        <select required="" name="Tareas[id_clientes]" class="form-control">
+            </option>
+                <?php foreach ( $clientes as $cliente) {?>
+                   <option value="<?= $cliente->id_clientes; ?>"><?=$cliente->nit; ?><?=$cliente->razonSocial; ?>  </option>
+            <?php } ?>
+        </select>
 
 
  <label > Trabajador Encargado </label>
