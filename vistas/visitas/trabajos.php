@@ -133,7 +133,7 @@
 
                 <td colspan="2" align="rights">total</td>
       <td   style="text-align: right;"><label style="margin-right: 3%;"> <?= $total ?></label></td>
-      <a href ="index.php?c=visitas&a=reporte&id= <?= $visita->id_trabajos; ?>">pdf</a>
+      
       </tr>
 
   </table>

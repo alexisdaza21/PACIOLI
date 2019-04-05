@@ -25,11 +25,20 @@ class trabajosController{
 			case "pagos":
 				$_this->pagos();
 			break;
+			case "reporte":
+				$_this->reporte();
+			break;	
 			default:
 				throw new Exception("Accion no definido");
 				break;
 		}
 	} 
+	private function reporte(){
+
+			$id = $_GET["id"]; 
+			require"Vistas/trabajos/pdf/index.php";
+		}
+			
 private function admintra (){
 	
 		if ($_SESSION["sesion"]== "trabajador" ) {

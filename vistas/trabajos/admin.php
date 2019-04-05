@@ -108,7 +108,7 @@
      </div>
      </font>
       
-      <a href="index.php?c=clientes&a=admin"><h4>Volver a clientes</h4></a>
+      <a  href="index.php?c=clientes&a=admin" ><h4>Volver a clientes</h4></a>
   <h2><b><center> Trabajos del cliente <?= $clientes->nit ?></b></center></h2>
 <br>
 <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
@@ -161,6 +161,8 @@
                                 </td> 
                                </tr>
                            <?php } ?>
+                           <tr>
+                           <a target="_blank" href="index.php?c=trabajos&a=reporte&id=<?= $trabajo->id_clientes; ?>">pdf</a>
                            </tbody>
                         </table>
                     </div>

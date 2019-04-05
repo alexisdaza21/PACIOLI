@@ -51,6 +51,9 @@ class tareasController{
 			
 		$tar = new Tareas();
 	    $tareas = $tar->admin();
+
+	    $traba = new Trabajos();
+	    $trabajos = $traba->admintra();
 	
  
 		$fecha =  date("Y-m-d");
@@ -98,6 +101,7 @@ class tareasController{
 			$tareas->estado = $_POST["Tareas"]["estado"];
 			$tareas->id_trabajadores = $_POST["Tareas"]["id_trabajadores"];
 			$tareas->id_clientes = $_POST["Tareas"]["id_clientes"];
+			$tareas->id_trabajos = $_POST["Tareas"]["id_trabajos"];
 			
 			$tareas->update();
 			header("Location: index.php?c=tareas&a=admin");
@@ -107,6 +111,9 @@ class tareasController{
 			$trabajadores = $trab->view();
 			$clien = new Clientes();
 			$clientes = $clien->admin();
+			$traba = new Trabajos();
+			$trabajos = $traba->admintra();
+ 
 
 			require "Vistas/tareas/update.php";
 		}
