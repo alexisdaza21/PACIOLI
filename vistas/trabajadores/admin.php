@@ -1,24 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Listado de Trabajadores</title>
-   <link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  
-</head>
+<style type="text/css">
+  .imagen{
+    background-image: url(assets/images/banner_inicio.jpg);
+     background-size: cover;
+       padding-bottom: 30%;
+  }
+</style>
 <?php include("header.php"); ?>
-<body  style="   background: #fff; "  >
+
+<body  style="   background: |; "  >
         <section id="content_outer_wrapper">
         <div id="content_wrapper" class="card-overlay">
           <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
+            <div class="imagen"></div>
 
           </div>   
  
     <font face="verdana"> 
-
-    <br>
-<div class="card">
+          <div id="content" class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="card card-transparent">
+                  <div class="card-body wrapper">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-3"style="margin-left: 32.3%; width: 37%; margin-top: 32%;">
+                        <div class="card type--profile" >
+                          
                   <header class="card-heading ">
                     <h2 class="card-title">Lista de Trabajadores</h2>
 
@@ -124,6 +130,46 @@
                   });
             }
   </script>
+  <script type="text/javascript">
+    function numeros(e){
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " 0123456789";
+    especiales = [8,37,39,46];
+ 
+    tecla_especial = false
+    for(var i in especiales){
+ if(key == especiales[i]){
+     tecla_especial = true;
+     break;
+        } 
+    }
+ 
+    if(letras.indexOf(tecla)==-1 && !tecla_especial)
+        return false;
+}
+    </script>
+    <script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>   
+<?php include("footer.php"); ?>
 
 <?php include("footer.php"); ?>
 
@@ -152,7 +198,7 @@
                           <div class="input-group">
                             <span class="input-group-addon"></i></span>
                               <label class="control-label">Nombres Del Trabajador</label>
-                            <input type="text" class="form-control"  name="trabajadores[nombres]" >
+                            <input type="text" class="form-control"  name="trabajadores[nombres]" onkeypress="return soloLetras(event)" >
                           </div>
                         </div>
                       </div>
@@ -161,7 +207,7 @@
                           <div class="input-group">
                             <span class="input-group-addon"></span>
                             <label class="control-label">Apellidos Del Trabajador</label>
-                            <input type="text" class="form-control" name="trabajadores[apellidos]" >
+                            <input type="text" class="form-control" name="trabajadores[apellidos]" onkeypress="return soloLetras(event)" >
                           </div>
                         </div>
                       </div>
@@ -174,7 +220,7 @@
                           <div class="input-group">
                             <span class="input-group-addon"></i></span>
                               <label class="control-label">Documento</label>
-                            <input type="text" class="form-control"  name="trabajadores[documento]">
+                            <input type="text" class="form-control"  name="trabajadores[documento]" onkeypress="return numeros(event)">
                           </div>
                         </div>
                       </div>
@@ -197,7 +243,7 @@
                           <div class="input-group">
                             <span class="input-group-addon"></i></span>
                               <label class="control-label">Telefono</label>
-                            <input type="text" class="form-control"  name="trabajadores[telefono]" >
+                            <input type="text" class="form-control"  name="trabajadores[telefono]" onkeypress="return numeros(event) ">
                           </div>
                         </div>
                       </div>
@@ -206,7 +252,7 @@
                           <div class="input-group">
                             <span class="input-group-addon"></span>
                             <label class="control-label">Perfil Profesional</label>
-                            <input type="text" class="form-control" name="trabajadores[perfilPro]"   >
+                            <input type="text" class="form-control" name="trabajadores[perfilPro]" onkeypress="return soloLetras(event)"  >
                           </div>
                         </div>
                       </div>
@@ -244,7 +290,7 @@
 
                               <select class="select form-control" required="" name="trabajadores[tipo]">
                                   <option>Contador</option>
-                                  <option>Auxiliar</option>
+                                  <option>Trabajador</option>
                               </select>
                               
                           </div>
@@ -255,6 +301,23 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                      
+                      <div class="col-xs-6">
+
+                        <div class="modal-body">
+                          <div class="input-group">
+                            <span class="input-group-addon"></i></span>
+                              <label >Click Aqu&iacute; Para Ingresar Hoja de Vida</label>
+                              <p><input type="file" name="documento" required="" >
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
                       <div class="col-xs-6">
 
                         <div class="modal-body">
@@ -263,16 +326,6 @@
                               <label >Click Aqu&iacute; Para Ingresar Foto</label>
                               <p><input type="file" name="imagen" required="" >
 
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xs-6">
-
-                        <div class="modal-body">
-                          <div class="input-group">
-                            <span class="input-group-addon"></i></span>
-                              <label >Click Aqu&iacute; Para Ingresar Hoja de Vida</label>
-                              <p><input type="file" name="documento" required="" >
                           </div>
                         </div>
                       </div>
