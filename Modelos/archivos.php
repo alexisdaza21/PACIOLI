@@ -24,7 +24,7 @@ class Archivos extends Conexion{
 	
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO carpetas VALUES (:id_archivos,:fechaHora,:nombre,:id_carpetas)");
+		$stm = $conexion-> prepare("INSERT INTO archivos VALUES (:id_archivos,:fechaHora,:nombre,:id_carpetas)");
 		try{
 			 $stm->execute((array) $this);
 			 return true;

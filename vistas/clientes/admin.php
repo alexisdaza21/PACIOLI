@@ -3,9 +3,6 @@
 <head>
 	<title>Listado de Clientes</title>
 <body>
-<link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
     <?php include("header.php"); ?>
     <body  style="   background: #fff; "  >
@@ -36,7 +33,7 @@
                         <div class="form-group is-empty">
                         <div class="input-group">
                         <label>Nit</label>
-                        <input class="form-control datepicker" maxlength="20" onkeypress="return numeros(event)" type="text"  name="Clientes[nit]"   value="" required class="" />
+                        <input class="form-control datepicker" maxlength="20"  type="text"  name="Clientes[nit]"   value="" required class="" />
                   </div>
               </div>
               </div>
@@ -103,7 +100,7 @@
                      <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
                       <div class="table-responsive">
                    
-                        <table  style="margin: 0%; overflow: hidden;"  id="datos" class="table table-striped">
+                        <table  style="margin: 0%; "  id="datos" class="table table-striped">
                           <thead>
                             <tr>
                               <th  style="text-align: center;">Id</th>

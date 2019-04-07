@@ -6,7 +6,7 @@
 	{
 		function Header()
 		{
-			$this->Image('assets/images/logo_inferior_para_footer.png', 85, 5, 30 );
+			$this->Image('assets/images/logo_inferior_para_footer - copia.png', 85, 5, 30 );
 			$this->SetTextColor(144,30,30); 
 			$this->SetFont('Arial','B',15);
 			$this->Cell(30);

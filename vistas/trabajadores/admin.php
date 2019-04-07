@@ -2,9 +2,6 @@
 <html>
 <head>
   <title>Listado de Trabajadores</title>
-   <link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
 </head>
 <?php include("header.php"); ?>

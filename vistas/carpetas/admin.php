@@ -3,9 +3,7 @@
 <head>
 	<title>Listado de pagos</title>
 <body>
-<link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <?php  include("header.php"); ?> 
           <body  style="   background: #fff; "  >
 
@@ -94,17 +92,7 @@
               </button>
               <ul class="nav-sub">
                 <li><span data-toggle="tooltip" data-placement="right" title="Nueva Carpeta"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-folder-plus"></i></a></span> </li>
-                <li><span data-toggle="tooltip" data-placement="left" title="New Document"><a href="javascript:void(0)" data-toggle="modal" data-target="#new_doc_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-file-document"></i></a></span> </li>
-                <li>
-                  <a href="javascript:void(0)" data-toggle="tooltip" data-placement="right" title="Upload Folder" class="btn btn-info btn-fab btn-fab-sm">
-                    <div class="icon-upload"><label for="file-input-folder"><i class="mdi mdi-folder-upload"></i></label><input id="file-input-folder" type="file"></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" data-toggle="tooltip" data-placement="right" title="Upload File" class="btn btn-info btn-fab btn-fab-sm">
-                    <div class="icon-upload"><label for="file-input"><i class="mdi mdi-cloud-upload"></i></label><input id="file-input" type="file"></div>
-                  </a>
-                </li>
+
               </ul>
             </nav>
           </div>
@@ -128,7 +116,7 @@
                       <span class="title"><?= $carpeta->nombre;?></span>
                     </div>
                     <div class="card-footer">
-                        <a href="index.php?c=archivos&a=admin&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"]; ?>&carpeta=<?= $carpeta->id_carpetas;  ?>"><i class="zmdi zmdi-info"></i></a>
+                        <a href="index.php?c=archivos&a=admin&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"]; ?>&carpeta=<?= $carpeta->id_carpetas;  ?>" title="archivos"><i class="zmdi zmdi-info" ></i></a>
 
                       
                     </div>
@@ -362,7 +350,7 @@
                   <div class="form-group is-empty">
                           <div class="input-group">
                             <label >Nombre </label>
-                            <input type="text" class="form-control datepicker"  placeholder="Pikaday dark..." aria-label="Use the arrow keys to pick a date" name="Carpetas[nombre]"   value="" required>
+                            <input type="text" class="form-control datepicker"  placeholder="Nombre Carpeta..." aria-label="Use the arrow keys to pick a date" name="Carpetas[nombre]"   value="" required>
                                  <input type="hidden" name="Carpetas[id]"   value="<?= $_GET["id"]; ?>" >
                                  <input type="hidden" name="Carpetas[nit]"   value="<?= $_GET["nit"]; ?>" >
                           </div>

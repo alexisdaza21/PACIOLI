@@ -22,7 +22,7 @@ header,
 hgroup,
 main,
 menu,
-nav,
+nav,overflow
 section,
 summary {
   display: block;
@@ -2441,7 +2441,6 @@ table th[class*="col-"] {
 }
 .table-responsive {
   min-height: .01%;
-  overflow-x: auto;
 }
 @media screen and (max-width: 767px) {
   .table-responsive {
