@@ -25,7 +25,6 @@
 
 	{
 		
-	$pdf->Cell(100,10,$row['nit'], 0, 5, 30);
 		$pdf->Cell(50,6,$row['fechaInicio'],0,0,'C');
 		$pdf->Cell(50,6,utf8_decode($row['tipo']),0,0,'C');
 		$pdf->Cell(50,6,utf8_decode($row['costos']),0,1,'C');
