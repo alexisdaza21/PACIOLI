@@ -80,7 +80,7 @@ $id =  $_POST["trabajadores"]["id"];
 				//guardar en la BBDD
 
 				$nombre_img = basename($_FILES["imagen"]['name']);
-							if (($nombre_img == !NULL) ) 
+							if (($nombre_img == !NULL) )   
 				{
 						      // Ruta donde se guardarán las imágenes que subamos
 		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
