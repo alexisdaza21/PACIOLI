@@ -3,9 +3,6 @@
 <head>
 	<title>Listado de Clientes</title>
 <body>
-<link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
     <?php include("header.php"); ?>
     <body  style="   background: #fff; "  >
@@ -36,7 +33,7 @@
                         <div class="form-group is-empty">
                         <div class="input-group">
                         <label>Nit</label>
-                        <input class="form-control datepicker" maxlength="20" onkeypress="return numeros(event)" type="text"  name="Clientes[nit]"   value="" required class="" />
+                        <input class="form-control datepicker" maxlength="20"  type="text"  name="Clientes[nit]"   value="" required class="" />
                   </div>
               </div>
               </div>
@@ -103,7 +100,7 @@
                      <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
                       <div class="table-responsive">
                    
-                        <table  style="margin: 0%; overflow: hidden;"  id="datos" class="table table-striped">
+                        <table  style="margin: 0%; "  id="datos" class="table table-striped">
                           <thead>
                             <tr>
                               <th  style="text-align: center;">Id</th>
@@ -122,7 +119,7 @@
                                 <td align="center"><?= $cliente->nit;?></td>
                                 <td align="center"><?= $cliente->direccion;?></td>
                                 <td align="center"><?= $cliente->razonSocial;?></td>
-                                <td align="center"><?= $cliente->email;?></td>
+                                <td email= "asdda" href = "mailto:<?= $cliente->email;?>" align="center"><?= $cliente->email;?></td>
                                 <td align="center"><?= $cliente->telefono;?></td>
                                 <td >
                                  <div class="btn-group open" >
@@ -131,14 +128,23 @@
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
                                    <li><a  href="index.php?c=clientes&a=trabajos&id=<?= $cliente->id_clientes; ?>" class="btn btn-info btn-flat" >Trabajos</a></li>
+                                    <?php 
+                                          if ($_SESSION["sesion"] =="trabajador") { 
+                                            if ($_SESSION["u"]->documento == 7181470) {
+                                          ?>
                                          <li><a data-toggle="modal" data-target="#toolabr_modal" class="btn btn-primary btn-flat"  >Cambio Contraseña</a>
                                          
                                          </li>
+                                        
                                     <li><a onclick="editar('<?= $cliente->id_clientes; ?>','<?= $cliente->nit ?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a onclick="eliminar('<?= $cliente->id_clientes ?>')"
                                       class="btn btn-danger btn-flat">Eliminar</a></li>
+                                      <?php
+                   }
+                  }
+                ?> 
                                 </ul>
                                 </div>
                                 </td>

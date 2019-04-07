@@ -45,7 +45,7 @@
 
 				$trabajos = new Trabajos();
 				$trabajos->findByPk($trab);
-				$tip = $trabajos->tipo;
+				$tip = $trabajos->id_trabajos;
 
 				$clientes = new Clientes();
 				$clientes->findByDocument($nit);

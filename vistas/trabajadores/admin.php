@@ -1,10 +1,9 @@
-<style type="text/css">
-  .imagen{
-    background-image: url(assets/images/banner_inicio.jpg);
-     background-size: cover;
-       padding-bottom: 30%;
-  }
-</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Listado de Trabajadores</title>
+ 
 <?php include("header.php"); ?>
 
 <body  style="   background: |; "  >

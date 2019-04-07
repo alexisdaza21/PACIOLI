@@ -34,6 +34,18 @@ class Carpetas extends Conexion{
 			return false;
 		}
 		}
+
+		public function findByPk($id){
+
+			$conexion = $this->getConexion();
+			$stm = $conexion->prepare("SELECT * FROM carpetas WHERE id_carpetas = :id");
+			$stm ->setFetchMode(PDO::FETCH_INTO,$this);
+
+			$stm->bindParam(":id",$id);
+			$stm-> execute();
+			$stm->fetch();
+		
+		}
 	public function admin($id){
 
 		$conexion = $this->getConexion();

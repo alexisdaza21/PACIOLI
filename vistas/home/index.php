@@ -48,12 +48,12 @@
 	<div style="padding: 0.6%; background: #09003f;"></div>
 		<div style="padding: 1.3%; background: #fff;">
 			<center class="header" >
-				<a href="">inicio</a>
-				<a href="">productos</a>
-				<a href="">servicios</a>
-				<a href="mailto:webmaster@example.com">contacto</a>
-				<a href="index.php?c=home&a=login" email="asdda">Trabajadores</a>
-				<a href="index.php?c=home&a=cliente">Clientes</a>
+				<a href="" style="font-family: monospace; font-size: 150%">inicio</a>
+				<a href=""style="font-family: monospace; font-size: 150%">productos</a>
+				<a href=""style="font-family: monospace; font-size: 150%">servicios</a>
+				<a href="mailto:webmaster@example.com"style="font-family: monospace; font-size: 150% ">contacto</a>
+				<a href="index.php?c=home&a=login" email="asdda"style="font-family: monospace; font-size: 150%">Trabajadores</a>
+				<a href="index.php?c=home&a=cliente"style="font-family: monospace; font-size: 150%">Clientes</a>
 			</center>
 		</div>
 	<div  class="imagen">

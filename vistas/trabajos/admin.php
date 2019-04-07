@@ -3,9 +3,7 @@
 <head>
 	<title>Listado de trabajos</title>
 <body>
-<link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <?php include("header.php"); ?>
         <body  style="   background: #fff; "  >
         <section id="content_outer_wrapper">
@@ -107,15 +105,17 @@
      </div>
      </div>
      </font>
-      
+       
       <a  href="index.php?c=clientes&a=admin" ><h4>Volver a clientes</h4></a>
-  <h2><b><center> Trabajos del cliente <?= $clientes->nit ?></b></center></h2>
+  <h2><b><center> Trabajos del cliente <?= $clientes->razonSocial ?></b></center></h2>
 <br>
 <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
    
         <div class="card-body">
-                      <div class="table-responsive">
-                       <table class="table table-striped" style="margin: 0%; overflow: hidden;" id="datos">
+
+                      <div class="table-">
+                       <table class="table table-striped" style="margin: 0%; " id="datos">
+
                           <thead>
             <tr>
            <tr >
@@ -148,8 +148,14 @@
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
-                                   <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos; ?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
+
+                                   <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
+
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>" class="btn btn-primary btn-flat">Visitas</a></li>
+                                         <?php 
+                                          if ($_SESSION["sesion"] =="trabajador") { 
+                                            if ($_SESSION["u"]->documento == 7181470) {
+                                          ?>
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
@@ -157,12 +163,16 @@
                                     ','<?= $_GET["id"]?>')"
                                       class="btn btn-danger btn-flat">Eliminar</a></li>
                                 </ul>
+                                      <?php
+                   }
+                  }
+                ?> 
                                 </div>
                                 </td> 
                                </tr>
                            <?php } ?>
                            <tr>
-                           <a target="_blank" href="index.php?c=trabajos&a=reporte&id=<?= $trabajo->id_clientes; ?>">pdf</a>
+                           <a target="_blank" href="index.php?c=trabajos&a=reporte&id=<?= $_GET["id"]?>">pdf</a>
                            </tbody>
                         </table>
                     </div>
