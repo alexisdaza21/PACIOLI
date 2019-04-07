@@ -115,7 +115,7 @@
    
         <div class="card-body">
                       <div class="table-responsive">
-                       <table class="table table-striped" style="margin: 0%; overflow: hidden;" id="datos">
+                       <table class="table table-striped" style="margin: 0%; overflow:visible;" id="datos">
                           <thead>
             <tr>
            <tr >
@@ -148,8 +148,12 @@
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
-                                   <li><a  href="index.php?c=trabajos&a=pagos&id=<?= $trabajo->id_trabajos; ?>" class="btn btn-info btn-flat">Carpetas</a></li>
+                                   <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos; ?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>" class="btn btn-primary btn-flat">Visitas</a></li>
+                                         <?php 
+                                          if ($_SESSION["sesion"] =="trabajador") { 
+                                            if ($_SESSION["u"]->documento == 7181470) {
+                                          ?>
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
@@ -157,6 +161,10 @@
                                     ','<?= $_GET["id"]?>')"
                                       class="btn btn-danger btn-flat">Eliminar</a></li>
                                 </ul>
+                                      <?php
+                   }
+                  }
+                ?> 
                                 </div>
                                 </td> 
                                </tr>
