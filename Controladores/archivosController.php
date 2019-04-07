@@ -27,44 +27,56 @@
 		if(isset($_POST["Archivos"])){
 			
 			//guardar en la BBDD
-			$id = $_POST["Carpetas"]["id"];
-			$nom =  $_POST["Archivos"]["nombre"];
-			$fech =  date("Y-m-d");;
-			$tra =$_SESSION["id"];
-			$trab = $id ;
-			$nit =$_POST["Carpetas"]["nit"];
-
-			
+			$trabajo = $_POST["Archivos"]["trabajo"];
+			$nit =$_POST["Archivos"]["nit"];
+			$carpeta =$_POST["Archivos"]["carpeta"];
 
 
-			$carpetas = new Carpetas();
+		  	$archivo = basename($_FILES["archivo"]['name']);
+				if (($archivo == !NULL) )  
+					{
+						      // Ruta donde se guardarán las imágenes que subamos
+		     		 $directorio = $_SERVER['DOCUMENT_ROOT']
+		     	 .'/pacioli/documentos/'.$nit.'/'.$trabajo.'/'.$carpeta.'/';
+		      // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada anteriormente
+		    	  move_uploaded_file($_FILES['archivo']['tmp_name'],$directorio.$archivo);
+		  			}
+		  		
+		  	$nom =  $archivo;
+			$fech =  date("Y-m-d\TH:i:s");
+			$car = $carpeta;
+
+			$archivos = new Archivos();
 	
 			//$equipos->findBydocument($documento);
-			$guardo = $carpetas->save($nom,$fech,$tra,$trab);
+			$guardo = $archivos->save($fech,$nom,$car);
 			if ($guardo){
 					//$_SESSION["documento"]=$doc;
 
 			
 
-			//	$trabajos = new Trabajos();
-			//	$trabajos->findByPk($trab);
-			//	$tip = $trabajos->tipo;
+				$trabajos = new Trabajos();
+				$trabajos->findByPk($trabajo);
+				$id = $trabajos->id_trabajos;
 
-			//	$clientes = new Clientes();
-			//	$clientes->findByDocument($nit);
-			//	$nit = $clientes->nit;
+				$clientes = new Clientes();
+				$clientes->findByDocument($nit);
+				$nit = $clientes->nit;
 
-				   
+				$carpetas = new Carpetas();
+				$carpetas->findByPk($carpeta);
+				$carpeta = $carpetas->id_carpetas;
+				 
+				 //mkdir(__DIR__."/../documentos/".$nit."/".$tip."/".$nom, 0777, true);
 
-				 mkdir(__DIR__."/../documentos/".$nit."/".$tip."/".$nom, 0777, true);
-
-					header("Location: index.php?c=carpetas&a=admin&id=".$id."&nit=".$nit);
+					header("Location: index.php?c=archivos&a=admin&id=".$id."&nit=".$nit."&carpeta=".$carpeta);
 				}else{
-					header("Location: index.php?c=carpetas&a=admin&error=true&id=".$id);
+					header("Location: index.php?c=archivos&a=admin&id=".$id."&nit=".$nit."&carpeta=".$carpeta);
 
 				}
 			}else
-				require "vistas/carpetas/admin.php";
+			
+			require"vistas/archivos/admin.php ";
 		}
 
 	 	private function admin(){

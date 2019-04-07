@@ -74,7 +74,7 @@
             <div class ="panel panel-primary">
                 <div class="panel-heading" ><h2 align="center" style="padding: 0;margin: 0; color:#fff;">Visitas</h2></div>
                     <div class="panel-body">        
-                    <!--  <form action="index.php?c=visitas&a=create" method="post">        
+                      <form action="index.php?c=visitas&a=create" method="post">        
                            <div style="float: left; margin-left: 25%;">
                                <label >Fecha Y Hora </label><br>
                                <input type="datetime-local" name="Visitas[fechaHora]" id="dummyText" class="form-control"  required  />
@@ -92,14 +92,14 @@
                             </div>
                            <div style="float: right; margin-right: 25%;">
                               <label >Trabajo </label>
-                              <input type="text" name="Visitas[id_trabajos]" id="dummyText" class="form-control"  required />
+                              <input type="text" name="Visitas[id_trabajos]" id="dummyText" class="form-control"  required  value="<?= $_GET["id"] ?>" />
                            
                            </div><br><br><br>
                           <div style="margin-left: 65%; padding: 1%;"> 
                              <button type="button" class="btn btn-default" data-dismiss="modal">     Cerrar</button>
                              <button type="submit" class="btn btn-info">Agregar</button>
                           </div>
-                      </form>-->
+                      </form>
             </div>
             <div id='calendar'></div>
           </div>

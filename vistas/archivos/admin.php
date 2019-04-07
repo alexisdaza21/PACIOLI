@@ -3,9 +3,6 @@
 <head>
 	<title>Listado de pagos</title>
 <body>
-<link rel="stylesheet" href="https://unpkg.com/rmodal/dist/rmodal.css" type="text/css" />
-    <script type="text/javascript" src="https://unpkg.com/rmodal/dist/rmodal.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <?php  include("header.php"); ?> 
           <body  style="   background: #fff; "  >
 
@@ -64,7 +61,7 @@
                     <h1> Archivos</h1>
                     <ol class="breadcrumb">
                       <li><a href="javascript:void(0)"><?=  $_GET["nit"]; ?></a></li>
-                      <li><a href="javascript:void(0)"><?= $trabajos->tipo; ?></a></li>
+                      <li><a href="javascript:void(0)"><?= $_GET["id"]; ?></a></li>
                       <li class="active"><?=  $_GET["carpeta"]; ?></li>
                     </ol>
                   </header>
@@ -93,7 +90,7 @@
                 <i class="zmdi zmdi-plus"></i>
               </button>
               <ul class="nav-sub">
-                <li><span data-toggle="tooltip" data-placement="right" title="Nueva Carpeta"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-folder-plus"></i></a></span> </li>
+                <li><span data-toggle="tooltip" data-placement="right" title="Nueva Archivo"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-cloud-upload"></i></a></span> </li>
                 <li><span data-toggle="tooltip" data-placement="left" title="New Document"><a href="javascript:void(0)" data-toggle="modal" data-target="#new_doc_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-file-document"></i></a></span> </li>
                 <li>
                   <a href="javascript:void(0)" data-toggle="tooltip" data-placement="right" title="Upload Folder" class="btn btn-info btn-fab btn-fab-sm">
@@ -113,7 +110,7 @@
           <div id="content" class="container-fluid">
             <div class="content-body">
         <section id="files">
-          <h3>Files</h3>
+          <h3>Archios</h3>
           <ul class="files">
             <?php foreach ($archivos as $archivo) {
               ?>
@@ -122,7 +119,7 @@
               <div class="card card-file card-item enable-context-menu selected" data-item-selected="true" data-item-type="Image" data-item-size="2 MB" data-item-location="Projects" data-item-modified="Feb 9, 2017" data-item-opened="Feb 11, 2017" data-item-created="Feb 3, 2017"
               data-item-offline="true" data-item-image="assets/img/gallery/thumbs/thumb-1.jpg">
               <div class="card-body">
-                <img src="assets/img/gallery/thumbs/thumb-1.jpg" alt="" />
+                <img src="assets/images/banner_inicio.jpg" alt="" style="margin-top: 23%;" />
               </div>
               <div class="card-footer">
                 <i class="zmdi zmdi-image"></i>
@@ -168,7 +165,7 @@
         <div class="card-body">
           <ul class="list-group ">
             <li class="list-group-item ">
-              <span class="pull-left"><img src="assets/img/profiles/02.jpg" alt="" class="img-circle max-w-40 m-r-10 "></span>
+              <span class="pull-left"><img src="assets/images/file.png" alt="" class="img-circle max-w-40 m-r-10 "></span>
               <div class="list-group-item-body">
                 <div class="list-group-item-heading">You uploaded an item</div>
                 <div class="font-size-10 list-group-item-time">Mon 7:11 AM</div>
@@ -342,7 +339,7 @@
           <div class="modal-content">
             <div class="modal-header">
               
-              <h4 class="modal-title" id="myModalLabel-2">Agregar Nueva Carpeta..</h4>
+              <h4 class="modal-title" id="myModalLabel-2">Agregar Archivos..</h4>
               <ul class="card-actions icons right-top">
                 
                 <a href="javascript:void(0)" data-dismiss="modal" class="text-white" aria-label="Close">
@@ -352,15 +349,16 @@
             </ul>
           </div>
           <div class="modal-body">    
-<form action="index.php?c=carpetas&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
-  <div class="card">
+            <form action="index.php?c=archivos&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
+              <div class="card">
                   <div class="card-body">
                   <div class="form-group is-empty">
                           <div class="input-group">
-                            <label >Nombre </label>
-                            <input type="text" class="form-control datepicker"  placeholder="Pikaday dark..." aria-label="Use the arrow keys to pick a date" name="Carpetas[nombre]"   value="" required>
-                                 <input type="hidden" name="Carpetas[id]"   value="<?= $_GET["id"]; ?>" >
-                                 <input type="hidden" name="Carpetas[nit]"   value="<?= $_GET["nit"]; ?>" >
+                            <label >Seleccione un archivo </label>
+                            <input type="file" class="form-control datepicker"  placeholder="Pikaday dark..." aria-label="Use the arrow keys to pick a date" name="archivo"   value="" required>
+                                 <input type="hidden" name="Archivos[trabajo]"   value="<?=$_GET["id"]; ?>" >
+                                 <input type="hidden" name="Archivos[nit]"   value="<?= $_GET["nit"]; ?>" >
+                                 <input type="hidden" name="Archivos[carpeta]"   value="<?= $_GET["carpeta"]; ?>" >
                           </div>
                           </div>
                             </div>
