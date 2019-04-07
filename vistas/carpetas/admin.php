@@ -67,7 +67,7 @@
                       <li><a href="javascript:void(0)"><?= $trabajos->tipo; ?></a></li>
                       <li class="active">Projects</li>
                     </ol>
-                  </header>
+                  </header> 
                 </div>
               </div>
             </div>

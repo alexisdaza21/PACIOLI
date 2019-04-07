@@ -10,12 +10,14 @@
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
-	
-	$pdf->SetFillColor(232,232);
-	$pdf->SetFont('Arial','B',12);
-	$pdf->Cell(70,6,'fechaInicio',1,0,'C',1);
-	$pdf->Cell(70,6,'tipo',1,0,'C',1);
-	$pdf->Cell(70,6,'costos',1,1,'C',1);
+	$pdf->SetFont('Times','I','C');
+	$pdf->Cell(100,10, 'id_clientes', 0, 5, 30);
+	$pdf->SetFillColor(144,30,30);
+	$pdf->SetFont('Arial','B',15);
+	$pdf->SetFont('Times','I');
+	$pdf->Cell(50,6,'fecha de Inicio',0,0,'C');
+	$pdf->Cell(50,6,'tipo',0,0,'C');
+	$pdf->Cell(50,6,'costos',0,1,'C');
 	
 	$pdf->SetFont('Arial','',10);
 	
@@ -23,9 +25,9 @@
 
 	{
 		
-		$pdf->Cell(70,6,$row['fechaInicio'],1,0,'C');
-		$pdf->Cell(70,6,utf8_decode($row['tipo']),1,0,'C');
-		$pdf->Cell(70,6,utf8_decode($row['costos']),1,1,'C');
+		$pdf->Cell(50,6,$row['fechaInicio'],0,0,'C');
+		$pdf->Cell(50,6,utf8_decode($row['tipo']),0,0,'C');
+		$pdf->Cell(50,6,utf8_decode($row['costos']),0,1,'C');
 	}
 	$pdf->Output();
 ?>
