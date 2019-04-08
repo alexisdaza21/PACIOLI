@@ -145,7 +145,7 @@
                                 <td email= "asdda" href = "mailto:<?= $cliente->email;?>" align="center"><?= $cliente->email;?></td>
                                 <td align="center"><?= $cliente->telefono;?></td>
                                 <td >
-                                 <div class="btn-group open" >
+                                 <div class="btn-group " >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
