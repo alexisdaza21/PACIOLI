@@ -33,7 +33,7 @@
                         <div class="form-group is-empty">
                         <div class="input-group">
                         <label>Nit</label>
-                        <input class="form-control datepicker" maxlength="20"  type="text"  name="Clientes[nit]"   value="" required class="" />
+                        <input class="form-control datepicker" maxlength="50"  type="text"  name="Clientes[nit]"   value="" required class="" />
                   </div>
               </div>
               </div>

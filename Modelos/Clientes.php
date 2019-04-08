@@ -51,7 +51,7 @@ class Clientes extends Conexion{
 	public function fkeyTra($id){
 
 		$conexion = $this->getConexion();
-		$stm =$conexion->prepare("SELECT * FROM trabajos where id_clientes = :id ");
+		$stm =$conexion->prepare("SELECT * FROM trabajos where id_clientes = :id order by id_trabajos desc  ");
 		$stm->bindParam(":id",$id);
 		$stm->setFetchMode(PDO::FETCH_CLASS,'Trabajos');
 		$trabajos = array();	

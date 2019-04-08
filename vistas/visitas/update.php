@@ -16,11 +16,11 @@
 
 	<form method="POST">
        <center>
-  <h1 align="center">Actualizar la visita de:  <?= $visitas->fechaHora; ?></h1>
+  <h1 align="center">Actualizar la visita de:  <?= $visitas->fecha; ?></h1>
 
 
     <label >fecha</label><br>
-    <input type="datetime-local" name="Visitas[fechaHora]" id="dummyText" class="form-control"  required min=""  value="<?= date_format(date_create($visitas->fechaHora), 'Y-m-d\TH:i:s'); ?>" /><br>
+    <input type="date" name="Visitas[fecha]" id="dummyText" class="form-control"  required min=""  value="<?= date_format(date_create($visitas->fecha), 'Y-m-d'); ?>" /><br>
 
         <label >Costo</label><br>
     <input  type="text" name="Visitas[costo]" value="<?= $visitas->costo ?>" required><br>
