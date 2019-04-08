@@ -10,6 +10,13 @@
 	<link rel="stylesheet" href="assets/css/vendor.bundle.css">
 	<link rel="stylesheet" href="assets/css/app.bundle.css">
 	<link rel="stylesheet" href="assets/css/theme-a.css">
+  	<style type="text/css">
+  		.imagen{
+    		background-image: url(assets/images/banner_inicio.jpg);
+     		background-size: cover;
+       		padding-bottom: 30%;
+  				}
+	</style>
 </head>
 <body>
 	<div id="app_wrapper">
@@ -34,7 +41,7 @@
 										src="fotos/<?= $_SESSION["u"]->foto ?>"
 										 <?php } ?>
 										<?php if ($_SESSION["sesion"] =="cliente") {	?>
-										src="assets/images/cliente.png"
+										src="fotos/<?= $_SESSION["u"]->logo ?>"
 										 <?php } ?>
 										 alt="" class="img-circle max-w-35">
 										<i class="badge mini success status"></i>
@@ -45,7 +52,7 @@
 											<?= $_SESSION["u"]->nombres ?>
 										<?php }?>
 									<?php if ($_SESSION["sesion"] =="cliente") {	?>
-											<?= $_SESSION["u"]->nit ?>
+											<?= $_SESSION["u"]->razonSocial ?>
 										<?php }?>
 									</span>
 								
@@ -136,38 +143,54 @@
 						<li class="sidebar-header">Menu</li>
 						
 
-							
-						
+		
 						<li 		
 	  					   <?php if ($_GET["a"] == "home") { ?>
 							 	 class="active"
 							<?php }?>><a href="index.php?c=home&a=home"><i class="zmdi zmdi-view-dashboard"></i>Mi Inicio</a></li>
 							<?php if ($_SESSION["sesion"] =="trabajador") { ?>
+						<?php if ($_SESSION["u"]->documento == 7181470) { ?>
+						<li 		
+	  					   <?php if ($_GET["c"] == "nicc1") { ?>
+							 	 class="active"
+							<?php }?>><a href="index.php?c=nicc1&a=admin"><i class="zmdi zmdi-eye"></i>Seguimiento NICC-1</a></li>
+						<?php }?>	
 						<li
 						   <?php if ($_GET["c"] == "tareas") { ?>
 							 	 class="active"
 							<?php }?>>
 						<a href="index.php?c=tareas&a=admin"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>Tareas</a></li>
 						<li 		
-	  					   <?php if ($_GET["a"] == "trabajadores") { ?>
+	  					   <?php if ($_GET["c"] == "trabajadores") { ?>
 							 	 class="active"
 							<?php }?>><a href="index.php?c=trabajadores&a=admin"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i>Trabajadores</a></li>
 						<li 		
-	  					   <?php if ($_GET["a"] == "clientes") { ?>
+	  					   <?php if ($_GET["c"] == "clientes") { ?>
 							 	 class="active"
 							<?php }?>><a href="index.php?c=clientes&a=admin"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i>Clientes</Wa></li>	
 						<?php }?>
 						<li 		
-	  					   <?php if ($_GET["a"] == "trabajos") { ?>
+	  					   <?php if ($_GET["c"] == "trabajos") { ?>
 							 	 class="active"
-							<?php }?>><a href="index.php?c=trabajos&a=admintra">&nbsp;&nbsp;<i class="zmdi zmdi-folder"></i>Trabajos</a></li>	
-						<li 		
-	  					   <?php if ($_GET["a"] == "carpetas") { ?>
-							 	 class="active"
-							<?php }?>><a href="index.php?c=clientes&a=carpetas"><i></i>Clientes</a></li>
+							<?php }?>><a href="index.php?c=trabajos&a=admintra">&nbsp;&nbsp;<i class="zmdi zmdi-folder"></i>
+
+							<?php if ($_SESSION["sesion"] =="trabajador") { ?>	
+							Trabajos
+						<?php }?>
+						<?php if ($_SESSION["sesion"] =="cliente") { ?>
+							Mis Trabajos
+						<?php }?>
+							</a></li>
+						<?php if ($_SESSION["sesion"] =="cliente" &&$_GET["c"] == "carpetas" && $_GET["a"] == "admin") { ?>
+							<li
+						
+								 	 class="active"
+								>
+							<a><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>Mis Carpetas</a></li>	
+						<?php } ?>		
 
 					
-						
+					
 					
 					
 						

@@ -66,15 +66,16 @@
 
 	 	private function admin(){
 
-	 		$id =$_GET["id"];
-	 		$nit =$_GET["nit"];
-	 		$trabajos = new Trabajos();
-	 		$trabajos->findByPk($id);
+	
+	 	 		$id =$_GET["id"];
+		 		$nit =$_GET["nit"];
+		 		$trabajos = new Trabajos();
+		 		$trabajos->findByPk($id);
 
 
-	 		$car =  new Carpetas();
-	 		$carpetas = $car->admin($id);
-
+		 		$car =  new Carpetas();
+		 		$carpetas = $car->admin($id);
+	 
 
 			require"vistas/carpetas/admin.php ";
 

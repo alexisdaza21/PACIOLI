@@ -1,12 +1,19 @@
+<style type="text/css">
+	.imagen{
+		background-image: url(assets/images/banner_inicio.jpg);
+		 background-size: cover;
+		   padding-bottom: 30%;
+	}
+</style>
+
 <?php include("header.php"); ?>
 
 			<section id="content_outer_wrapper">
 				<div id="content_wrapper" class="card-overlay">
-					<div id="header_wrapper" class="header-xl  profile-header">
-						<ul class="card-actions fab-action right">
+          <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
+          	<div class="imagen"></div>
 
-						</ul>
-					</div>
+          </div>   
 				
 					<div id="content" class="container-fluid">
 						<div class="row">
@@ -14,10 +21,12 @@
 								<div class="card card-transparent">
 									<div class="card-body wrapper">
 										<div class="row">
-											<div class="col-md-12 col-lg-3"style="margin-left: 30%; width: 40%;">
+											<div class="col-md-12 col-lg-3"style="margin-left: 30%; width: 40%; margin-top: 9%;">
 												<div class="card type--profile" >
 													<header class="card-heading" >
-														<img src="assets/images/cliente.png" alt="" class="img-circle" >
+
+														<img src="fotos/<?=  $cliente->logo ?>" alt="" class="img-circle" >
+
 														<ul class="card-actions icons right-top">
 															<li class="dropdown">
 																<a href="javascript:void(0)" data-toggle="dropdown">
@@ -25,7 +34,7 @@
 																</a>
 																<ul class="dropdown-menu dropdown-menu-right btn-primary">
 																	<li>
-																		<a data-toggle="modal" data-target="#tab_modal">Editar Perfil</a>
+																		<a data-toggle="modal" data-target="#editar">Editar Perfil</a>
 																	</li>
 																</ul>
 															</li>
@@ -54,7 +63,7 @@
 <?php include ("footer.php"); ?>
 
 <!-- modal edit perfil-->
-<div class="modal fade" id="tab_modal" tabindex="-1" role="dialog" aria-labelledby="tab_modal" style="display: none;">
+<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="tab_modal" style="display: none;">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -82,14 +91,14 @@
 						<div class="tab-content  p-20">
 								<div class="tab-pane fadeIn" id="tab-1">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=trabajadores&a=telefono">
+									<p><form method="Post" action="index.php?c=clientes&a=telefono?>">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
 					                        maxlegth="10">Telefono</label>
 					                        <div class="col-md-10">
 					                          <input  type="text" class="form-control" id="name" placeholder="<?=  $cliente->telefono ?>" 
-					                          required name="trabajadores[telefono]" maxlength="10" >
-					                          <input type="hidden" name="trabajadores[id]"
+					                          required name="clientes[telefono]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
 					                          value="<?=  $cliente->id_clientes ?>">
 					                        </div>
 					                     </div>
@@ -97,29 +106,29 @@
 									</div>
 								<div class="tab-pane fadeIn" id="tab-2">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=trabajadores&a=telefono">
+									<p><form method="Post" action="index.php?c=clientes&a=email">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
 					                        maxlegth="10">Email</label>
 					                        <div class="col-md-10">
 					                          <input  type="text" class="form-control" id="name" placeholder="<?=  $cliente->email ?>" 
-					                          required name="trabajadores[telefono]" maxlength="10" >
-					                          <input type="hidden" name="trabajadores[id]"
-					                          value="<?=  $cliente->id_clientes ?>"">
+					                          required name="clientes[telefono]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
+					                          value="<?=  $cliente->id_clientes ?>">
 					                        </div>
 					                     </div>
 									</p>
 									</div>
 								<div class="tab-pane fadeIn active" id="tab-3">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=trabajadores&a=telefono">
+									<p><form method="Post" action="index.php?c=clientes&a=pass&id=<?= $cliente->id_clientes ?>&tipo=perfil ?>">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
-					                        maxlegth="10">Nueva Conrase&ntilde;a</label>
+					                        maxlegth="10">Nueva Contrase&ntilde;a</label>
 					                        <div class="col-md-10">
-					                          <input  type="text" class="form-control" id="name" placeholder="escriba su nueva contraseña" 
-					                          required name="trabajadores[telefono]" maxlength="10" >
-					                          <input type="hidden" name="trabajadores[id]"
+					                          <input  type="password" class="form-control" id="name" placeholder="escriba su nueva contraseña" 
+					                          required name="clientes[telefono]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
 					                          value="<?=  $cliente->id_clientes ?>"">
 					                        </div>
 					                     </div>
@@ -154,7 +163,7 @@
 							
 						</ul>
 					</div>
-					<form action="index.php?c=trabajadores&a=foto&id=<?=  $trabajador->id_trabajadores ?>&tipo=perfil" enctype="multipart/form-data" method="POST">
+					<form action="index.php?c=clientes&a=foto&id=<?=  $cliente->id_clientes ?>&tipo=perfil" enctype="multipart/form-data" method="POST">
 					<div class="modal-body" >
 						<p><input type="file" name="imagen" value="<?= $_SESSION["u"]->foto ?>"></p>
 						</div>

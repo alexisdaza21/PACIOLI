@@ -12,9 +12,14 @@
 	if (isset($_GET["c"])) 
 		$controller = $_GET["c"];
 	
-		//if (!isset($_SESSION["u"]) && $_GET["a"]!="home" && $_GET["a"]!="login" ) 
-		//		header("location:index.php?c=home&a=home");
+		if (!isset($_SESSION["u"]) && $_GET["a"]!="index" && $_GET["a"]!="login" && $_GET["a"]!="cliente"  ) 
+				header("location:index.php?c=home&a=index");
 		switch ($controller) {
+
+			case 'nicc1':
+				require "Controladores/nicc1Controller.php";
+					nicc1Controller::main($action);
+			break;	
 			case 'carpetas':
 				require "Controladores/carpetasController.php";
 					carpetasController::main($action);
