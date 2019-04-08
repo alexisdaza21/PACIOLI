@@ -143,7 +143,7 @@
     <td align="center"><?= $trabajo->costos;?></td>
     
                                 <td align="center">
-                                  <div class="btn-group open" >
+                                  <div class="btn-group " >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
