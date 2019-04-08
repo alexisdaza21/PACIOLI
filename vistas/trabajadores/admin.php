@@ -27,15 +27,21 @@
                       </li>
                     </ul>
                   </header>
-                  <div class="card-body">
+                
 
 
                     <div class="list-group m-t-40">
+                     
+                    </div>
+
+                      <div class="list-group-item">
+
+                         <div class="list-group m-t-40">
                       <?php foreach($trabajadores as $trabajador) {?>
 
-                          <div class="btn-group open" style="float: right; margin-right: 1%;">
+                          <div class="btn-group " style="float: right; margin-right: 1%;">
                          <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                          Opciones <span class="caret"></span>
+                                    Seleccion <span class="caret"></span>
                         <div class="ripple-container"></div></button>
                         <ul class="dropdown-menu">
 
@@ -50,8 +56,6 @@
                       </ul>
                   
                     </div>
-
-                      <div class="list-group-item">
 
 
 
@@ -171,7 +175,7 @@
         }
     }
 </script>   
-<?php include("footer.php"); ?>
+
 
 <?php include("footer.php"); ?>
 
