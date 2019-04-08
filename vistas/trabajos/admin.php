@@ -151,10 +151,7 @@
 
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Cuenta</a></li>
                                           <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
-                                         <?php 
-                                          if ($_SESSION["sesion"] =="trabajador") { 
-                                            if ($_SESSION["u"]->documento == 7181470) {
-                                          ?>
+                                
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
@@ -165,7 +162,7 @@
                                 </div>
                                 </td> 
                                </tr>
-                           <?php } ?>
+                          
                            <tr>
                            
                            </tbody>
