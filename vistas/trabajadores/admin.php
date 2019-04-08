@@ -8,7 +8,6 @@
 
 <body  style="   background: |; "  >
         <section id="content_outer_wrapper">
-        <div id="content_wrapper" class="card-overlay">
           <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
             <div class="imagen"></div>
 

@@ -1,12 +1,19 @@
+<style type="text/css">
+	.imagen{
+		background-image: url(assets/images/banner_inicio.jpg);
+		 background-size: cover;
+		   padding-bottom: 30%;
+	}
+</style>
+
 <?php include("header.php"); ?>
 
 			<section id="content_outer_wrapper">
 				<div id="content_wrapper" class="card-overlay">
-					<div id="header_wrapper" class="header-xl  profile-header">
-						<ul class="card-actions fab-action right">
+          <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
+          	<div class="imagen"></div>
 
-						</ul>
-					</div>
+          </div>   
 				
 					<div id="content" class="container-fluid">
 						<div class="row">
@@ -14,10 +21,10 @@
 								<div class="card card-transparent">
 									<div class="card-body wrapper">
 										<div class="row">
-											<div class="col-md-12 col-lg-3"style="margin-left: 30%; width: 40%;">
+											<div class="col-md-12 col-lg-3"style="margin-left: 30%; width: 40%; margin-top: 9%;">
 												<div class="card type--profile" >
 													<header class="card-heading" >
-														<img src="assets/images/cliente.png" alt="" class="img-circle" >
+														<img src="fotos/<?=  $cliente->logo ?>" alt="" class="img-circle" >
 														<ul class="card-actions icons right-top">
 															<li class="dropdown">
 																<a href="javascript:void(0)" data-toggle="dropdown">

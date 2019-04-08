@@ -129,6 +129,15 @@ public function admintra(){
 				$tra = new Trabajadores();
 				$tra->findByPk($obj->id_trabajadores);
 				$obj->Trab = $tra;
+
+				$tra2 = new Trabajadores();
+				$tra2->findByPk($obj->id_trabajadores2);
+				$obj->Trab2 = $tra2;
+
+				$tra3 = new Trabajadores();
+				$tra3->findByPk($obj->id_trabajadores3);
+				$obj->Trab3 = $tra3;
+
 				$cli = new Clientes();
 				$cli->findByPk($obj->id_clientes);
 				$obj->Clie = $cli;

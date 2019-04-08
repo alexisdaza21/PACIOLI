@@ -46,6 +46,8 @@ require_once("Modelos/Clientes.php");
 					$_SESSION["id"]= $trabajadores->id_trabajadores;
 					$_SESSION["tipo"] = $trabajadores->tipo;
 					$_SESSION["sesion"] = "trabajador";
+ 
+
 					//$_SESSION["Perfil"]="Administrador";
 					if ($_SESSION["tipo"]!="Administrador" ) {
 						header("location:index.php?c=home&a=home");

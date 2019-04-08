@@ -45,8 +45,9 @@
 					<img src="assets/images/logo_para_fondo_azul_central.png"
 					style="width:  65%;">
 				</span>
+				
 				<form class="login100-form validate-form p-b-33 p-t-5" action="index.php?c=home&a=cliente" method="post" name="login" >
-
+					<a href="index.php?c=home&a=index" style="margin-left: 80%; font-weight: bold;">--volver--</a>
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa Tu Documento">
 						<input class="input100" type="text" name="Cliente[nit]" placeholder="nit">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
