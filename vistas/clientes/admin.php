@@ -138,7 +138,7 @@
                             <?php foreach ($clientes as $cliente) {?>
                               <tr> 
                                 <td align="center"><?= $cliente->id_clientes; ?></td>
-                                <td> <img src="/pacioli/fotos/<?= $cliente->logo; ?>"  class="img-circle circle" ></td>
+                                <td> <img src="pacioli/fotos/<?= $cliente->logo; ?>"  class="img-circle circle" ></td>
                                 <td align="center"><?= $cliente->nit;?></td>
                                 <td align="center"><?= $cliente->direccion;?></td>
                                 <td align="center"><?= $cliente->razonSocial;?></td>

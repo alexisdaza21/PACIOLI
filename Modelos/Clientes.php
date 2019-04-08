@@ -168,7 +168,18 @@ public function email(){
 		$stm->bindParam(":id",$this->id_clientes);
 		$stm->execute();
 	}
+
+	public function logo(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	logo = :logo WHERE id_clientes = :id");
+
+		$stm->bindParam(":logo",$this->logo);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	}
+
 }
+
 
 
  ?>

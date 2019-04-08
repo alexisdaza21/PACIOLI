@@ -128,7 +128,7 @@ private function trabajos (){
 							if (($nombre_img == !NULL) )   
 				{
 						      // Ruta donde se guardarán las imágenes que subamos
-		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/pacioli/fotos/';
 		     	 // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada 	anteriormente
 		     	 move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
 				  }
@@ -191,8 +191,8 @@ private function trabajos (){
 
 			private function logo(){
 
-			$clientes = new Clientes();
-			$clientes->findByPk($_GET["id"]);
+			$cliente = new Clientes();
+			$cliente->findByPk($_GET["id"]);
 
 
 			if(isset($_FILES["imagen"])){
@@ -202,23 +202,23 @@ private function trabajos (){
 							if (($nombre_img == !NULL) ) 
 				{
 						      // Ruta donde se guardarán las imágenes que subamos
-		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/pacioli/fotos/';
 		     	 // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada 	anteriormente
 		     	 move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
 				  }
 	 	 	
-			$clientes->foto = $nombre_img;
+			$cliente->logo = $nombre_img;
 
-			$clientes->foto();
+			$cliente->logo();
 			if(isset($_FILES["imagen"])){
 
-			header("Location: index.php?c=clientes&a=perfil");
+			header("Location: index.php?c=clientes&a=admin");
 				}else{
 					header("Location: index.php?c=clientes&a=admin");
 				}
 
 			}else{
-				require "vistas/trabajadores/foto.php";
+				require "vistas/clientes/logo.php";
 
 			}
 		
