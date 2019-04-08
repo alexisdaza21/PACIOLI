@@ -1,24 +1,18 @@
+ <div class="col-xs-12">
+                <div class="card card-transparent">
+                  <div class="card-body wrapper">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-3"style="margin-left: 32.3%; width: 37%; margin-top: 32%;">
+                        <div class="card type--profile" >
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Listado de Trabajadores</title>
- 
-<?php include("header.php"); ?>
 
-<body  style="   background: |; "  >
-        <section id="content_outer_wrapper">
-        <div id="content_wrapper" class="card-overlay">
-          <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
-            <div class="imagen"></div>
-
-          </div>  
-
-           <div class=""  style="margin-top: 32%" >
-                <div class="card">
+                          
                   <header class="card-heading ">
+                    <h2 class="card-title">Lista de Trabajadores</h2>
+
                     <a href="javascript:void(0)" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#basic_modal">Agregar Nuevo Trabajador</a>
-                    <h2 class="card-title" align="center">Lista de Trabajadores</h2>
+                     
+
                     <ul class="card-actions icons right-top">
                       <li>
                         <a href="javascript:void(0)" data-toggle-view="code">
@@ -28,13 +22,11 @@
                     </ul>
                   </header>
                   <div class="card-body">
-
-
-                    <div class="list-group m-t-40">
+                    <div class="list-group">
                       <?php foreach($trabajadores as $trabajador) {?>
-
-                          <div class="btn-group open" style="float: right; margin-right: 1%;">
-                         <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                 
+                    <div class="btn-group open" style="float: right; margin-right: 1%;">
+                        <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                           Opciones <span class="caret"></span>
                         <div class="ripple-container"></div></button>
                         <ul class="dropdown-menu">
@@ -50,53 +42,41 @@
                       </ul>
                   
                     </div>
-
-                      <div class="list-group-item">
-
-
-
-                        <div class="row-action-primary" align="center">
+                      <div class="list-group">
+                        <div class="row-action-primary">
                           <img src="fotos/<?= $trabajador->foto; ?>" alt="contact person" class="img-circle circle" >
                         </div>
                         <div class="row-content">
+                          <div class="least-content"><a href="javascript:void" data-toggle="tooltip" data-placement="left" title="" data-original-title="Opciones ">
 
-                       
-                          <h4 class="list-group-item-heading"><?= $trabajador->nombres."&nbsp;".$trabajador->apellidos; ?></h4>
-                         <p class="list-group-item-text">                       
-                              <h5 >
-                               <b>Documento:&nbsp;</b> <?= $trabajador->documento; ?>
-                             &nbsp;
-                               <b>Fecha de Nacimiento:&nbsp;</b> <?= $trabajador->fechaNacimiento; ?>
-                        &nbsp;
-                               <b>Fecha de Vinculaci&oacute;n:</b> &nbsp;  <?= $trabajador->fechaIngreso; ?>
-                            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                          <h4 class="list-group-item-heading"  align="center">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $trabajador->nombres."&nbsp;".$trabajador->apellidos; ?></h4>
+                            <p class="list-group-item-text">                       
+                              <h5 align="center">
+                                Documento:&nbsp;<?= $trabajador->documento; ?>
+                             
+                                Fecha de Nacimiento:&nbsp;<?= $trabajador->fechaNacimiento; ?>
+                        
+                                Fecha de Vinculaci&oacute;<?= $trabajador->fechaIngreso; ?>
+                            
                                 <br>
-                               <b>Telefono:</b> &nbsp; <?= $trabajador->telefono; ?>
-                            &nbsp;
-                               <b>Tipo de Empleado: </b>  :&nbsp;<?= $trabajador->tipo; ?>
-                            <br>
-                                <a href="documentos/<?= $trabajador->hojaVida; ?>" target="_blank"> <b>Ver Hoja de Vida</b> </a>
-                              &nbsp;
-                               <b>Perfil Profesional :</b> &nbsp;<?= $trabajador->perfilPro; ?>
+                                Telefono:<?= $trabajador->telefono; ?>
+                              </h5>
+                              <h5 align="center">
+                                Tipo de Empleado :&nbsp;<?= $trabajador->tipo; ?>
+                            
+                                <a href="documentos/<?= $trabajador->hojaVida; ?>" target="_blank"> Ver Hoja de Vida </a>
+                              
+                                Perfil Profesional :&nbsp;<?= $trabajador->perfilPro; ?>
                               </h5>
                             </p>
                         </div>
                       </div>
-                       <?php }?>
-                     
-                        </div>
-                      </div>
+
+
+                      <?php }?>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
- 
-   
+               
                 </div>
      <script type="text/javascript" >
             function eliminar(id){
@@ -605,9 +585,6 @@
               
             
       </div>
-
-
-
 
 
 
