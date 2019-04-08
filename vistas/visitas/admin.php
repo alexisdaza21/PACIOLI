@@ -132,12 +132,12 @@
                  ?>
 		<tr>
 			<td ><?= $visita->id_visitas; ?></td>
-			<td ><?= $visita->fechaHora; ?></td>
+			<td ><?= $visita->fecha; ?></td>
 			<td ><?= $visita->costo; ?></td>
       <td ><?= $visita->tipo; ?></td>
       <td ><?= $visita->id_trabajos; ?></td>
       <td > <button
-                    style="height:20px; line-height:2px; margin-left; margin:  3%;" onclick="editar('<?= $visita->id_visitas; ?>','<?= $visita->fechaHora ?>')">Editar</button>
+                    style="height:20px; line-height:2px; margin-left; margin:  3%;" onclick="editar('<?= $visita->id_visitas; ?>','<?= $visita->fecha ?>')">Editar</button>
 
                     <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar(<?= $visita->id_visitas; ?>)">Eliminar</button>
                 </td>

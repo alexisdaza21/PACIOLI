@@ -76,20 +76,29 @@
      </div>
      </font>
            </div> 
-           
+           <div align="right">         
+<button type="button" class="btn btn-default"  align="right" class="zmdi zmdi-print"  onclick="javascript:imprim1(pdff);"><a class="zmdi zmdi-print">   Imprimir</a></button>
+</div>
            <div class="card-body">
                      <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
+                     
                      <div id="pdff">
-                      <div class="table-responsive">       
-<div class="row">
+                      <div class="table-responsive">    
+                         
+                <div class="row">
                 <div class="col-xs-12">
                   <div class="card">
                     
                     <header class="card-heading ">
                       <div align="center" >
-                        <img  src="assets/images/logo_inferior_para_footer - copia.png">
+                        <img  src="assets/images/logo_inferior_para_footer - copia.png" style="width: 300px; height: 100px;">
   </div>
-                      <h1 class="card-title" align="center">pagos del trabajo <?= $trabajos->tipo ?></h1>
+  <h2 class="card-title" align="center">Centro Comercial el Pinal Of.105</h2>
+   <h2 class="card-title" align="center">Cel.: 3133601274 / 3142448712 / 7438762</h2>
+    <h3 class="card-title" align="center">EL SUSCRITO CONTADOR PÚBLICO CERTIFICA:</h3>
+    <p align="center">Que la empresa <?= $client->razonSocial; ?> con nit <?= $client->nit; ?> presenta el siguiente estado de cuenta con la emresa PACIOLI para el trabajo <?= $trabajos->tipo ?>  </p>
+                     
+
                     </header>
                     
         <table   id="datos" class="table table-striped" style="margin: 0%; ">
@@ -99,7 +108,7 @@
                 <th style="text-align: center;">Fecha</th>
                 <th style="text-align: center;">Tipo</th> 
                 <th style="text-align: center;">Costo</th>      
-                <th style="text-align: center;" colspan="2">Acciones</th>
+               
             </tr>
             
             <?php 
@@ -115,36 +124,23 @@
       <td align="center"><?= $visita->tipo; ?></td>
       <td align="center"><?= $visita->costo; ?></td>
     
-      <td align="center">
-          
-                    <td align="center">
-                                  <div class="btn-group open" >
-                                  <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Seleccion <span class="caret"></span>
-                                  <div class="ripple-container"></div></button>
-                                  <ul class="dropdown-menu">
-
-                                    <li><a onclick="editar('<?= $visita->id_visitas; ?>','<?= $visita->fecha ?>')"
-                                      class="btn btn-green btn-flat">Editar</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a onclick="eliminar('<?= $visita->id_visitas; ?>','<?= $trabajos->id_trabajos ?>')"
-                                      class="btn btn-danger btn-flat">Eliminar</a></li>
-                                </ul>
-                </td>
+      
         </tr>
       <?php } ?>
       <tr >
 
-                <td colspan="2" align="right">total a pagar:</td>
+                <td colspan="3" align="right">total a pagar:</td>
       <td   style="text-align: center;"><label style="margin-left: 3%;"> $<?= $total ?></label></td>
       
       </tr>
-  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
   </tbody>
                         </table><br><br><br>
-  <div align="right">         
-
-</div>
+   <?php include("footer.php"); ?>
             <script type="text/javascript" >
             function eliminar(de,id){
                 swal({
@@ -179,8 +175,18 @@
                   });
             }
   </script>
- 
-   <?php include("footer.php"); ?>
+ <script>
+function imprim1(pdff){
+var printContents = document.getElementById('pdff').innerHTML;
+w = window.open();
+w.document.write(printContents);
+w.document.close(); // necessary for IE >= 10
+w.focus(); // necessary for IE >= 10
+w.print();
+w.close();
+return true;}
+</script>
+  
 
   <!-- modal-content -->
         </div>
