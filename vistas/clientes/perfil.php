@@ -25,7 +25,7 @@
 																</a>
 																<ul class="dropdown-menu dropdown-menu-right btn-primary">
 																	<li>
-																		<a data-toggle="modal" data-target="#tab_modal">Editar Perfil</a>
+																		<a data-toggle="modal" data-target="#editar">Editar Perfil</a>
 																	</li>
 																</ul>
 															</li>
@@ -54,7 +54,7 @@
 <?php include ("footer.php"); ?>
 
 <!-- modal edit perfil-->
-<div class="modal fade" id="tab_modal" tabindex="-1" role="dialog" aria-labelledby="tab_modal" style="display: none;">
+<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="tab_modal" style="display: none;">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -82,7 +82,7 @@
 						<div class="tab-content  p-20">
 								<div class="tab-pane fadeIn" id="tab-1">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=trabajadores&a=telefono">
+									<p><form method="Post" action="index.php?c=clientes&a=telefono&id=<?= $cliente->id_clientes ?>&tipo=perfil ?>">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
 					                        maxlegth="10">Telefono</label>
@@ -97,7 +97,7 @@
 									</div>
 								<div class="tab-pane fadeIn" id="tab-2">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=trabajadores&a=telefono">
+									<p><form method="Post" action="index.php?c=clientes&a=email&id=<?= $cliente->id_clientes ?>&tipo=perfil ?>">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
 					                        maxlegth="10">Email</label>
@@ -112,12 +112,12 @@
 									</div>
 								<div class="tab-pane fadeIn active" id="tab-3">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=trabajadores&a=telefono">
+									<p><form method="Post" action="index.php?c=clientes&a=pass&id=<?= $cliente->id_clientes ?>&tipo=perfil ?>">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
-					                        maxlegth="10">Nueva Conrase&ntilde;a</label>
+					                        maxlegth="10">Nueva Contrase&ntilde;a</label>
 					                        <div class="col-md-10">
-					                          <input  type="text" class="form-control" id="name" placeholder="escriba su nueva contraseña" 
+					                          <input  type="password" class="form-control" id="name" placeholder="escriba su nueva contraseña" 
 					                          required name="trabajadores[telefono]" maxlength="10" >
 					                          <input type="hidden" name="trabajadores[id]"
 					                          value="<?=  $cliente->id_clientes ?>"">
