@@ -147,6 +147,25 @@ class Clientes extends Conexion{
 			return $clientes;
 
 }
+
+public function telefono(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	telefono = :telefono WHERE id_clientes = :id");
+
+		$stm->bindParam(":telefono",$this->telefono);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	}
+
+
+public function email(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	email = :email WHERE id_clientes = :id");
+
+		$stm->bindParam(":telefono",$this->telefono);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	}
 }
 
 

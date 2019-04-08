@@ -33,6 +33,13 @@ class clientesController{
 			case "subcarpetas":
 				$_this->subcarpetas();
 			break;
+			case "logo":
+			$_this->logo();
+			case "telefono":
+			$_this->telefono();
+			break;
+			case "email":
+			$_this->email();
 			default:
 				throw new Exception("Accion no definido");
 				break;
@@ -117,6 +124,15 @@ private function trabajos (){
 	private function create(){
 		if(isset($_POST["Clientes"])){
 
+			$nombre_img = basename($_FILES["imagen"]['name']);
+							if (($nombre_img == !NULL) )   
+				{
+						      // Ruta donde se guardarán las imágenes que subamos
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
+		     	 // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada 	anteriormente
+		     	 move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+				  }
+
 			
 			//guardar en la BBDD
 			$nit = $_POST["Clientes"]["nit"];
@@ -125,11 +141,12 @@ private function trabajos (){
 			$ema = $_POST["Clientes"]["email"];
 			$tel = $_POST["Clientes"]["telefono"];
 			$pass = $_POST["Clientes"]["pass"];
-			
+			$logo = $nombre_img;
+			 
 			$clientes = new Clientes();
 			$BCRYPT = password_hash($pass, PASSWORD_DEFAULT);
 			
-			$guardo = $clientes->save($nit,$dir,$raSo,$ema,$tel,$BCRYPT);
+			$guardo = $clientes->save($nit,$dir,$raSo,$ema,$tel,$BCRYPT,$logo);
 
 			//CREAR CARPETA FISICA
 			mkdir(__DIR__."/../documentos/".$nit, 0777, true);
@@ -171,6 +188,80 @@ private function trabajos (){
         }
 
 		}
+
+			private function logo(){
+
+			$clientes = new Clientes();
+			$clientes->findByPk($_GET["id"]);
+
+
+			if(isset($_FILES["imagen"])){
+				//guardar en la BBDD
+				
+				$nombre_img = basename($_FILES["imagen"]['name']);
+							if (($nombre_img == !NULL) ) 
+				{
+						      // Ruta donde se guardarán las imágenes que subamos
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
+		     	 // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada 	anteriormente
+		     	 move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+				  }
+	 	 	
+			$clientes->foto = $nombre_img;
+
+			$clientes->foto();
+			if(isset($_FILES["imagen"])){
+
+			header("Location: index.php?c=clientes&a=perfil");
+				}else{
+					header("Location: index.php?c=clientes&a=admin");
+				}
+
+			}else{
+				require "vistas/trabajadores/foto.php";
+
+			}
+		
+		}
+
+		private function telefono(){
+			
+			if(isset($_POST["clientes"])){
+
+			$id =  $_POST["clientes"]["id"];
+			$cliente = new Clientes();	
+			
+			
+			$cliente	->findByPk($id);	
+			$cliente->telefono = $_POST["clientes"]["telefono"];
+					
+			$cliente->telefono();
+			header("Location: index.php?c=clientes&a=perfil");
+			}else{
+			require "vistas/clientes/perfil.php";
+			}
+		}
+
+
+private function email(){
+			
+			if(isset($_POST["clientes"])){
+
+			$id =  $_POST["clientes"]["id"];
+			$cliente = new Clientes();	
+			
+			
+			$cliente	->findByPk($id);	
+			$cliente->telefono = $_POST["clientes"]["email"];
+					
+			$trabajador->telefono();
+			header("Location: index.php?c=clientes&a=perfil");
+			}else{
+			require "vistas/clientes/perfil.php";
+			}
+		}
+
+
 }
 
  ?>
