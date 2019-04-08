@@ -161,6 +161,10 @@
                                     ','<?= $_GET["id"]?>')"
                                       class="btn btn-danger btn-flat">Eliminar</a></li>
                                 </ul>
+                                <?php
+                   }
+                  }
+                ?> 
                                 </div>
                                 </td> <?php } ?>
                                </tr>
