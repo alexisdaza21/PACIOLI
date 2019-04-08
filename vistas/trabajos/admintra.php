@@ -29,8 +29,9 @@
                                  <th style="text-align: center;" >Trabajador</th>
                               <th style="text-align: center;" >Trabajador</th>
                               <th style="text-align: center;" >Nit de la empresa</th>
+                              <?php if ($_SESSION["sesion"] =="cliente") { ?>
                               <th style="text-align: center;" >Mis Carpetas</th>
-                              
+                              <?php } ?>
                             </tr>
                             </thead>
                           <tbody>
@@ -45,7 +46,9 @@
     <td align="center"><?= $trabajo->Trab2->nombres;?></td>
     <td align="center"><?= $trabajo->Trab3->nombres;?></td>
     <td align="center"><?= $trabajo->Clie->nit;?></td>
-   <td align="center"><a href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $_SESSION["u"]->nit ?>"  >Mis Carpetas <i style="margin: 0.5%;" class="zmdi zmdi-folder"></i></a></td>
+   <?php if ($_SESSION["sesion"] =="cliente") { ?>
+
+   <td align="center"><a href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $_SESSION["u"]->nit ?>"  >Mis Carpetas <i style="margin: 0.5%;" class="zmdi zmdi-folder"></i></a></td> <?php } ?>
     </tr>
 
     <?php } ?>
