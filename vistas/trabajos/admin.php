@@ -141,13 +141,20 @@
     <td align="center"><?= $trabajo->costos;?></td>
     
                                 <td align="center">
-                                  <div class="btn-group open" >
+                                  <div class="btn-group " >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
                                    <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
-                                         <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>" class="btn btn-primary btn-flat">Visitas</a></li>
+
+
+                                         <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Cuenta</a></li>
+                                          <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
+                                         <?php 
+                                          if ($_SESSION["sesion"] =="trabajador") { 
+                                            if ($_SESSION["u"]->documento == 7181470) {
+                                          ?>
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
@@ -160,7 +167,7 @@
                                </tr>
                            <?php } ?>
                            <tr>
-                           <a target="_blank" href="index.php?c=trabajos&a=reporte&id=<?= $_GET["id"]?>">pdf</a>
+                           
                            </tbody>
                         </table>
                     </div>

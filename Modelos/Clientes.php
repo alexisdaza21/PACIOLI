@@ -12,12 +12,13 @@ class Clientes extends Conexion{
 	public $email;
 	public $telefono;
 	public $pass;
+	public $logo;
 
 	public function __construct(){
 	
 		parent::__construct();
 	}
-	public function save($nit,$dir,$raSo,$ema,$tel,$pass){
+	public function save($nit,$dir,$raSo,$ema,$tel,$pass, $logo){
 
 	$this->nit = $nit;
 	$this->direccion = $dir;
@@ -25,10 +26,11 @@ class Clientes extends Conexion{
 	$this->email = $ema;
 	$this->telefono = $tel;
 	$this->pass = $pass;
+	$this->logo = $logo;
 	
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO clientes VALUES (:id_clientes,:nit,:direccion,:razonSocial,:email,:telefono,:pass)");
+		$stm = $conexion-> prepare("INSERT INTO clientes VALUES (:id_clientes,:nit,:direccion,:razonSocial,:email,:telefono,:pass, :logo)");
 		try{
 			 $stm->execute((array) $this);
 			 return true;
@@ -51,7 +53,7 @@ class Clientes extends Conexion{
 	public function fkeyTra($id){
 
 		$conexion = $this->getConexion();
-		$stm =$conexion->prepare("SELECT * FROM trabajos where id_clientes = :id ");
+		$stm =$conexion->prepare("SELECT * FROM trabajos where id_clientes = :id order by id_trabajos desc  ");
 		$stm->bindParam(":id",$id);
 		$stm->setFetchMode(PDO::FETCH_CLASS,'Trabajos');
 		$trabajos = array();	
@@ -86,7 +88,7 @@ class Clientes extends Conexion{
 	public function update(){
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE clientes SET nit = :nit,direccion = :direccion,razonSocial = :razonSocial,email = :email,telefono = :telefono,pass = :pass WHERE id_clientes = :id");
+		$stm = $conexion-> prepare("UPDATE clientes SET nit = :nit,direccion = :direccion,razonSocial = :razonSocial,email = :email,telefono = :telefono,pass = :pass, logo = :logo WHERE id_clientes = :id");
 		 
 	
 		 $stm->bindParam(":nit",$this->nit);
@@ -147,7 +149,37 @@ class Clientes extends Conexion{
 			return $clientes;
 
 }
+
+public function telefono(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	telefono = :telefono WHERE id_clientes = :id");
+
+		$stm->bindParam(":telefono",$this->telefono);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	}
+
+
+public function email(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	email = :email WHERE id_clientes = :id");
+
+		$stm->bindParam(":telefono",$this->telefono);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	}
+
+	public function logo(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	logo = :logo WHERE id_clientes = :id");
+
+		$stm->bindParam(":logo",$this->logo);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	}
+
 }
+
 
 
  ?>
