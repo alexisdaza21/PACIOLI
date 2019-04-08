@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Listado de Clientes</title>
 <body>
+
   
     <?php include("header.php"); ?>
-    <body  style="   background: #fff; "  >
-        <section id="content_outer_wrapper">
-        <div id="content_wrapper" class="card-overlay">
 
+<body style="background: #fff;">
+        <section id="content_outer_wrapper">
+          <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
+            <div class="imagen"></div>
+
+          </div>   
  
+
+                <div class="col-xs-12" style="margin-top: 1%;">
+
     <font face="verdana"> 
 <div class="modal fade" id="basic_modal" tabindex="-1" role="dialog" aria-labelledby="basic_modal" style="display: none;">
         <div class="modal-dialog modal-sm" role="document">
@@ -142,7 +150,7 @@
                                 <td align="center"><?= $cliente->nit;?></td>
                                 <td align="center"><?= $cliente->direccion;?></td>
                                 <td align="center"><?= $cliente->razonSocial;?></td>
-                                <td email= "asdda" href = "mailto:<?= $cliente->email;?>" align="center"><?= $cliente->email;?></td>
+                                <td email= "asdda" href = "mailto:<?= $cliente->email;?>" align="center"><a title="enviar correo" href="mailto:<?= $cliente->email;?>"><?= $cliente->email;?></a></td>
                                 <td align="center"><?= $cliente->telefono;?></td>
                                 <td >
                                  <div class="btn-group " >
@@ -385,6 +393,15 @@
 
 
 
+
+<div class="modal fade" id="basic_modal" tabindex="-1" role="dialog" aria-labelledby="basic_modal" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title" id="myModalLabel-2">Agregar Nuevo cliente..</h4>
+              <ul class="card-actions icons right-top">
+
             <!-- modal-actualizar -->
 <div class="modal fade" id="modal_actualizarcliente" tabindex="-1" role="dialog" aria-labelledby="basic_modal" style="display: none;">
 
@@ -407,6 +424,69 @@
             </ul>
           </div>
           <div class="modal-body">
+
+          <form action="index.php?c=clientes&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
+          <div class="card">
+                  <div class="card-body">
+                    <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                        <div class="input-group">
+                        <label>Nit</label>
+                        <input class="form-control datepicker" maxlength="20"  type="text"  name="Clientes[nit]"   value="" required class="" />
+                  </div>
+              </div>
+              </div>
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <label >Direccion</label>
+                            <input class="form-control datepicker" maxlength="45" type="text"  name="Clientes[direccion]"   value="" required/>
+                  </div>
+              </div>
+
+               <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                           <label >Razon Social</label>
+                            <input class="form-control datepicker" maxlength="266" type="text"  name="Clientes[razonSocial]"   value="" required/>
+                  </div>
+              </div>
+              </div>
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <label >Email</label>
+                            <input class="form-control datepicker" maxlength="45" type="email"  name="Clientes[email]"   value="" required/>
+                
+                  </div>
+              </div>
+
+               <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <label>Telefono</label>
+                            <input class="form-control datepicker" maxlength="10" onkeypress="return numeros(event)" type="text" name="Clientes[telefono]"   value="" required/>
+                  </div>
+              </div>
+              </div>
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <label>Contraseña</label>
+                             <input class="form-control datepicker" type="password" name="Clientes[pass]"   value="" required/>
+                 </div>
+              </div>
+              </div>
+              </div>
+
+               
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Ok</button>
+            </div>
+       </form>
+     </div>
+     </div>
+     </div>
+     </div>
+
 
             <form action="index.php?c=clientes&a=update&id=<?= $cliente->id_clientes ?>" method="post" autocomplete="off" enctype="multipart/form-data"> 
 
@@ -487,4 +567,5 @@
             </div>
           </div>
           <!-- modal-content -->
+
 
