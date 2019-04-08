@@ -47,7 +47,8 @@
                 </div>-->
                     <section id="content_outer_wrapper" class="file-manager">
         <div id="content_wrapper" class="rightnav_v2 lg">
-          <div id="header_wrapper" class="header-md">
+          <div id="header_wrapper" class="header-md" style="background-image: url(assets/images/banner_inicio.jpg);background-size: cover;
+          padding-bottom: 30%;">
             <ul class="card-actions icons lg alt-actions left-top">
               <li>
                 <a href="javascript:void(0)" class="drawer-trigger" data-drawer="open-left">
@@ -58,12 +59,12 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xs-12">
-                  <header id="header">
+                  <header id="header" >
                     <h1> Carpetas</h1>
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb"  >
                       <li><a href="javascript:void(0)"><?=  $_GET["nit"]; ?></a></li>
                       <li><a href="javascript:void(0)"><?= $trabajos->tipo; ?></a></li>
-                      <li class="active">Projects</li>
+                      <li class="active">Carpetas</li>
                     </ol>
                   </header> 
                 </div>
@@ -71,24 +72,18 @@
             </div>
             <ul class="card-actions icons lg alt-actions right-top">
               <li>
-                <a href="javascript:void(0)">
-                  <i class="zmdi zmdi-search"></i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">
-                  <i class="zmdi zmdi-view-list-alt"></i>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="drawer-trigger" data-drawer="toggle-right">
+                <a href="javascript:void(0)" class="drawer-trigger" data-drawer="toggle-right" title="acoplar">
                   <i class="zmdi zmdi-info"></i>
                 </a>
               </li>
             </ul>
             <nav class="btn-fab-group">
+              <?php if ($_SESSION["sesion"] == "trabajador") {
+               ?>
+              
               <button class="btn btn-primary btn-fab fab-menu" data-fab="down">
                 <i class="zmdi zmdi-plus"></i>
+              <?php }?>
               </button>
               <ul class="nav-sub">
                 <li><span data-toggle="tooltip" data-placement="right" title="Nueva Carpeta"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-folder-plus"></i></a></span> </li>
@@ -107,7 +102,7 @@
                          foreach ($carpetas as $carpeta) 
                         {?>
                   <li>
-                    <div class="card card-folder card-item enable-context-menu" data-item-selected="false" data-item-type="Folder" data-item-size="72 KB" data-item-location="Projects" data-item-modified="<?= $carpeta->fechaCre;?>" data-item-opened="<?= $carpeta->Trab->documento;?>" data-item-created="<?= $carpeta->fechaCre;?>"
+                    <div class="card card-folder card-item enable-context-menu" data-item-selected="false" data-item-type="Folder" data-item-size="72 KB" data-item-location="<?= $carpeta->nombre;?>" data-item-modified="<?= $carpeta->fechaCre;?>" data-item-opened="<?= $carpeta->Trab->documento;?>" data-item-created="<?= $carpeta->fechaCre;?>"
                     data-item-offline="true">
                     <div class="card-heading">
                       <i class="zmdi zmdi-folder"></i>
@@ -127,127 +122,29 @@
         </section>
       
 <aside id="rightnav" class="item-panel p-15 scrollbar">
-  <h3 id="item-title"><i class="zmdi zmdi-image pink-text"></i> <span class="title">Photos</span></h3>
+  <h3 id="item-title"><i class="zmdi zmdi-cloud"></i> <span class="title">Gestion de archivos</span></h3>
   <div class="tabpanel">
     <ul class="nav nav-tabs nav-justified darken">
-      <li class="active" role="presentation"><a href="#file-detail-panel" data-toggle="tab" aria-expanded="true">Details</a></li>
-      <li role="presentation"><a href="#file-activity-panel" data-toggle="tab" aria-expanded="true">Activity</a></li>
+      <li class="active" role="presentation"><a href="#file-detail-panel" data-toggle="tab" aria-expanded="true">Detalles</a></li>
+
     </ul>
   </div>
   <div class="tab-content p-t-15">
     <div class="tab-pane fadeIn active" id="file-detail-panel">
       <figure id="current-img">
       </figure>
-      <div class="togglebutton m-t-20 m-b-20">
-        <label>
-          <input type="checkbox" class="toggle-info" id="toggle-offline"> Available Offline
-        </label>
-      </div>
+   
       <ul id="item-details" class="style-none border-grey-top-1px border-grey-bottom-1px p-t-15 p-b-15">
         <li id="type"><span class='title'>Tipo</span><span class="info"></span></li>
         <li id="location"><span class='title'>Nombre</span><span class="info"></span></li>
-        <li id="modified"><span class='title'>Modified</span><span class="info"></span></li>
         <li id="opened"><span class='title'>Creada Por</span><span class="info"></span></li>
         <li id="created"><span class='title'>Fecha Creacion</span><span class="info"></span></li>
       </ul>
       <ul id="item-desc" class="style-none p-t-15 p-b-15">
-        <li><span class='title'>Add a description</span><a href="javascript:void(0)" class="pull-right"><i class="zmdi zmdi-edit"></i></a></li>
+        <li><span class='title'>Pacioli</span><a href="javascript:void(0)" class="pull-right"><i class="zmdi zmdi-folder"></i></a></li>
       </ul>
     </div>
-    <div class="tab-pane fadeIn" id="file-activity-panel">
-      <h6>Yesterday</h6>
-      <div class="card">
-        <div class="card-body">
-          <ul class="list-group ">
-            <li class="list-group-item ">
-              <span class="pull-left"><img src="assets/img/profiles/02.jpg" alt="" class="img-circle max-w-40 m-r-10 "></span>
-              <div class="list-group-item-body">
-                <div class="list-group-item-heading">You uploaded an item</div>
-                <div class="font-size-10 list-group-item-time">Mon 7:11 AM</div>
-                <ul>
-                  <li>
-                    <i class="zmdi zmdi-language-javascript md-text-amber"></i> <span>sidebar-overlay.js</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-language-javascript md-text-amber"></i> <span>bundle.min.js</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-language-javascript md-text-amber"></i> <span>offline.js</span>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      
-      <div class="card">
-        <div class="card-body">
-          <ul class="list-group ">
-            <li class="list-group-item ">
-              <span class="pull-left"><img src="assets/img/profiles/02.jpg" alt="" class="img-circle max-w-40 m-r-10 "></span>
-              <div class="list-group-item-body">
-                <div class="list-group-item-heading">You uploaded 15 items</div>
-                <div class="font-size-10 list-group-item-time">Mon 7:00 AM</div>
-                <ul class="file-activity">
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>app-mail.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>app-notes.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>app-calendar.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>app-contacts.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>app-taskboard.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>charts-c3.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>sidebar-overlay.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>form-layouts.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>form-validation.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>form-wizard.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>bundle.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>charts-morris.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>page-profile.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>page-timeline.html</span>
-                  </li>
-                  <li>
-                    <i class="zmdi zmdi-file-text mw-blue-text"></i> <span>ui-alerts.html</span>
-                  </li>
-                  
-                </ul>
-                
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="card-footer">
-          <a href="javascript:void(0)" class="btn btn-default btn-flat btn-block m-b-0" data-files="show-all">Show all</a>
-        </div>
-      </div>
-    </div>
+
   </div>
 </aside>
 

@@ -1,15 +1,8 @@
-<style type="text/css">
-	.imagen{
-		background-image: url(assets/images/banner_inicio.jpg);
-		 background-size: cover;
-		   padding-bottom: 30%;
-	}
-</style>
+
 <?php include("header.php"); ?>
 
-<body  style="   background: |; "  >
+<body>
         <section id="content_outer_wrapper">
-        <div id="content_wrapper" class="card-overlay">
           <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
           	<div class="imagen"></div>
 
@@ -22,7 +15,7 @@
 								<div class="card card-transparent">
 									<div class="card-body wrapper">
 										<div class="row">
-											<div class="col-md-12 col-lg-3"style="margin-left: 32.3%; width: 37%; margin-top: 32%;">
+											<div class="col-md-12 col-lg-3"style="margin-left: 32.3%; width: 37%; margin-top: 3%;">
 												<div class="card type--profile" >
 													<header class="card-heading" >
 														<img src="fotos/<?=  $trabajador->foto ?>" alt="" class="img-circle" >

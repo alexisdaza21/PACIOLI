@@ -84,10 +84,16 @@
 	 		$id =$_GET["id"];
 	 		$nit =$_GET["nit"];
 	 		$carpeta =$_GET["carpeta"];
+
 	 		$trabajos = new Trabajos();
 	 		$trabajos->findByPk($id);
 
+	 		$carpetas = new Carpetas();
+	 		$carpetas->findByPk($carpeta);
 
+	 		$clientes = new Clientes();
+	 		$clientes->findByDocument($nit);
+	 		
 	 		$arc =  new Archivos();
 	 		$archivos = $arc->admin($carpeta);
 

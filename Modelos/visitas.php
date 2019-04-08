@@ -4,10 +4,10 @@ require_once("Conexion.php");
 class Visitas extends Conexion{ 
 
 	public $id_visitas;
-	public $fechaHora;
-	public $costo;
+	public $fecha;
 	public $tipo;
 	public $id_trabajos;
+	public $costo;
 			
 
 
@@ -16,15 +16,15 @@ class Visitas extends Conexion{
 		parent::__construct();
 	}
 
-	public function save($fecH,$cos,$tip,$idT){
+	public function save($fec,$cos,$tip,$idT){
 
-		$this->fechaHora = $fecH;
-		$this->costo = $cos; 
+		$this->fecha = $fec;
 		$this->tipo = $tip; 
 		$this->id_trabajos = $idT; 
+		$this->costo = $cos; 
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO visitas VALUES (:id_visitas,:fechaHora,:costo,:tipo, :id_trabajos)");
+		$stm = $conexion-> prepare("INSERT INTO visitas VALUES (:id_visitas,:fecha,:tipo, :id_trabajos,:costo)");
 		try{
 			 $stm->execute((array) $this);
 			 return true;
@@ -52,7 +52,7 @@ class Visitas extends Conexion{
 }
 		public function admin(){
 		$conexion = $this->getConexion();
-		$stm =$conexion->prepare("SELECT * FROM visitas ");
+		$stm =$conexion->prepare("SELECT * FROM visitas WHERE id_trabajos = :id ");
 		$stm->setFetchMode(PDO::FETCH_CLASS,'Visitas');
 		$visitas = array();	
 		$stm->execute();
@@ -68,12 +68,11 @@ class Visitas extends Conexion{
 
 	public function update(){
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE visitas SET fechaHora = :fechaHora, costo = :costo, tipo = :tipo, id_trabajos = :id_trabajos  WHERE id_visitas = :id");
+		$stm = $conexion-> prepare("UPDATE visitas SET fecha = :fecha, costo = :costo, tipo = :tipo, id_trabajos = :id_trabajos  WHERE id_visitas = :id");
 		 
-		 $stm->bindParam(":fechaHora",$this->fechaHora);
+		 $stm->bindParam(":fecha",$this->fecha);
 		  $stm->bindParam(":costo",$this->costo);
 		   $stm->bindParam(":tipo",$this->tipo);
-		    $stm->bindParam(":tipo",$this->tipo);
 		     $stm->bindParam(":id_trabajos",$this->id_trabajos);
 
 		 $stm->bindParam(":id",$this->id_visitas);

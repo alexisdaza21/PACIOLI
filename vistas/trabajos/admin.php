@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Listado de trabajos</title>
+  <title>Listado de trabajos</title>
 <body>
 
     <?php include("header.php"); ?>
@@ -112,10 +112,8 @@
 <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
    
         <div class="card-body">
-
                       <div class="table-">
                        <table class="table table-striped" style="margin: 0%; " id="datos">
-
                           <thead>
             <tr>
            <tr >
@@ -148,10 +146,11 @@
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
-
                                    <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
 
-                                         <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>" class="btn btn-primary btn-flat">Visitas</a></li>
+
+                                         <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Cuenta</a></li>
+                                          <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
                                          <?php 
                                           if ($_SESSION["sesion"] =="trabajador") { 
                                             if ($_SESSION["u"]->documento == 7181470) {
@@ -163,16 +162,12 @@
                                     ','<?= $_GET["id"]?>')"
                                       class="btn btn-danger btn-flat">Eliminar</a></li>
                                 </ul>
-                                      <?php
-                   }
-                  }
-                ?> 
                                 </div>
                                 </td> 
                                </tr>
                            <?php } ?>
                            <tr>
-                           <a target="_blank" href="index.php?c=trabajos&a=reporte&id=<?= $_GET["id"]?>">pdf</a>
+                           
                            </tbody>
                         </table>
                     </div>
