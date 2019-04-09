@@ -160,9 +160,12 @@
                                   <ul class="dropdown-menu">
                                      <li><a data-toggle="modal" data-target="#modal_tarea" class="btn btn-primary btn-flat"  >Agregar Tarea</a></li>
                                    <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
-
+                                   <?php 
+                                            if ($_SESSION["u"]->documento != 7181470) {
+                                              ?>
 
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Cuenta</a></li>
+                                         <?php } ?>
                                           <?php 
                                             if ($_SESSION["u"]->documento == 7181470) {
                                               ?>
@@ -297,7 +300,14 @@
                             <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[tipo]"   value="" required/>
                         </div>
                         </div>
-                         
+                          <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <label >Costos</label>
+                            <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[costos]" onkeypress="return numeros(event)"  value="" required/>
+                        </div>
+                        </div>
+                        </div>
                  <div class="form-group is-empty">
                           <div class="input-group">
                            <label >Trabajador</label>
@@ -339,10 +349,20 @@
               </div>
                            
                             <input maxlength="45" type="hidden"  name="Trabajos[id_clientes]"   value="<?= $_GET["id"] ?>" />
+      
 
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Ok</button>
+            </div>
 
-
-</form></div></div></div></div></font>
+       </form>
+   
+     </div>
+     </div>
+     </div>
+     </div>
+     </font>
 
 
 <!--modal para ingresar tarea-->

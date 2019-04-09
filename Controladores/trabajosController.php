@@ -34,7 +34,7 @@ class trabajosController{
 		}
 	} 
 	private function reporte(){
-
+		
 			$id = $_GET["id"]; 
 			require"Vistas/trabajos/pdf/index.php";
 		}
