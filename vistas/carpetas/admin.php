@@ -6,6 +6,45 @@
 
   <?php  include("header.php"); ?> 
           <body  style="   background: #fff; "  >
+
+              
+ 
+
+
+   
+   <!--     <div class="card-body">
+     <h2><b><center> Cliente/trabajos/<?= $trabajos->tipo; ?></b></center></h2>
+                      <div class="table-responsive">
+                        <table class="table table-striped" style="margin: 0%;">
+                          <thead>
+                            <tr>
+                                <th style="text-align: center;">id</th>
+                                 <th style="text-align: center;">Nombre</th>
+                                <th style="text-align: center;">fecha de Creacion</th>
+                                <th style="text-align: center;">Documento Trabajador</th>
+                                <th style="text-align: center;" colspan="2">Acciones</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                        <?php
+                                 foreach ($carpetas as $carpeta) 
+                        {?>
+                            <tr> 
+                                <td style="color:red;" align="center"><?= $carpeta->id_carpetas; ?></td>
+                                <td align="center"><?= $carpeta->nombre;?></td>
+                                <td align="center"><?= $carpeta->fechaCre;?></td>
+                                <td align="center"><?= $carpeta->Trab->documento;?></td>
+                                <td align="center">
+                                    <button style="height:8px; line-height:5px; margin-left; margin:  0%;" class="btn btn-warning btn-flat" onclick="editar('<?= $carpeta->id_carpetas; ?>','<?= $_GET["id"] ?>','<?= $carpeta->fechaCre ?>')">Editar</button> 
+                                    <button  class="btn btn-primary btn-flat" style="height:8px; line-height:5px; margin-left; margin:  0%;"   onclick="eliminar('<?= $carpeta->id_carpetas ?>','<?= $_GET["id"] ?> ')">Eliminar</button>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
+
+                    </div>
+                </div>-->
                     <section id="content_outer_wrapper" class="file-manager">
         <div id="content_wrapper" class="rightnav_v2 lg">
           <div id="header_wrapper" class="header-md" style="background-image: url(assets/images/banner_inicio.jpg);background-size: cover;
@@ -72,7 +111,7 @@
                       <span class="title"><?= $carpeta->nombre;?></span>
                     </div>
                     <div class="card-footer">
-                        <a href="index.php?c=archivos&a=admin&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"]; ?>&carpeta=<?= $carpeta->id_carpetas;  ?>" title="archivos"><i class="zmdi zmdi-file-plus" ></i></a>
+                        <a href="index.php?c=archivos&a=admin&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"]; ?>&carpeta=<?= $carpeta->id_carpetas;  ?>" title="archivos"><i class="zmdi zmdi-info" ></i></a>
 
                       
                     </div>

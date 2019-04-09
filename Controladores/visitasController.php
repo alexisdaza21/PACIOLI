@@ -24,21 +24,12 @@
 			break;		
 			case "createTra":
 				$_this->createTra();
-			break;
-			case "reporte":
-				$_this->reporte();
 			break;		
 			default:
 				throw new Exception("Accion no definido");
 				break;
 			}
 		}
-		private function reporte(){
-
-				
-			require"Vistas/visitas/pdf/index.php";
-		}
-		
 
 		private function trabajos (){
 		
@@ -102,13 +93,10 @@
 				$trabajos->findByPk($_POST["Visitas"]["id_trabajos"]);
 				$tipo = $trabajos->tipo;
 				
-				$clientes = new Clientes();
-				$clientes->findByDocument($nit);
-				$nit = $clientes->nit;
+				    
 
 				 mkdir(__DIR__."/../documentos/".$tipo."/".$guardo, 0777, true);
-					header("Location: index.php?c=visitas&a=trabajos&id=".$id."&nit=".$nit);
-
+					header("Location: index.php?c=visitas&a=trabajos&id=".$id);
 				}else{
 					header("Location: index.php?c=visitas&a=trabajos&error=true&id=".$id);
 

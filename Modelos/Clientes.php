@@ -97,7 +97,6 @@ class Clientes extends Conexion{
 		 $stm->bindParam(":email",$this->email);
 		 $stm->bindParam(":telefono",$this->telefono);
 		 $stm->bindParam(":pass",$this->pass);
-		 $stm->bindParam(":logo",$this->logo);
 		
 		 $stm->bindParam(":id",$this->id_clientes);
 
@@ -130,14 +129,8 @@ class Clientes extends Conexion{
 		$stm ->setFetchMode(PDO::FETCH_INTO,$this);
 
 		$stm->bindParam(":nit",$nit);
-		$client = array();
 		$stm-> execute();
 		$stm->fetch();
-		while ($obj = $stm->fetch()) {
-				$client[]=$obj;
-			}
-			
-			return $client;
 		
 	}
 
