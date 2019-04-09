@@ -502,7 +502,7 @@
             <div class="modal-header">
               
 
-              <h4 class="modal-title" id="myModalLabel-2">Actualizar Trabajador</h4>
+              <h4 class="modal-title" id="myModalLabel-2">Actualizar Cliente</h4>
 
                <ul class="card-actions icons right-top">
                 
@@ -514,7 +514,7 @@
           </div>
           <div class="modal-body">
 
-            <form action="index.php?c=trabajadores&a=update&id=<?=  $trabajador->id_trabajadores ?>" method="post" autocomplete="off" enctype="multipart/form-data"> 
+            <form action="index.php?c=clientes&a=update" method="post" autocomplete="off" enctype="multipart/form-data"> 
 
                          <div class="card">
                   <div class="card-body">
@@ -611,4 +611,10 @@
           <!-- modal-content -->
 
 
-                
+
+     </div>
+     </div>
+     </div>
+     </div>
+     </font>
+           </div>   
