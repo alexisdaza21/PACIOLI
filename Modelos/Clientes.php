@@ -129,8 +129,14 @@ class Clientes extends Conexion{
 		$stm ->setFetchMode(PDO::FETCH_INTO,$this);
 
 		$stm->bindParam(":nit",$nit);
+		$client = array();
 		$stm-> execute();
 		$stm->fetch();
+		while ($obj = $stm->fetch()) {
+				$client[]=$obj;
+			}
+			
+			return $client;
 		
 	}
 
