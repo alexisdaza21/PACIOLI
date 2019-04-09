@@ -38,16 +38,15 @@
                   <i class="zmdi zmdi-info"></i>
                 </a>
               </li>
-            </ul>
-            <nav class="btn-fab-group">
-                  <?php if ($_SESSION["sesion"] == "trabajador") {
-               ?>
+            </ul>  
               
+              
+         <nav class="btn-fab-group">
               <button class="btn btn-primary btn-fab fab-menu" data-fab="down">
                 <i class="zmdi zmdi-plus"></i>
-              <?php }?>
+              <div class="ripple-container"></div></button>
               <ul class="nav-sub">
-                <li><span data-toggle="tooltip" data-placement="right" title="Nueva Archivo"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-cloud-upload"></i></a></span> </li>
+                <li style="transform: translateY(48px);"><span data-toggle="tooltip" data-placement="right" title="" data-original-title="Nuevo Archivo"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="zmdi zmdi-cloud-upload"></i></a></span> </li>
               </ul>
             </nav>
           </div>
@@ -62,13 +61,15 @@
               ?>
             
             <li>
-              <a target="_blank" href="documentos/<?=  $_GET["nit"]; ?>/<?= $trabajos->id_trabajos; ?>/<?=  $carpetas->id_carpetas; ?>/<?=  $archivo->nombre; ?>">
               <div class="card card-file card-item enable-context-menu selected" data-item-selected="" data-item-type="Image" data-item-size="2 MB" data-item-location="<?=  $archivo->nombre; ?>" data-item-modified="<?=$carpetas->nombre;?>" data-item-opened=" " data-item-created=" <?=  $archivo->fechaHora; ?>"  data-item-offline="" data-item-image="fotos/<?= $clientes->logo;?>">
+                <a style="margin-left: 90%;"  onclick="eliminar('<?= $archivo->id_archivos; ?>','<?= $_GET["id"]; ?>','<?= $_GET["nit"];?>','<?= $_GET["carpeta"];
+                        ?>')"><i class="zmdi zmdi-delete"title="eliminar" ></i> </a>
               <div class="card-body">
                 <img src="fotos/<?= $clientes->logo;?>" alt="" style="width: 90%; height: 90%; align-content: center;" />
               </div>
               <div class="card-footer">
-                <i class="zmdi zmdi-image"></i>
+              <a target="_blank" href="documentos/<?=  $_GET["nit"]; ?>/<?= $trabajos->id_trabajos; ?>/<?=  $carpetas->id_carpetas; ?>/<?=  $archivo->nombre; ?>">
+                <i class="zmdi zmdi-download"></i>
                 <span class="title"><?=  $archivo->nombre; ?> </span>
               </div>
             </div>
@@ -109,7 +110,7 @@
 </div>
 </div>
     <script type="text/javascript" >
-            function eliminar(de,id){
+            function eliminar(de,id,nit,carpeta){
                 swal({
                     title: "Esta seguro?",
                     text: "Esta pago se eliminara!",
@@ -120,7 +121,7 @@
                     if (willDelete) {
                         swal("Muy bien!", "Se ha eliminado","success");
                         setTimeout(function(){
-                        location.href="index.php?c=pagos&a=delete&de="+de+"&id="+id;
+                        location.href="index.php?c=archivos&a=delete&de="+de+"&id="+id+"&nit="+nit+"&carpeta="+carpeta;
                     }, 1000);
                     }
                   });
@@ -205,7 +206,8 @@
                           <div class="input-group">
                             <label >Seleccione un archivo...</label><i class="mdi mdi-file-document"></i>
                             <input type="file" class="form-control datepicker"  placeholder="Pikaday dark..." aria-label="Use the arrow keys to pick a date" name="archivo"   value="" required>
-                                 <input type="hidden" name="Archivos[trabajo]"   value="<?=$_GET["id"]; ?>" >
+                                 <input type="hidden" name="Archivos[trabajo]"  
+                                  value="<?= $_GET["id"]; ?>" >
                                  <input type="hidden" name="Archivos[nit]"   value="<?= $_GET["nit"]; ?>" >
                                  <input type="hidden" name="Archivos[carpeta]"   value="<?= $_GET["carpeta"]; ?>" >
                           </div>
