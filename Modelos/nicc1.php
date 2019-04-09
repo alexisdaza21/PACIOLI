@@ -17,6 +17,17 @@ class Nicc1 extends Conexion{
 	}
 
 
+	public function findByPk($id){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("SELECT * FROM nicc1 WHERE id_nicc1 = :id");
+		$stm ->setFetchMode(PDO::FETCH_INTO,$this);
+
+		$stm->bindParam(":id",$id);
+		$stm-> execute();
+		$stm->fetch();
+		
+	}
+
 		public function delete($id){
 		$conexion = $this->getConexion();
 		$stm =$conexion->prepare("DELETE FROM nicc1 WHERE id_nicc1 = :id");
