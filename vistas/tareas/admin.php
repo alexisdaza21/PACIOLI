@@ -1,5 +1,6 @@
 
 	<title>Lista de Tareas</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- fullcalendar-->
     <link href='fullcalendar/fullcalendar.min.css' rel='stylesheet' />
@@ -64,6 +65,9 @@
 <?php include("header.php"); ?>
 </head>
 
+
+
+
 <body  style="   background: #fff; "  >
         <section id="content_outer_wrapper">
         <div id="content_wrapper" class="card-overlay">
@@ -95,7 +99,23 @@
    </div>   
 
 
+<?php include("footer.php"); ?>
+  </div>
+</div>
 
+ 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+
+
+   
+</div>
 <?php include("footer.php"); ?>
 	</div>
 </div>
