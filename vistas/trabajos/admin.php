@@ -292,7 +292,7 @@
                            
                              <br>
 
-                              <input type="hidden" class="form-control"  name="Tareas[tipo]" value="<?=  $_GET["id"]; ?>" 
+                              <input type="text" class="form-control"  name="Tareas[tipo]" value="<?=  $_GET["id"]; ?>" 
                              required="">
                      
                         </select>
@@ -306,7 +306,7 @@
                             
                              
                              <br>
-                       <input type="hidden" class="form-control"  name="Tareas[id_clientes]" value="<?=  $_GET["id"]; ?>" 
+                       <input type="text" class="form-control"  name="Tareas[id_clientes]" value="<?=$_GET["id"]; ?>" 
                              required="">
                        
                           </div>
@@ -333,7 +333,7 @@
                         <div class="form-group is-empty">
                           <div class="input-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                            <input type="text" class="form-control datepicker" id="start_date" placeholder="Fecha inicio..." name="Tareas[fechaInicio]">
+                            <input type="text" class="form-control datepicker" id="start_date" placeholder="Fecha inicio..." name="Tareas[fechaInicio]" required="">
                           </div>
                         </div>
                       </div>
@@ -341,7 +341,7 @@
                         <div class="form-group is-empty">
                           <div class="input-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                            <input type="text" class="form-control datepicker" id="end_date" placeholder="Fecha fin..." name="Tareas[fechaFin]" >
+                            <input type="text" class="form-control datepicker" id="end_date" placeholder="Fecha fin..." name="Tareas[fechaFin]" required="" >
                           </div>
                         </div>
                       </div>
