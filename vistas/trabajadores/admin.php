@@ -6,14 +6,15 @@
  
 <?php include("header.php"); ?>
 
-<body  style="   background: |; "  >
+<body style="background: #fff;">
         <section id="content_outer_wrapper">
           <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
             <div class="imagen"></div>
 
-          </div>  
-
-           <div class=""   >
+          </div>   
+ 
+                <div class="col-xs-12" style="margin-top: 1%;">
+                  <div class="card">
                 <div class="card">
                   <header class="card-heading ">
                     <a href="javascript:void(0)" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#basic_modal">Agregar Nuevo Trabajador</a>

@@ -38,7 +38,7 @@
 
 										<img 
 										<?php if ($_SESSION["sesion"] =="trabajador") {	?>
-										src="fotos/<?= $_SESSION["u"]->foto ?>"
+										src="fotos/<?= $_SESSION["foto"] ?>"
 										 <?php } ?>
 										<?php if ($_SESSION["sesion"] =="cliente") {	?>
 										src="fotos/<?= $_SESSION["u"]->logo ?>"
@@ -83,9 +83,6 @@
 								?> 
 								</li>
 								<li>
-									<a href="javascript:void(0)"><i class="zmdi zmdi-settings"></i> Account Settings</a>
-								</li>
-								<li>
 									<a href="index.php?c=home&a=logout"><i class="zmdi zmdi-sign-in"></i> 	<?php if (isset($_SESSION["u"])) { ?>
 		cerrar sesi&oacute;n</a>
 		
@@ -99,23 +96,13 @@
 								<i class="zmdi zmdi-search"></i>
 							</a>
 						</li>
-						<li class="dropdown hidden-xs hidden-sm">
-							<a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
-								<span class="badge mini status danger"></span>
-								<i class="zmdi zmdi-notifications"></i>
-							</a>
-							
-						</li>
-						<li class="last">
-							<a href="javascript:void(0)" data-toggle-state="sidebar-overlay-open" data-key="rightSideBar">
-								<i class="mdi mdi-playlist-plus"></i>
-							</a>
-						</li>
+				
+				
 					</ul>
 				</div>
 				<form role="search" action="" class="navbar-form" id="navbar_form">
 					<div class="form-group" id="navbar_search">
-						<input type="text" placeholder="Search and press enter..." class="form-control"  autocomplete="off" onkeyup="doSearch()" id="searchTerm">
+						<input type="text" placeholder="Escriba para buscar..." class="form-control"  autocomplete="off" onkeyup="doSearch()" id="searchTerm">
 						<i data-navsearch-close class="zmdi zmdi-close close-search"></i>
 					</div>
 					<button type="submit" class="hidden btn btn-default">Submit</button>
