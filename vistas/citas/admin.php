@@ -80,7 +80,7 @@
                <div class="container">
         <div class="row">
             <div class ="panel panel-primary">
-                <div class="panel-heading" ><h2 align="center" style="padding: 0;margin: 0; color:#fff;">Mi Agenda</h2></div>
+               <br> <div class="panel-heading" ><h2 align="center" style="padding: 0;margin: 0; color:#fff;">Mi Agenda</h2></div>
                     <div class="panel-body">     
           <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
             <ul class="card-actions fab-action right">
@@ -92,70 +92,7 @@
                             
  
             <div id='calendar'></div>
-          </div>
-        </div>
-      </div>
-   </div>
-                <div class="panel-heading" ><h2 align="center" style="padding: 0;margin: 0;">Citas</h2></div>
-                    <div class="panel-body">        
-                      <form action="index.php?c=citas&a=create" method="post">        
-                           <div style="float: left; margin-left: 25%;">
-                               <label >Fecha Y Hora </label><br>
-                               <input type="datetime-local" name="Citas[fechaHora]" id="dummyText" class="form-control"  required min="<?= $fecha ?>" />
-                           
-                            </div>
-                           <div style="float: right; margin-right: 25%;">
-                              <label >Caracteristicass </label>
-                              <input type="text" name="Citas[caracteristicas]" id="dummyText" class="form-control"  required />
-                           
-                           </div><br><br><br>
-                          <div style="margin-left: 65%; padding: 1%;"> 
-                             <button type="button" class="btn btn-default" data-dismiss="modal">     Cerrar</button>
-                             <button type="submit" class="btn btn-info">Agregar</button>
-                          </div>
-                      </form>
-            </div>
-            <div id='calendar'></div>
-          </div>
-        </div>
-      </div>
-   </div>
-
-  <h2><b style="color: #fff;"><center > Listado De Citas</b></center></h2> 
-
-
-
-<br>
-    <p><div style="overflow: auto ;">
-        <table id="datos" align="center" width="80%" border="1" style="color: black;">
-            <tr>
-                <th >Id</th>
-                <th >Fecha y Hora</th>
-                <th >Caracteristicas</th>
-                <th>Estado</th>     
-                <th  colspan="2">Acciones</th>
-            </tr>
-            <?php foreach($citas as $cita) {?>
-		<tr>
-			<td ><?= $cita->id_citas; ?></td>
-			<td ><?= $cita->fechaHora; ?></td>
-			<td ><?= $cita->caracteristicas; ?></td>
-      <td ><?= $cita->estado; ?></td>
-			<td >
- 
-                  <button
-                    style="height:20px; line-height:2px; margin-left; margin:  3%;" onclick="editar('<?= $cita->id_citas; ?>','<?= $cita->fechaHora ?>')">Editar</button>
-
-                    <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar(<?= $cita->id_citas; ?>)">Eliminar</button>
-                </td>
-        </tr>
-			<?php } ?>
-	</table>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	</div>
-</div>
-
+       
 
             <script type="text/javascript" >
             function eliminar(id){
@@ -224,7 +161,7 @@
                     <div class="form-group is-empty">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                        <input type="text" class="form-control datepicker" id="md_input_date_time" placeholder="Fecha y Hora" data-dtp="dtp_RlRax"
+                        <input type="datetime-local" class="form-control datepicker" placeholder="Fecha y Hora" data-dtp="dtp_RlRax"
                         name="Citas[fechaHora]" required="">
                         <span class="input-group-addon last"><i class="zmdi zmdi-time"></i></span>
                       </div>

@@ -16,10 +16,30 @@ class Archivos extends Conexion{
 
 
 	}
+
+	
+	public function delete($id){
+		$conexion = $this->getConexion();
+		$stm =$conexion->prepare("DELETE FROM archivos WHERE id_archivos = :id");
+
+		$stm->bindParam(":id",$id);
+		$stm->execute();
+
+}
+		public function findByPk($id){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("SELECT * FROM archivos WHERE id_archivos = :id");
+		$stm ->setFetchMode(PDO::FETCH_INTO,$this);
+
+		$stm->bindParam(":id",$id);
+		$stm-> execute();
+		$stm->fetch();
+		
+	}
 		public function save($fech,$nom,$car){
 
 	$this->fechaHora = $fech;
-	$this->nombre = $nom;
+	$this->nombre = $nom; 
 	$this->id_carpetas = $car;
 	
 
