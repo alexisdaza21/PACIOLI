@@ -49,6 +49,22 @@
                      <br>
                       </div>
                     </div>
+
+                      <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="l"></i></span>
+                        <label > Tipo de Tarea </label>
+                       <select required="" name="Tareas[id_trabajos]" class="form-control">
+                        </option>
+                                                   <option>-Seleccion-</option>
+                               <?php foreach ( $trabajos as $trabajo) {?>
+                           <option value="<?= $trabajo  ->id_trabajos; ?>"><?=$trabajo->tipo; ?> 
+
+                             </option>
+                                    <?php } ?>
+                        </select><br>
+                      </div>
+                    </div>
                     <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
