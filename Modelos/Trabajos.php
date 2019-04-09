@@ -81,6 +81,7 @@ class Trabajos extends Conexion{
 		$stm-> execute();
 		$stm->fetch();
 		
+		
 	}
 	
 	public function delete($id){

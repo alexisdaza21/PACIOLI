@@ -31,39 +31,42 @@
               
             </ul>
           </div>
-          <div class="modal-body">    
+       <div class="modal-body">    
                      <form action="index.php?c=visitas&a=createTra" method="post" autocomplete="off" enctype="multipart/form-data">        
-                            <div class="card">
+                   <div class="card">
                   <div class="card-body">
-                    <div class="col-xs-6">
                         <div class="form-group is-empty">
-                        <div class="input-group">
+                          <div class="input-group">
                                <label >Fecha </label><br>
                                <input type="date" name="Visitas[fecha]" id="dummyText" class="form-control"  required  />
                             </div>
               </div>
-              </div>
-                        <div class="form-group is-empty">
-                          <div class="input-group">
-                              <label >Costos </label>
-                              <input type="number" name="Visitas[costo]" id="dummyText" class="form-control"   />
-                           </div>
-              </div>
-
-               <div class="col-xs-6">
-                        <div class="form-group is-empty">
+              <div class="form-group is-empty">
                           <div class="input-group">
                                <label >Tipo </label><br>
-                               <input type="text" name="Visitas[tipo]" id="dummyText" class="form-control"  required />
-                           
-                            </div>
-                              <input type="hidden" name="Visitas[id_trabajos]" id="dummyText" class="form-control" value="<?= $_GET["id"] ?>"   />
-                           
-                           </div>
+                              
+                              <select class="select form-control" required="" name="Visitas[tipo]">
+                                  <option value="">Selecci&oacute;n</option>
+                                  <option value="Pago">Pago</option>
+                                  <option value="Costo">Costo</option>
+                              </select>
+                              
+                             </div>
+             
               </div>
-              </div>
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                              <label >Valor </label>
+                              <input type="number" name="Visitas[costo]" id="dummyText" class="form-control"   />
+                          </div>
+                        </div>
+                      
+               </div>
               </div>
 
+                              <input type="hidden" name="Visitas[id_trabajos]" id="dummyText" class="form-control" value="<?= $_GET["id"] ?>"   />
+                           
+                     
                
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
@@ -98,7 +101,7 @@
                 <th style="text-align: center;">Id</th>
                 <th style="text-align: center;">Fecha</th>
                 <th style="text-align: center;">Tipo</th> 
-                <th style="text-align: center;">Costo</th>      
+                <th style="text-align: center;">Valor</th>      
                 <th style="text-align: center;" colspan="2">Acciones</th>
             </tr>
             
@@ -118,7 +121,7 @@
       <td align="center">
           
                     <td align="center">
-                                  <div class="btn-group open" >
+                                  <div class="btn-group " >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
@@ -136,7 +139,9 @@
       <tr >
 
                 <td colspan="2" align="right">total a pagar:</td>
-      <td   style="text-align: center;"><label style="margin-left: 3%;"> $<?= $total ?></label></td>
+      <td   style="text-align: center;"><label style="margin-left: 3%;"> $<?= $total ?></label>
+ <a target="_blank" href="index.php?c=visitas&a=reporte&id=<?= $visita->id_trabajos; ?>">pdf</a>
+      </td>
       
       </tr>
   </div>

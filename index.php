@@ -12,7 +12,8 @@
 	if (isset($_GET["c"])) 
 		$controller = $_GET["c"];
 	
-		if (!isset($_SESSION["u"]) && $_GET["a"]!="index" && $_GET["a"]!="login" && $_GET["a"]!="cliente"  ) 
+		if (!isset($_SESSION["u"]) && $_GET["a"]!="index" && $_GET["a"]!="login" 
+			&& $_GET["a"]!="cliente"  ) 
 				header("location:index.php?c=home&a=index");
 		switch ($controller) {
 
