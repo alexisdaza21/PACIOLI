@@ -42,14 +42,7 @@
                             <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[tipo]"   value="" required/>
                         </div>
                         </div>
-                          <div class="col-xs-6">
-                        <div class="form-group is-empty">
-                          <div class="input-group">
-                            <label >Costos</label>
-                            <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[costos]" onkeypress="return numeros(event)"  value="" required/>
-                        </div>
-                        </div>
-                        </div>
+                         
                  <div class="form-group is-empty">
                           <div class="input-group">
                            <label >Trabajador</label>
@@ -124,8 +117,7 @@
                               <th style="text-align: center;" >Trabajador</th>
                                <th style="text-align: center;" >Trabajador</th>
                               <th style="text-align: center;" >Trabajador</th>
-                               <th style="text-align: center;" >Costos</th>
-                              <th style="text-align: center;" colspan="2" >Acciones</th>
+                              <th style="text-align: center;"  >Acciones</th>
                             </tr>
                             </thead>
                           <tbody>
@@ -139,7 +131,6 @@
     <td align="center"><?= $trabajo->Trab->nombres;?></td>
     <td align="center"><?= $trabajo->Trab2->nombres;?></td>
     <td align="center"><?= $trabajo->Trab3->nombres;?></td>
-    <td align="center"><?= $trabajo->costos;?></td>
     
                                 <td align="center">
                                   <div class="btn-group " >
@@ -152,10 +143,11 @@
 
 
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Cuenta</a></li>
-                                          <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
-                                            <?php 
+                                          <?php 
                                             if ($_SESSION["u"]->documento == 7181470) {
                                               ?>
+                                          <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
+                                           
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
