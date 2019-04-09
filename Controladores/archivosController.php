@@ -16,38 +16,12 @@
 	 			case 'create':
 	 				$_this->create();
 	 				break;
-	 			case 'delete':
-	 				$_this->delete();
-	 				break;	 				
 	 			
 	 			default:
 	 				throw new Exception("Accion no definido");
 	 				break;
 	 		}
 	 	}
-	 
-	 	private function delete(){
-			$archivos = new Archivos();
-
-
-	 		$id =$_GET["id"];
-	 		$nit =$_GET["nit"];
-	 		$carpeta =$_GET["carpeta"];
-       
-        if(isset($_GET["de"])){
-        	  $archivos->findByPk($_GET["de"]);
-
-        	  $archivo =$archivos->nombre;
-  
-		  			unlink('documentos/'.$nit.'/'.$id.'/'.$carpeta.'/'.$archivo);
-
-            $archivos->delete($_GET["de"]);
-           header("Location: index.php?c=archivos&a=admin&id=".$id."&nit=".$nit."&carpeta=".$carpeta);
-        }else{
-            header("Location: index.php?c=citas&a=admin");
-        }
-	}
-
 	private function create(){
 
 		if(isset($_POST["Archivos"])){
