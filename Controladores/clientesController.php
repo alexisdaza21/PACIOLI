@@ -57,7 +57,7 @@ class clientesController{
 
 			$cliente = new Clientes();
 
-			$id =  $_SESSION["u"]->id_clientes;
+				$id =  $_SESSION["u"]->id_clientes;
 			$cliente->findByPk($id);
 
 

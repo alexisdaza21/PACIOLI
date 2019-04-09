@@ -68,7 +68,7 @@ $id =  $_POST["trabajadores"]["id"];
 
 			$trabajador = new trabajadores();
 
-			$id =  $_SESSION["u"]->id_trabajadores;
+				$id =  $_SESSION["u"]->id_trabajadores;
 			$trabajador->findByPk($id);
 
 
@@ -83,7 +83,7 @@ $id =  $_POST["trabajadores"]["id"];
 							if (($nombre_img == !NULL) )   
 				{
 						      // Ruta donde se guardarán las imágenes que subamos
-		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/pacioli/fotos/';
 		     	 // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada 	anteriormente
 		     	 move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
 				  }
@@ -95,7 +95,7 @@ $id =  $_POST["trabajadores"]["id"];
 							if (($nombre_doc == !NULL) ) 
 				{
 						      // Ruta donde se guardarán las imágenes que subamos
-		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/documentos/';
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'pacioli/documentos/';
 		      // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada anteriormente
 		    	  move_uploaded_file($_FILES['documento']['tmp_name'],$directorio.$nombre_doc);
 		  			}
@@ -147,13 +147,12 @@ $id =  $_POST["trabajadores"]["id"];
 							if (($nombre_img == !NULL) ) 
 				{
 						      // Ruta donde se guardarán las imágenes que subamos
-		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/git/pacioli/fotos/';
+		     	 $directorio = $_SERVER['DOCUMENT_ROOT'].'/pacioli/fotos/';
 		     	 // Muevo la Imagen desde el directorio temporal a nuestra ruta indicada 	anteriormente
 		     	 move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
 				  }
 	 	 	
 			$trabajador->foto = $nombre_img;
-			 $_SESSION["foto"] = $nombre_img;
 
 			$trabajador->foto();
 			if(isset($_FILES["imagen"])){
