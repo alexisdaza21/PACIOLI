@@ -68,7 +68,7 @@ $id =  $_POST["trabajadores"]["id"];
 
 			$trabajador = new trabajadores();
 
-				$id =  $_SESSION["u"]->id_trabajadores;
+			$id =  $_SESSION["u"]->id_trabajadores;
 			$trabajador->findByPk($id);
 
 
@@ -153,6 +153,7 @@ $id =  $_POST["trabajadores"]["id"];
 				  }
 	 	 	
 			$trabajador->foto = $nombre_img;
+			 $_SESSION["foto"] = $nombre_img;
 
 			$trabajador->foto();
 			if(isset($_FILES["imagen"])){

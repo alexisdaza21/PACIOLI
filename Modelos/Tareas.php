@@ -14,6 +14,7 @@ class Tareas extends Conexion{
 	public $id_trabajadores;
 	public $id_clientes;
 	public $id_trabajos;
+
 	public function __construct(){
 	
 		parent::__construct();
@@ -30,14 +31,8 @@ class Tareas extends Conexion{
 
 		$conexion = $this->getConexion();
 		$stm = $conexion-> prepare("INSERT INTO tareas VALUES (:id_tareas,:nombreTarea,:fechaInicio,:fechaFin, :estado, :id_trabajadores, :id_clientes, :id_trabajos)");
-		try {
-
-				return $stm->execute((array) $this);
-		} 
-
-			catch (Exception $e) {
-			
-		}
+	 $stm->execute((array) $this);
+	
 
 		
 	}
