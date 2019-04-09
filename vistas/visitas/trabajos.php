@@ -121,18 +121,8 @@
       <td align="center">
           
                     <td align="center">
-                                  <div class="btn-group " >
-                                  <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Seleccion <span class="caret"></span>
-                                  <div class="ripple-container"></div></button>
-                                  <ul class="dropdown-menu">
-
-                                    <li><a onclick="editar('<?= $visita->id_visitas; ?>','<?= $visita->fecha ?>')"
-                                      class="btn btn-green btn-flat">Editar</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a onclick="eliminar('<?= $visita->id_visitas; ?>','<?= $trabajos->id_trabajos ?>')"
-                                      class="btn btn-danger btn-flat">Eliminar</a></li>
-                                </ul>
+                                 
+                                 <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar('<?= $visita->id_visitas; ?>','<?= $trabajos->id_trabajos ?>')">Eliminar</button>
                 </td>
         </tr>
       <?php } ?>
@@ -140,9 +130,12 @@
 
                 <td colspan="2" align="right">total a pagar:</td>
       <td   style="text-align: center;"><label style="margin-left: 3%;"> $<?= $total ?></label>
- <a target="_blank" href="index.php?c=visitas&a=reporte&id=<?= $visita->id_trabajos; ?>">pdf</a>
+ 
+ 
+
       </td>
-      
+      <a  target="_blank" href ="index.php?c=visitas&a=reporte&id=<?=$trabajos->id_trabajos;?>
+      &nit=<?=$_GET["nit"];?>">pdf</a>
       </tr>
   </div>
   </tbody>
@@ -186,69 +179,4 @@
   </script>
  
    <?php include("footer.php"); ?>
-
-  <!-- modal-content -->
-        </div>
-        <!-- modal-dialog -->
-      </div></p></div></form></div></div></div></div>
-
-
-<div class="modal fade" id="toolabr_modal" tabindex="-1" role="dialog" aria-labelledby="toolabr_modal" style="display: none;">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="card m-0">
-                                        <header class="card-heading p-b-20">
-                                          <h2 class="card-title">Toolbar</h2>
-                                          <div class="card-search">
-                                            <div class="form-group is-empty">
-                                              <a href="javascript:void(0)" class="close-search" data-card-search="close" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back"> <i class="zmdi zmdi-arrow-left"></i></a>
-                                              <input type="text" placeholder="Search and press enter..." class="form-control" autocomplete="off">
-                                              <a href="javascript:void(0)" class="clear-search" data-card-search="clear" data-toggle="tooltip" data-placement="top" title="" data-original-title="Clear search"><i class="zmdi zmdi-close-circle"></i></a>
-                                            </div>
-                                          </div>
-                                          <ul class="card-actions icons right-top">
-                                            <li>
-                                              <a href="javascript:void(0)" data-card-search="open">
-                                                <i class="zmdi zmdi-search"></i>
-                                              </a>
-                                            </li>
-                                            <li class="dropdown">
-                                              <a href="javascript:void(0)" data-toggle="dropdown">
-                                                <i class="zmdi zmdi-more-vert"></i>
-                                              </a>
-                                              <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                                                <li>
-                                                  <a href="javascript:void(0)">Option One</a>
-                                                </li>
-                                                <li>
-                                                  <a href="javascript:void(0)">Option Two</a>
-                                                </li>
-                                                <li>
-                                                  <a href="javascript:void(0)">Option Three</a>
-                                                </li>
-                                              </ul>
-                                            </li>
-                                            <li>
-                                              <a href="javascript:void(0)" data-dismiss="modal" aria-label="Close">
-                                                <i class="zmdi zmdi-close"></i>
-                                              </a>
-                                            </li>
-                                          </ul>
-                                        </header>
-                                      </div>
-                                              <form action="index.php?c=clientes&a=pass"  method="POST">
-          <div class="modal-body" >
-            <p><input type="password" placeholder="Contraseña" name="Clientes[pass]" required="" >
-            </div>
-                                      
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel</button>
-                                          <button type="submit" class="btn btn-primary">Ok</button>
-                                        </div>
-                                      </div>
-                                      </form>
-                                      <!-- modal-content -->
-                                    </div>
-                                    <!-- modal-dialog -->
-                                  
 

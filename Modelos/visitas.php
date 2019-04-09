@@ -68,12 +68,12 @@ class Visitas extends Conexion{
 
 	public function update(){
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE visitas SET fecha = :fecha, costo = :costo, tipo = :tipo, id_trabajos = :id_trabajos  WHERE id_visitas = :id");
+		$stm = $conexion-> prepare("UPDATE visitas SET fecha = :fecha, tipo = :tipo, id_trabajos = :id_trabajos, costo = :costo  WHERE id_visitas = :id");
 		 
 		 $stm->bindParam(":fecha",$this->fecha);
-		  $stm->bindParam(":costo",$this->costo);
 		   $stm->bindParam(":tipo",$this->tipo);
 		     $stm->bindParam(":id_trabajos",$this->id_trabajos);
+		  $stm->bindParam(":costo",$this->costo);
 
 		 $stm->bindParam(":id",$this->id_visitas);
 		 $stm->execute();

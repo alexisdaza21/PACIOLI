@@ -132,6 +132,9 @@
 
                 <td colspan="3" align="right">total a pagar:</td>
       <td   style="text-align: center;"><label style="margin-left: 3%;"> $<?= $total ?></label></td>
+      <a  target="_blank" href ="index.php?c=visitas&a=reporte&id=<?=$trabajos->id_trabajos;?>
+      &nit=<?=$_GET["nit"];?>">pdf</a>
+  
       
       </tr>
 </div>
