@@ -1,5 +1,6 @@
 
 	<title>Lista de Tareas</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- fullcalendar-->
     <link href='fullcalendar/fullcalendar.min.css' rel='stylesheet' />
@@ -64,6 +65,9 @@
 <?php include("header.php"); ?>
 </head>
 
+
+
+
 <body  style="   background: #fff; "  >
         <section id="content_outer_wrapper">
         <div id="content_wrapper" class="card-overlay">
@@ -93,9 +97,7 @@
       </div>
    </div>
    </div>   
-
-
- <div class="row">
+<div class="row">
                 <div class="col-xs-12">
                   <div class="card">
                     <header class="card-heading ">
@@ -122,7 +124,6 @@
                             <tr>
                               <th align="center">Id</th>
                               <th align="center">Nombre de la tarea</th>
-                              <th align=" center"> Tipo de Trabajo  </th>
                               <th align="center">Cliente</th>
                               <th align="center">Fecha de Inicio</th>
                               <th align="center">Fecha de Finalizaciòn</th>
@@ -136,7 +137,6 @@
                                  <tr>
                                <td ><?= $tarea->id_tareas; ?></td>
                               <td align="center"><?= $tarea->nombreTarea; ?></td>
-                               <td align="center"> <?= $tarea->Trabajo->tipo ?> &nbsp;<br></td>
                              <td align="center">Nit: <?= $tarea->Clien->nit ?> &nbsp;<br><?= $tarea->Clien->razonSocial ?></td></td>
 
       
@@ -163,6 +163,23 @@
             </div>
 
 <br>
+   
+</div>
+<?php include("footer.php"); ?>
+  </div>
+</div>
+
+ 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<br>
+
+
    
 </div>
 <?php include("footer.php"); ?>
