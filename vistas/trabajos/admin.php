@@ -2,25 +2,12 @@
 <html>
 <head>
   <title>Listado de trabajos</title>
-<body> 
+<body>
 
     <?php include("header.php"); ?>
 
        
-
-<body style="background: #fff;">
-        <section id="content_outer_wrapper">
-          <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
-            <div class="imagen"></div>
-
-
-          </div>   
- 
-                <div class="col-xs-12" style="margin-top: 1%;">
-                  <div class="card">
-                    <header class="card-heading ">
       <a  href="index.php?c=clientes&a=admin" ><h4>Volver a clientes</h4></a>
-
   <h2><b><center> Trabajos del cliente <?= $clientes->razonSocial ?></b></center></h2>
 <br>
 <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
@@ -37,7 +24,8 @@
                               <th style="text-align: center;" >Trabajador</th>
                                <th style="text-align: center;" >Trabajador</th>
                               <th style="text-align: center;" >Trabajador</th>
-                              <th style="text-align: center;"  >Acciones</th>
+                               <th style="text-align: center;" >Costos</th>
+                              <th style="text-align: center;" colspan="2" >Acciones</th>
                             </tr>
                             </thead>
                           <tbody>
@@ -51,23 +39,22 @@
     <td align="center"><?= $trabajo->Trab->nombres;?></td>
     <td align="center"><?= $trabajo->Trab2->nombres;?></td>
     <td align="center"><?= $trabajo->Trab3->nombres;?></td>
+    <td align="center"><?= $trabajo->costos;?></td>
     
                                 <td align="center">
                                   <div class="btn-group " >
                                   <button type="button" class="btn btn-info btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Opciones <span class="caret"></span>
+                                    Seleccion <span class="caret"></span>
                                   <div class="ripple-container"></div></button>
                                   <ul class="dropdown-menu">
-                                     <li><a data-toggle="modal" data-target="#modal_tarea" class="btn btn-primary btn-flat"  >Agregar Tarea</a></li>
                                    <li><a  href="index.php?c=carpetas&a=admin&id=<?= $trabajo->id_trabajos;?>&nit=<?= $clientes->nit ?>" class="btn btn-info btn-flat">Carpetas</a></li>
 
 
                                          <li><a  href="index.php?c=visitas&a=trabajos&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Cuenta</a></li>
-                                          <?php 
+                                          <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
+                                            <?php 
                                             if ($_SESSION["u"]->documento == 7181470) {
                                               ?>
-                                          <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
-                                           
                                     <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
@@ -160,6 +147,7 @@
         }
     }
 </script>   
+
 <?php include("footer.php"); ?>
 
 
@@ -369,6 +357,5 @@
       </form>
         <!-- modal-dialog -->
       </div>
-
 
 

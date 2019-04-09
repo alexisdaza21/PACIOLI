@@ -26,7 +26,7 @@
 																</a>
 																<ul class="dropdown-menu dropdown-menu-right btn-primary">
 																	<li>
-																		<a data-toggle="modal" data-target="#tab_modal">Editar Perfil</a>
+																		<a data-toggle="modal" data-target="#tab_modal">Edit Profile</a>
 
 																	</li>
 																</ul>
@@ -96,7 +96,7 @@
 									</div>
 									<div class="tab-pane fadeIn active" id="tab-3">
 										<h4><i class="zmdi zmdi-exposure zmdi-hc-fw"></i>Cambio de foto.. </a></h4>
-										<figure><img src="fotos/<?= $trabajador->foto ?>" alt="" class="img-thumbnail pull-left m-r-10 "></figure>
+										<figure><img src="fotos/<?= $_SESSION["u"]->foto ?>" alt="" class="img-thumbnail pull-left m-r-10 "></figure>
 										<button class="btn btn-info btn-fab btn-fab-sm"
 											data-toggle="modal" data-target="#basic_modal"><i class="zmdi zmdi-edit" ></i><div class="ripple-container"></div></button>
 
@@ -131,7 +131,7 @@
 					</div>
 					<form action="index.php?c=trabajadores&a=foto&id=<?=  $trabajador->id_trabajadores ?>&tipo=perfil" enctype="multipart/form-data" method="POST">
 					<div class="modal-body" >
-						<p><input type="file" name="imagen" value="<?= $_SESSION["u"]->foto ?>" class="btn btn-green btn-flat"></p>
+						<p><input type="file" name="imagen" value="<?= $_SESSION["u"]->foto ?>"></p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 29.9688px; top: 2.5625px; background-color: rgb(104, 134, 150); transform: scale(14.5);"></div><div class="ripple ripple-on ripple-out" style="left: 34.9688px; top: 14.5625px; background-color: rgb(104, 134, 150); transform: scale(14.5);"></div></div></button>
