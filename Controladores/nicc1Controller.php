@@ -28,7 +28,13 @@
 	 	private function delete(){
 
 			$nicc	= new Nicc1();
+
 			if(isset($_GET["id"])){
+				$nicc->findByPk($_GET["id"]);
+				$archivo = $nicc->archivo;
+
+				unlink('documentos/'.$archivo);
+
 			$nicc->delete($_GET["id"]); 
 				
 			header("Location: index.php?c=nicc1&a=admin");

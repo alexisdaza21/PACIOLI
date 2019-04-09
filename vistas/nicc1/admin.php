@@ -30,7 +30,7 @@
                             <?php foreach ($nicc as $nic) {?>
                               <tr> 
                                 <td align="center"><?= $nic->id_nicc1; ?></td>
-                                <td align="center"><?= $nic->archivo;?></td>
+                                <td align="center"><a target="_blank" href="documentos/<?= $nic->archivo;?>"><?= $nic->archivo;?> <i class="zmdi zmdi-download"></i></a></td>
                                 <td align="center"><?= $nic->nombre;?></td>
                                 <td align="center"><textarea readonly="readonly"><?= $nic->descripcion;?></textarea></td>
                                 <td align="center">

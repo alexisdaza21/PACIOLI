@@ -1,6 +1,7 @@
 <?php 
 require_once("Modelos/Trabajadores.php");
 require_once("Modelos/Clientes.php");
+require_once("Modelos/Tareas.php");
 	class homecontroller{
 		public static function main($action){
 	        $_this = new homeController();
@@ -30,7 +31,34 @@ require_once("Modelos/Clientes.php");
 			require "Vistas/home/index.php";
 		}	
 		private function home(){
-			
+
+			if ($_SESSION["sesion"] =="trabajador" ) {
+
+			$trabajador = new trabajadores();
+
+			$id =  $_SESSION["u"]->id_trabajadores;
+			$trabajador->findByPk($id);
+				if ($_SESSION["u"]->documento !=7181470) {
+					
+						$id = $_SESSION["u"]->id_trabajadores;
+						$cale = new Tareas();
+						$calendario= $cale->adminTra($id);
+				}
+
+				if ($_SESSION["u"]->documento ==7181470) {
+				
+					$cale = new Tareas();
+					$calendario = $cale->admin();
+				}
+
+			}else{
+							$cliente = new Clientes();
+
+			$id =  $_SESSION["u"]->id_clientes;
+			$cliente->findByPk($id);
+			}
+
+
 			require "Vistas/home/home.php";
 		}
 		private function login(){			
