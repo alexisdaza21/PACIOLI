@@ -33,37 +33,40 @@
           </div>
           <div class="modal-body">    
                      <form action="index.php?c=visitas&a=createTra" method="post" autocomplete="off" enctype="multipart/form-data">        
-                            <div class="card">
+                   <div class="card">
                   <div class="card-body">
-                    <div class="col-xs-6">
                         <div class="form-group is-empty">
-                        <div class="input-group">
+                          <div class="input-group">
                                <label >Fecha </label><br>
                                <input type="date" name="Visitas[fecha]" id="dummyText" class="form-control"  required  />
                             </div>
               </div>
-              </div>
-                        <div class="form-group is-empty">
-                          <div class="input-group">
-                              <label >Costos </label>
-                              <input type="number" name="Visitas[costo]" id="dummyText" class="form-control"   />
-                           </div>
-              </div>
-
-               <div class="col-xs-6">
-                        <div class="form-group is-empty">
+               <div class="form-group is-empty">
                           <div class="input-group">
                                <label >Tipo </label><br>
-                               <input type="text" name="Visitas[tipo]" id="dummyText" class="form-control"  required />
-                           
-                            </div>
-                              <input type="hidden" name="Visitas[id_trabajos]" id="dummyText" class="form-control" value="<?= $_GET["id"] ?>"   />
-                           
-                           </div>
+                              
+                              <select class="select form-control" required="" name="Visitas[tipo]">
+                                 <option value="">Selecci&oacute;n</option>
+                                  <option value="Pago">Pago</option>
+                                  <option value="Costo">Costo</option>
+                              </select>
+                              
+                             </div>
+             
               </div>
-              </div>
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                              <label >Valor </label>
+                              <input type="number" name="Visitas[costo]" id="dummyText" class="form-control"   />
+                          </div>
+                        </div>
+                     
+               </div>
               </div>
 
+                              <input type="hidden" name="Visitas[id_trabajos]" id="dummyText" class="form-control" value="<?= $_GET["id"] ?>"   />
+                           
+                     
                
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
@@ -76,9 +79,7 @@
      </div>
      </font>
            </div> 
-           <div align="right">         
-<button type="button" class="btn btn-default"  align="right" class="zmdi zmdi-print"  onclick="javascript:imprim1(pdff);"><a class="zmdi zmdi-print">   Imprimir</a></button>
-</div>
+        
            <div class="card-body">
                      <button class="btn btn-primary btn-flat"  data-toggle="modal" data-target="#basic_modal">Agregar</button>
                      
@@ -107,7 +108,7 @@
                 <th style="text-align: center;">Id</th>
                 <th style="text-align: center;">Fecha</th>
                 <th style="text-align: center;">Tipo</th> 
-                <th style="text-align: center;">Costo</th>      
+                <th style="text-align: center;">Valor</th>      
                
             </tr>
             
@@ -175,17 +176,7 @@
                   });
             }
   </script>
- <script>
-function imprim1(pdff){
-var printContents = document.getElementById('pdff').innerHTML;
-w = window.open();
-w.document.write(printContents);
-w.document.close(); // necessary for IE >= 10
-w.focus(); // necessary for IE >= 10
-w.print();
-w.close();
-return true;}
-</script>
+ 
   
 
   <!-- modal-content -->

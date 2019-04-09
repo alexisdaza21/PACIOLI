@@ -45,6 +45,7 @@ require_once("Modelos/Clientes.php");
 					$_SESSION["u"]= $trabajadores;
 					$_SESSION["id"]= $trabajadores->id_trabajadores;
 					$_SESSION["tipo"] = $trabajadores->tipo;
+					$_SESSION["foto"] = $trabajadores->foto;
 					$_SESSION["sesion"] = "trabajador";
  
 
