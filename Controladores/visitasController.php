@@ -34,8 +34,9 @@
 			}
 		}
 		private function reporte(){
+		$id = $_GET["id"]; 
 
-				
+
 			require"Vistas/visitas/pdf/index.php";
 		}
 		
@@ -106,11 +107,11 @@
 				$clientes->findByDocument($nit);
 				$nit = $clientes->nit;
 
-				 mkdir(__DIR__."/../documentos/".$tipo."/".$guardo, 0777, true);
-					header("Location: index.php?c=visitas&a=trabajos&id=".$id."&nit=".$nit);
+				// mkdir(__DIR__."/../documentos/".$nit."/".$tipo."/".$guardo, 0777, true);
+					header("Location: index.php?c=visitas&a=admin&id=".$id."&nit=".$nit);
 
 				}else{
-					header("Location: index.php?c=visitas&a=trabajos&error=true&id=".$id);
+					header("Location: index.php?c=visitas&a=admin&error=true&id=".$id);
 
 				}
 			}else
@@ -134,13 +135,13 @@
 			$guardo = $visitas->save($fecH,$cos,$tip,$idT);
 			if ($guardo){
 					//$_SESSION["documento"]=$doc;
-					header("Location: index.php?c=visitas&a=admin");
+					header("Location: index.php?c=visitas&a=trabajos");
 				}else{
-					header("Location: index.php?c=visitas&a=admin&error=true");
+					header("Location: index.php?c=visitas&a=trabajos&error=true");
 
 				}
 			}else
-				require "vistas/visitas/admin.php";
+				require "vistas/visitas/trabajosAdmin.php";
 		}
 		private function update(){
 
@@ -149,12 +150,12 @@
 		$visitas->findByPk($_GET["id"]);
 		if(isset($_POST["Visitas"])){
 			$visitas->fecha= $_POST["Visitas"]["fecha"];
-			$visitas->costo = $_POST["Visitas"]["costo"];
 			$visitas->tipo = $_POST["Visitas"]["tipo"];
 			$visitas->id_trabajos = $_POST["Visitas"]["id_trabajos"];
+			$visitas->costo = $_POST["Visitas"]["costo"];
 			
 			$visitas->update();
-			header("Location: index.php?c=visitas&a=trabajos");
+			header("Location: index.php?c=visitas&a=admin");
 		}else{
 			require "vistas/visitas/update.php";
 		}
@@ -168,7 +169,7 @@
         	if(isset($_GET["id"])){
         		$id = $_GET["id"];
           		 $visitas->delete($_GET["de"]);
-          		 header("Location: index.php?c=visitas&a=trabajos&id=".$id);
+          		 header("Location: index.php?c=visitas&a=trabajos&id=".$id."&nit=".$nit);
           	}else{
           	 $visitas->delete($_GET["de"]);
           	 header("Location: index.php?c=visitas&a=admin");
