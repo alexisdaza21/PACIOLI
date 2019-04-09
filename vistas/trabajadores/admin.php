@@ -13,7 +13,7 @@
 
           </div>  
 
-           <div class=""  style="margin-top: 32%" >
+           <div class=""   >
                 <div class="card">
                   <header class="card-heading ">
                     <a href="javascript:void(0)" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#basic_modal">Agregar Nuevo Trabajador</a>
@@ -58,8 +58,8 @@
 
 
 
-                        <div class="row-action-primary" align="center">
-                          <img src="fotos/<?= $trabajador->foto; ?>" alt="contact person" class="img-circle circle" >
+                        <div class="row-action-primary" align="center" >
+                          <img src="fotos/<?= $trabajador->foto; ?> " alt="contact person" class="img-circle circle" style="width: 40px; height: 40px;" >
                         </div>
                         <div class="row-content">
 
