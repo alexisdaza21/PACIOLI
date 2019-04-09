@@ -364,70 +364,96 @@ agregar nueva tarea
 
           <div class="modal-body">        
         <form action="index.php?c=trabajos&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
-            <div class="card">
+              <div class="card">
                   <div class="card-body">
-                   <div class="col-xs-6">
+                    <div class="row">
+
+                      <div class="">
+                        <div class="form-group is-empty">
+                          <div class="">
+                            <span class=""><i class=""></i></span>
+                            <label class="control-label" >Descripcion de la tarea</label>
+                            <br>
+                             <input type="text" class="form-control"  name="Tareas[nombreTarea]" 
+                             required="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            
+                             <label for="" class="control-label">Tipo de Trabajo</label>
+                             <br>
+                     
+                        <select class="select form-control" required="" name="Tareas[id_trabajos]">
+                           <option>-Seleccion-</option>
+                               <?php foreach ( $trabajos as $trabajo) {?>
+                           <option value="<?= $trabajo->id_trabajos; ?>"><?=$trabajo->tipo; ?> 
+
+                             </option>
+                                    <?php } ?>
+                        </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            
+                             <label for="" class="control-label">Cliente</label>
+                             <br>
+                     
+                        <select class="select form-control" required="" name="Tareas[id_clientes]">
+                           <option>-Seleccion-</option>
+                               <?php foreach ( $clientes as $cliente) {?>
+                           <option value="<?= $cliente->id_clientes; ?>"><?=$cliente->id_clientes; ?> &nbsp; <?=$cliente->nit; ?> &nbsp;  <?=$cliente->razonSocial; ?> 
+
+                             </option>
+                                    <?php } ?>
+                        </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group is-empty">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class=""></i></span>
+                            <label for="" class="control-label">Responsable</label>
+                            <br>
+                        <select class="select form-control" required="" name="Tareas[id_trabajadores]">
+                           <option>-Seleccion-</option>
+                               <?php foreach ( $trabajadores as $trabajador) {?>
+                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?> &nbsp;<?=$trabajador->apellidos; ?>   </option>
+                                    <?php } ?>
+                        </select>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-xs-6">
                         <div class="form-group is-empty">
                           <div class="input-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                            <input type="text" class="form-control datepicker" id="datepicker-theme" placeholder="Fecha inicio..." aria-label="Use the arrow keys to pick a date" name="Trabajos[fechaInicio]"   value="" required>
-                         </div>
+                            <input type="text" class="form-control datepicker" id="start_date" placeholder="Fecha inicio..." name="Tareas[fechaInicio]">
+                          </div>
                         </div>
                       </div>
-                            <div class="form-group is-empty">
-                          <div class="input-group">
-                            <label >Tipo</label>
-                            <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[tipo]"   value="" required/>
-                        </div>
-                        </div>
-                          <div class="col-xs-6">
+                      <div class="col-xs-6">
                         <div class="form-group is-empty">
                           <div class="input-group">
-                            <label >Costos</label>
-                            <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[costos]" onkeypress="return numeros(event)"  value="" required/>
-                        </div>
-                        </div>
-                        </div>
-                 <div class="form-group is-empty">
-                          <div class="input-group">
-                           <label >Trabajador</label>
-                           <select class="select form-control" required="" name="Trabajos[id_trabajadores]">
-                           <option>Seleccion-</option>
-                               <?php foreach ( $trabajadores as $trabajador) {?>
-                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
-                                    <?php } ?>
-                        </select>
+                            <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                            <input type="text" class="form-control datepicker" id="end_date" placeholder="Fecha fin..." name="Tareas[fechaFin]" >
                           </div>
-             
-              </div>
-                <div class="col-xs-6">
-                  <div class="form-group is-empty">
-                          <div class="input-group">
-                           <label >Trabajador</label>
-                           <select class="select form-control" required="" name="Trabajos[id_trabajadores2]">
-                           <option>Seleccion-</option>
-                               <?php foreach ( $trabajadores as $trabajador) {?>
-                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
-                                    <?php } ?>
-                        </select>
-                          </div>
-             </div>
-              </div>
-               <div class="form-group is-empty">
-                          <div class="input-group">
-                           <label >Trabajador</label>
-                           <select class="select form-control" required="" name="Trabajos[id_trabajadores3]">
-                           <option>Seleccion-</option>
-                               <?php foreach ( $trabajadores as $trabajador) {?>
-                           <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?>  </option>
-                                    <?php } ?>
-                        </select>
-                          </div>
-             
-              </div>
-              </div>
-              </div>
-                           
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
                             <input maxlength="45" type="hidden"  name="Trabajos[id_clientes]"   value="<?= $_GET["id"] ?>" />
                          
 
