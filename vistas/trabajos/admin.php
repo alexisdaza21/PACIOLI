@@ -168,7 +168,7 @@
                                               ?>
                                           <li><a  href="index.php?c=visitas&a=admin&id=<?= $trabajo->id_trabajos?>&nit=<?= $clientes->nit ?>" class="btn btn-primary btn-flat">Administrar cuenta</a></li>
                                            
-                                    <li><a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
+                                    <li> <a data-toggle="modal" data-target="#modal_editatrabajo" class="btn btn-primary btn-flat"  >Agregar Tarea</a> <a onclick="editar('<?= $trabajo->id_trabajos; ?>','<?= $trabajo->tipo ?>','<?= $_GET["id"]?>')"
                                       class="btn btn-green btn-flat">Editar</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a onclick="eliminar('<?= $trabajo->id_trabajos ?>
@@ -294,7 +294,7 @@
                             <div class="form-group is-empty">
                           <div class="input-group">
                             <label >Tipo</label>
-                            <input class="form-control datepicker" maxlength="45" type="text"  name="Trabajos[tipo]"   value="" required/>
+                            <input class="form-control " maxlength="45" type="text"  name="Trabajos[tipo]"   value="" required/>
                         </div>
                         </div>
                          
@@ -340,6 +340,11 @@
                            
                             <input maxlength="45" type="hidden"  name="Trabajos[id_clientes]"   value="<?= $_GET["id"] ?>" />
 
+                            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Ok</button>
+            </div>
+
 
 
 </form></div></div></div></div></font>
@@ -363,7 +368,7 @@ agregar nueva tarea
           </div>
 
           <div class="modal-body">        
-        <form action="index.php?c=trabajos&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
+        <form action="index.php?c=tareas&a=create" method="post" autocomplete="off" enctype="multipart/form-data">
               <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -386,15 +391,11 @@ agregar nueva tarea
                             
                              <label for="" class="control-label">Tipo de Trabajo</label>
                              <br>
-                     
-                        <select class="select form-control" required="" name="Tareas[id_trabajos]">
-                           <option>-Seleccion-</option>
-                               <?php foreach ( $trabajos as $trabajo) {?>
-                           <option value="<?= $trabajo->id_trabajos; ?>"><?=$trabajo->tipo; ?> 
 
-                             </option>
-                                    <?php } ?>
-                        </select>
+
+                             <input type="hidden" name="Tareas[id_trabajos]" value="<?= $_GET['id'] ?>">
+                     
+                        
                           </div>
                         </div>
                       </div>
@@ -405,15 +406,9 @@ agregar nueva tarea
                             
                              <label for="" class="control-label">Cliente</label>
                              <br>
-                     
-                        <select class="select form-control" required="" name="Tareas[id_clientes]">
-                           <option>-Seleccion-</option>
-                               <?php foreach ( $clientes as $cliente) {?>
-                           <option value="<?= $cliente->id_clientes; ?>"><?=$cliente->id_clientes; ?> &nbsp; <?=$cliente->nit; ?> &nbsp;  <?=$cliente->razonSocial; ?> 
-
-                             </option>
-                                    <?php } ?>
-                        </select>
+                           
+                            <input type="hidden" name="Tareas[id_clientes]" value="<?= $_GET['id'] ?>">
+                       
                           </div>
                         </div>
                       </div>
@@ -469,6 +464,13 @@ agregar nueva tarea
      </div>
      </div>
      </font>
+
+
+
+    
+
+
+
 
 
 
