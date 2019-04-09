@@ -1,5 +1,6 @@
 
 	<title>Lista de Tareas</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- fullcalendar-->
     <link href='fullcalendar/fullcalendar.min.css' rel='stylesheet' />
