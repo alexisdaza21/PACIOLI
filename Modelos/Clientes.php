@@ -97,6 +97,7 @@ class Clientes extends Conexion{
 		 $stm->bindParam(":email",$this->email);
 		 $stm->bindParam(":telefono",$this->telefono);
 		 $stm->bindParam(":pass",$this->pass);
+		 $stm->bindParam(":logo",$this->logo);
 		
 		 $stm->bindParam(":id",$this->id_clientes);
 
