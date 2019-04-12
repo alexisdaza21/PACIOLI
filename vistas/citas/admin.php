@@ -28,23 +28,27 @@
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true,
+
       locale:'es', // allow "more" link when too many events
       events: [
       <?php foreach ($calendario as $cal ) { ?>
         
       
         {
+          textColor: '#fff',
           title: '<?= $cal->caracteristicas; ?>',
           start: '<?= $cal->fechaHora; ?>',
           url: 'index.php?c=citas&a=update&id=<?= $cal->id_citas; ?>',
           <?php if ($cal->estado == "activa") { ?>
-              color: 'blue',
+   color: '#00B32C',              
           <?php } ?>
                     <?php if ($cal->estado == "cancelada") { ?>
-              color: 'red',
+              color: '#e60000',
           <?php } ?>
-                    <?php if ($cal->estado == "cumolida") { ?>
-              color: 'red',
+                    <?php if ($cal->estado == "cumplida") { ?>
+             color: '#00e600',
+
+
           <?php } ?>
           
         },
@@ -161,8 +165,7 @@
                     <div class="form-group is-empty">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
-                        <input type="datetime-local" class="form-control datepicker" placeholder="Fecha y Hora" data-dtp="dtp_RlRax"
-                        name="Citas[fechaHora]" required="">
+                        <input type="text" class="form-control datepicker" id="start_date" placeholder="Fecha inicio..." name="Tareas[fechaInicio]">
                         <span class="input-group-addon last"><i class="zmdi zmdi-time"></i></span>
                       </div>
                     </div>

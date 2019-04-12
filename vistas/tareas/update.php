@@ -22,7 +22,6 @@
     <font face="verdana"> 
 
     <br>
-
     <div id="content" class="container-fluid">
             <div class="content-body">
             <div class="row">
@@ -45,7 +44,9 @@
                         <span class="input-group-addon"></span>
 
                         <label > Descripci&oacute;n de la tarea</label><br>
-                        <input type="text" name="Tareas[nombreTarea]" id="dummyText" class="form-control"  value="<?= $tareas->nombreTarea ?>" required/>
+                        <input type="text" name="Tareas[nombreTarea]" id="dummyText" class="form-control"  value="<?= $tareas->nombreTarea ?>" required 
+                          <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         readonly <?php }?>/>
                      <br>
                       </div>
                     </div>
@@ -54,7 +55,9 @@
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
                         <label > Tipo de Tarea </label>
-                       <select required name="Tareas[id_trabajos]" class="form-control">
+                       <select required name="Tareas[id_trabajos]" class="form-control" 
+                    <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         disabled="" <?php }?>/>
                         </option >
                                                   
                                <?php foreach ( $trabajos as $trabajo) {?>
@@ -69,7 +72,9 @@
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
                         <label > Cliente </label>
-                       <select required="" name="Tareas[id_clientes]" class="form-control">
+                       <select required="" name="Tareas[id_clientes]" class="form-control"
+                       <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         disabled="" <?php }?>/>
                         </option>
                         <?php foreach ( $clientes as $cliente) {?>
                    <option value="<?= $cliente->id_clientes; ?>">Nit:<?=$cliente->nit; ?> &nbsp; Raz&oacute;n Social: <?=$cliente->razonSocial; ?>  </option>
@@ -89,7 +94,9 @@
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
                         <label > Trabajador Encargado </label>
-                        <select required="" name="Tareas[id_trabajadores]" class="form-control">
+                        <select required="" name="Tareas[id_trabajadores]" class="form-control"
+                         <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         disabled="" <?php }?>/>
                             </option>
                              <?php foreach ( $trabajadores as $trabajador) {?>
                              <option value="<?= $trabajador->id_trabajadores; ?>"><?=$trabajador->nombres; ?> <?=$trabajador->apellidos; ?>  </option>
@@ -111,7 +118,10 @@
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
                         <label >Fecha de Inicio</label><br>
-                      <input type="date" name="Tareas[fechaInicio]" id="dummyText" class="form-control"  required min=""  value="<?= date_format(date_create($tareas->fechaInicio), 'Y-m-d'); ?>" /><br>
+                      <input type="date" name="Tareas[fechaInicio]" id="dummyText" class="form-control"  required min=""  value="<?= date_format(date_create($tareas->fechaInicio), 'Y-m-d'); ?>" 
+                      <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         readonly <?php }?>/>
+                      <br>
 
                       </div>
                     </div>
@@ -128,7 +138,10 @@
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
                          <label >Fecha de Finalizaci&oacute;n</label><br>
-                        <input type="date" name="Tareas[fechaFin]" id="dummyText" class="form-control"  required min=""  value="<?= date_format(date_create($tareas->fechaFin), 'Y-m-d'); ?>" /><br>
+                        <input type="date" name="Tareas[fechaFin]" id="dummyText" class="form-control"  required min=""  value="<?= date_format(date_create($tareas->fechaFin), 'Y-m-d'); ?>" 
+                        <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         readonly <?php }?>/>
+                        <br>
 
                       </div>
                     </div>
@@ -145,7 +158,8 @@
                       <div class="input-group">
                         <span class="input-group-addon"><i class="l"></i></span>
                         <label > Estado de la Tarea </label>
-                       <select   required="" name="Tareas[estado]" class="form-control">
+                       <select   required="" name="Tareas[estado]" class="form-control"  <?php if ($_SESSION["u"]->documento != 7181470) {?>
+                         disabled="" <?php }?>/>
             <option value="activa"><?= $tareas->estado ?></option>
         <?php  if ($tareas->estado == 'Activa') {?>
                 
@@ -176,6 +190,8 @@
                   <div class="card-footer text-right">
                     <button class="btn btn-primary">Guardar Cambios</button>
                   </div>
+
+                  
                 </div>
               </div>
          </form>
