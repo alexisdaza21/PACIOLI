@@ -34,7 +34,21 @@ class Carpetas extends Conexion{
 			return false;
 		}
 		}
+public function update(){
 
+		$conexion = $this->getConexion();
+		$stm = $conexion-> prepare("UPDATE carpetas SET nombre = :nombre,fechaCre = :fechaCre,id_trabajadores = :id_trabajadores,id_trabajos = :id_trabajos WHERE id_carpetas= :id");
+		 
+	
+		 $stm->bindParam(":nombre",$this->nombre);
+		 $stm->bindParam(":fechaCre",$this->fechaCre);
+		 $stm->bindParam(":id_trabajadores",$this->id_trabajadores);
+		 $stm->bindParam(":id_trabajos",$this->id_trabajos);
+		
+		 $stm->bindParam(":id",$this->id_carpetas);
+
+		 $stm->execute();
+	}
 		public function findByPk($id){
 
 			$conexion = $this->getConexion();

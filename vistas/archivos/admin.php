@@ -5,7 +5,6 @@
 <body>
   <?php  include("header.php"); ?> 
           <body  style="   background: #fff; "  >
-
                     <section id="content_outer_wrapper" class="file-manager">
         <div id="content_wrapper" class="rightnav_v2 lg">
           <div id="header_wrapper" class="header-md" style="background-image: url(assets/images/banner_inicio.jpg);background-size: cover;
@@ -39,17 +38,22 @@
                 </a>
               </li>
             </ul>  
-              
-              
+              <?php
+                   if ($_SESSION["sesion"] == "trabajador")  {
+                ?>
          <nav class="btn-fab-group">
               <button class="btn btn-primary btn-fab fab-menu" data-fab="down">
                 <i class="zmdi zmdi-plus"></i>
               <div class="ripple-container"></div></button>
               <ul class="nav-sub">
+               
+
                 <li style="transform: translateY(48px);"><span data-toggle="tooltip" data-placement="right" title="" data-original-title="Nuevo Archivo"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="zmdi zmdi-cloud-upload"></i></a></span> </li>
               </ul>
             </nav>
           </div>
+           <?php }?>
+         
           
           
           <div id="content" class="container-fluid">
@@ -62,15 +66,26 @@
             
             <li>
               <div class="card card-file card-item enable-context-menu selected" data-item-selected="" data-item-type="Image" data-item-size="2 MB" data-item-location="<?=  $archivo->nombre; ?>" data-item-modified="<?=$carpetas->nombre;?>" data-item-opened=" " data-item-created=" <?=  $archivo->fechaHora; ?>"  data-item-offline="" data-item-image="fotos/<?= $clientes->logo;?>">
+                <?php if ($_GET["c"] == "clientes") {  ?>
                 <a style="margin-left: 90%;"  onclick="eliminar('<?= $archivo->id_archivos; ?>','<?= $_GET["id"]; ?>','<?= $_GET["nit"];?>','<?= $_GET["carpeta"];
                         ?>')"><i class="zmdi zmdi-delete"title="eliminar" ></i> </a>
+                        <?php }?>
               <div class="card-body">
                 <img src="fotos/<?= $clientes->logo;?>" alt="" style="width: 90%; height: 90%; align-content: center;" />
               </div>
               <div class="card-footer">
+
+               <?php
+                  if ($_SESSION["sesion"] =="cliente")  {
+                ?>
               <a target="_blank" href="documentos/<?=  $_GET["nit"]; ?>/<?= $trabajos->id_trabajos; ?>/<?=  $carpetas->id_carpetas; ?>/<?=  $archivo->nombre; ?>">
                 <i class="zmdi zmdi-download"></i>
+
+
+                <?php }?>
+                
                 <span class="title"><?=  $archivo->nombre; ?> </span>
+
               </div>
             </div>
           </a>

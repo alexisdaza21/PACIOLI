@@ -22,6 +22,9 @@ class tareasController{
 				$_this->admin();
 			break;
 
+			case "createuno":
+				$_this->createuno();
+			break;
 
 			
 			default:
@@ -91,6 +94,35 @@ class tareasController{
 
 				require "Vistas/tareas/admin.php";
 		}
+
+		private function createuno(){
+		if(isset($_POST["Tareas"])){
+
+			
+			//guardar en la BBDD
+			$nomtar = $_POST["Tareas"]["nombreTarea"];
+			$fechin = $_POST["Tareas"]["fechaInicio"];
+			$fefin = $_POST["Tareas"]["fechaFin"];
+			$est = "Activa";
+			$trab = $_POST["Tareas"]["id_trabajadores"];
+			$clien = $_POST["Tareas"]["id_clientes"];
+			$tra = $_POST["Tareas"]["id_trabajos"];
+			$tareas = new Tareas();
+			
+			
+			$guardo = $tareas->save($nomtar, $fechin, $fefin, $est, $trab, $clien, $tra);
+			if ($guardo){
+					header("Location:index.php?c=clientes&a=trabajos&id=".$clien);
+				}else{
+					
+					header("Location: index.php?c=clientes&a=trabajos&error=true&id=".$clien);
+				}
+			}else
+
+		
+
+				require "Vistas/trabajos/admin.php";
+		}
 		private function update(){
 		$tareas = new Tareas();
 		$tareas->findByPk($_GET["id"]);
@@ -128,6 +160,9 @@ class tareasController{
         }
 
 		}
+
+
+
 }
 
  ?>
