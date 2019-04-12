@@ -82,9 +82,12 @@
 			
 			//guardar en la BBDD
 			$fecH =  $_POST["Visitas"]["fecha"];
-			if ( $_POST["Visitas"]["costo"] =="") {
-				$cos =0;
-			} else{
+			if ( $_POST["Visitas"]["tipo"] =="Pago") {
+				
+				$cos = $_POST["Visitas"]["costo"] * -1;
+			}
+			if ( $_POST["Visitas"]["tipo"] =="Costo") {
+				
 				$cos = $_POST["Visitas"]["costo"];
 			}
 			
@@ -163,13 +166,16 @@
 		private function delete(){
 			
 			$visitas = new Visitas();
+				$nit = $_GET["nit"];
 
         if(isset($_GET["de"])){
 
         	if(isset($_GET["id"])){
         		$id = $_GET["id"];
+
+
           		 $visitas->delete($_GET["de"]);
-          		 header("Location: index.php?c=visitas&a=trabajos&id=".$id."&nit=".$nit);
+          		 header("Location: index.php?c=visitas&a=admin&id=".$id."&nit=".$nit);
           	}else{
           	 $visitas->delete($_GET["de"]);
           	 header("Location: index.php?c=visitas&a=admin");

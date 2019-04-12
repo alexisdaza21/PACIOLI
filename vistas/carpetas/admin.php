@@ -3,7 +3,6 @@
 <head>
 	<title>Listado de pagos</title>
 <body>
-
   <?php  include("header.php"); ?> 
           <body  style="   background: #fff; "  >
                     <section id="content_outer_wrapper" class="file-manager">
@@ -38,20 +37,23 @@
                 </a>
               </li>
             </ul>
-            <nav class="btn-fab-group">
-              <?php if ($_SESSION["sesion"] == "trabajador") {
+              <?php 
+              if ($_SESSION["sesion"] == "trabajador") {
                ?>
-              
+       <nav class="btn-fab-group">
               <button class="btn btn-primary btn-fab fab-menu" data-fab="down">
                 <i class="zmdi zmdi-plus"></i>
-              <?php }?>
-              </button>
+              <div class="ripple-container"></div></button>
               <ul class="nav-sub">
-                <li><span data-toggle="tooltip" data-placement="right" title="Nueva Carpeta"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-folder-plus"></i></a></span> </li>
+             
+           
+                <li style="transform: translateY(48px);"><span data-toggle="tooltip" data-placement="right" title="Nueva Carpeta"><a href="javascript:void(0)" data-toggle="modal" data-target="#basic_modal" class="btn btn-info btn-fab btn-fab-sm"><i class="mdi mdi-folder-plus">
+                  
+                </i></a></span> </li>
 
               </ul>
             </nav>
-          </div>
+          </div> <?php }?>
           
           
           <div id="content" class="container-fluid">
@@ -70,14 +72,61 @@
                     </div>
                     <div class="card-body">
                       <span class="title"><?= $carpeta->nombre;?></span>
+                     <a onclick="editar('<?= $carpeta->id_carpetas;?>','<?= $carpeta->nombre;?>')" title="Cambiar nombre"
+                        ><i class="zmdi zmdi-border-color" ></i></a>
                     </div>
+
                     <div class="card-footer">
+                       
+                        
                         <a href="index.php?c=archivos&a=admin&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"]; ?>&carpeta=<?= $carpeta->id_carpetas;  ?>" title="archivos"><i class="zmdi zmdi-file-plus" ></i></a>
 
+                       
                       
                     </div>
                   </div>
-                </li>
+                </li> 
+
+                    <!-- editar carpetas-->
+<div class="modal fade" id="editar<?= $carpeta->id_carpetas;?>" tabindex="-1" role="dialog" aria-labelledby="basic_modal" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title" id="myModalLabel-2">Cambiar nombre de la Carpeta
+<br> <?= $carpeta->nombre;?>
+              </h4>
+              <ul class="card-actions icons right-top">
+                
+                <a href="javascript:void(0)" data-dismiss="modal" class="text-white" aria-label="Close">
+                  <i class="zmdi zmdi-close"></i>
+                </a>
+              
+            </ul>
+          </div>
+          <div class="modal-body">        
+           <form action="index.php?c=carpetas&a=update&up=<?=  $carpeta->id_carpetas ?>&id=<?= $_GET["id"]; ?>&nit=<?= $_GET["nit"];?>"  method="POST">
+                    <div class="modal-body" >
+                      <div class="form-group has-success is-empty">
+                          <label class="control-label" for="inputSuccess1">Ingrese el nuevo nombre de carpeta</label>
+                          <input type="text" class="form-control datepicker"  placeholder="Nombre Carpeta..." aria-label="Use the arrow keys to pick a date" name="Carpetas[nombre]"   value="" required>
+                                 <input type="hidden" name="date(Y-m-d)"   value="" >
+                              
+                        </div>
+
+                       </div>
+                       <div class="modal-footer">
+                                          <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel</button>
+                                          <button type="submit" class="btn btn-primary">Ok</button>
+                                        </div>
+                                      </div>
+                                      </form>
+                                      <!-- modal-content -->
+                                    </div>
+                                    <!-- modal-dialog -->
+                                  </div>
+</div>
+                                   <!-- editar carpetas-->
               <?php } ?>
           </ul>
         </section>
@@ -129,10 +178,10 @@
                     }
                   });
             }
-             function editar(up,id,nit){
+      function editar(ed, nombre){
                 swal({
-                    title: "Quieres editar este trabajo de tipo:",
-                    text: nit,
+                    title: "Quieres editar la carpeta:",
+                    text:nombre,
                     icon: "warning",
                     buttons: true,
                     dangerMode: true
@@ -140,7 +189,7 @@
                     if (willDelete) {
                         //swal("Muy bien!", "Espera un momento","success");
                         //setTimeout(function(){
-                        location.href="index.php?c=pagos&a=update&up="+up+"&id="+id;
+                     $("#editar"+ed).modal("show");
                         //}, 1000);
                     }
                   });
@@ -227,3 +276,4 @@
      </div>
      </div>
      </div>
+

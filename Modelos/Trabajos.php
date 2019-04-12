@@ -16,19 +16,18 @@ class Trabajos extends Conexion{
 	
 		parent::__construct();
 	}
-	public function save($feIni,$tip,$tra,$tra2,$tra3,$cos,$cli){
+	public function save($feIni,$tip,$tra,$tra2,$tra3,$cli){
 
 	$this->fechaInicio = $feIni;
 	$this->tipo = $tip;
 	$this->id_trabajadores = $tra;
 	$this->id_trabajadores2 = $tra2;
 	$this->id_trabajadores3 = $tra3;
-	$this->costos = $cos;
 	$this->id_clientes = $cli;
 	
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO trabajos VALUES (:id_trabajos,:fechaInicio,:tipo,:id_trabajadores,:id_trabajadores2,:id_trabajadores3,:id_clientes,:costos)");
+		$stm = $conexion-> prepare("INSERT INTO trabajos VALUES (:id_trabajos,:fechaInicio,:tipo,:id_trabajadores,:id_trabajadores2,:id_trabajadores3,:id_clientes)");
 		try{
 			 $stm->execute((array) $this);
 			 return $conexion->LastInsertId();
@@ -40,7 +39,7 @@ class Trabajos extends Conexion{
 	public function update(){
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("UPDATE trabajos SET fechaInicio = :fechaInicio,tipo = :tipo,id_trabajadores = :id_trabajadores,id_trabajadores2 = :id_trabajadores2,id_trabajadores3 = :id_trabajadores3,id_clientes = :id_clientes,costos = :costos WHERE id_trabajos= :id");
+		$stm = $conexion-> prepare("UPDATE trabajos SET fechaInicio = :fechaInicio,tipo = :tipo,id_trabajadores = :id_trabajadores,id_trabajadores2 = :id_trabajadores2,id_trabajadores3 = :id_trabajadores3,id_clientes = :id_clientes WHERE id_trabajos= :id");
 		 
 	
 		 $stm->bindParam(":fechaInicio",$this->fechaInicio);
@@ -48,7 +47,6 @@ class Trabajos extends Conexion{
 		 $stm->bindParam(":id_trabajadores",$this->id_trabajadores);
 		  $stm->bindParam(":id_trabajadores2",$this->id_trabajadores2);
 		   $stm->bindParam(":id_trabajadores3",$this->id_trabajadores3);
-		   $stm->bindParam(":costos",$this->costos);
 		 $stm->bindParam(":id_clientes",$this->id_clientes);
 		
 		 $stm->bindParam(":id",$this->id_trabajos);

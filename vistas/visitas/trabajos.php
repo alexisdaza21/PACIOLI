@@ -122,13 +122,13 @@
           
                     <td align="center">
                                  
-                                 <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar('<?= $visita->id_visitas; ?>','<?= $trabajos->id_trabajos ?>')">Eliminar</button>
+                                 <button class="btn btn-danger" style="height:20px; line-height:2px; margin-right:; margin-left: 10px;"  onclick="eliminar('<?= $visita->id_visitas; ?>','<?= $trabajos->id_trabajos ?>','<?= $_GET["nit"];?> ')">Eliminar</button>
                 </td>
         </tr>
       <?php } ?>
       <tr >
 
-                <td colspan="2" align="right">total a pagar:</td>
+                <td colspan="3" align="right">total a pagar:</td>
       <td   style="text-align: center;"><label style="margin-left: 3%;"> $<?= $total ?></label>
  
  
@@ -144,7 +144,7 @@
 
 </div>
             <script type="text/javascript" >
-            function eliminar(de,id){
+            function eliminar(de,id,nit){
                 swal({
                     title: "Esta seguro?",
                     text: "Este cita se eliminara!",
@@ -155,7 +155,7 @@
                     if (willDelete) {
                         swal("Muy bien!", "Se ha eliminado","success");
                         setTimeout(function(){
-                        location.href="index.php?c=visitas&a=delete&de="+de+"&id="+id;
+                        location.href="index.php?c=visitas&a=delete&de="+de+"&id="+id+"&nit="+nit;
                     }, 1000);
                     }
                   });

@@ -15,12 +15,31 @@
 	 			case 'create':
 	 				$_this->create();
 	 				break;
-	 			
+	 			case 'update': 
+				$_this->update();
+				break;
 	 			default:
 	 				throw new Exception("Accion no definido");
 	 				break;
 	 		}
 	 	}
+	 private function update(){
+		$carpetas = new Carpetas();
+		$carpetas->findByPk($_GET["up"]);
+
+
+		if(isset($_POST["Carpetas"])){
+			$carpetas->nombre = $_POST["Carpetas"]["nombre"];
+			$carpetas->fechaCre =  date("Y-m-d");
+			$id = $_GET["id"];
+			$nit =$_GET["nit"];
+			
+			$carpetas->update();
+			header("Location: index.php?c=carpetas&a=admin&id=".$id."&nit=".$nit);
+		}else{
+			require "vistas/carpetas/admin.php";
+		}
+	}	
 	private function create(){
 
 		if(isset($_POST["Carpetas"])){

@@ -51,8 +51,14 @@
 													<footer class="card-footer border-top">
 														<div class="row row p-t-10 p-b-10">
 															<div class="col-xs-4"><span class="count"><h4> Direccion</h4></span><span><?= $cliente->direccion  ?></span></div>
-															<div class="col-xs-4"><span class="count"><h4>Email</h4></span><span><?=  $cliente->email  ?></span></div>
+															<div class="col-xs-4"></div>
 															<div class="col-xs-4"><span class="count"><h4>Telefono</h4></span><span><?=  $cliente->telefono  ?></span></div>
+														</div>
+
+														<div class="row row p-t-10 p-b-10">
+															<div class="col-xs-4"></div>
+															<span class="count"><h4>Email</h4></span><span><?=  $cliente->email  ?></span></div>
+															<div class="col-xs-4"></div>
 														</div>
 													</footer>
 												</div>
@@ -81,17 +87,18 @@
 						<div class="tabpanel">
 							<ul class="nav nav-tabs p-0">
 								
-								<li role="presentation" class="active"><a href="#tab-3" data-toggle="tab" aria-expanded="false">Cambiar Contrase&ntilde;a<div class="ripple-container"></div></a></li>
-								<li role="presentation" class=""><a href="#tab-2" data-toggle="tab" aria-expanded="false">Cambiar Email.<div class="ripple-container"></div></a></li>
-								<li role="presentation" class=""><a href="#tab-1" data-toggle="tab" aria-expanded="true">Cambiar Telefono.<div class="ripple-container"></div></a></li>
+								<li role="presentation" class="active"><a href="#tab-4" data-toggle="tab" aria-expanded="false">Cambiar Foto<div class="ripple-container"></div></a></li>
+								<li role="presentation" class=""><a href="#tab-1" data-toggle="tab" aria-expanded="false">Cambiar Email.<div class="ripple-container"></div></a></li>
+								<li role="presentation" class=""><a href="#tab-2" data-toggle="tab" aria-expanded="true">Cambiar Telefono.<div class="ripple-container"></div></a></li>
+							<!--	<li role="presentation" class=""><a href="#tab-1" data-toggle="tab" aria-expanded="true">Cambiar Foto.<div class="ripple-container"></div></a></li>-->
 
 	
 							</ul>
 						</div>
 						<div class="tab-content  p-20">
-								<div class="tab-pane fadeIn" id="tab-1">
+								<div class="tab-pane fadeIn" id="tab-2">
 									<h4></h4>
-									<p><form method="Post" action="index.php?c=clientes&a=telefono?>">
+									<p><form method="Post" action="index.php?c=clientes&a=telefono">
                       					<div class="form-group is-empty">
 					                        <label for="name" class="col-md-2 control-label"
 					                        maxlegth="10">Telefono</label>
@@ -104,7 +111,7 @@
 					                     </div>
 									</p>
 									</div>
-								<div class="tab-pane fadeIn" id="tab-2">
+									<div class="tab-pane fadeIn" id="tab-1">
 									<h4></h4>
 									<p><form method="Post" action="index.php?c=clientes&a=email">
                       					<div class="form-group is-empty">
@@ -112,29 +119,20 @@
 					                        maxlegth="10">Email</label>
 					                        <div class="col-md-10">
 					                          <input  type="text" class="form-control" id="name" placeholder="<?=  $cliente->email ?>" 
-					                          required name="clientes[telefono]" maxlength="10" >
+					                          required name="clientes[email]" maxlength="10" >
 					                          <input type="hidden" name="clientes[id]"
 					                          value="<?=  $cliente->id_clientes ?>">
 					                        </div>
 					                     </div>
 									</p>
 									</div>
-								<div class="tab-pane fadeIn active" id="tab-3">
-									<h4></h4>
-									<p><form method="Post" action="index.php?c=clientes&a=pass&id=<?= $cliente->id_clientes ?>&tipo=perfil ?>">
-                      					<div class="form-group is-empty">
-					                        <label for="name" class="col-md-2 control-label"
-					                        maxlegth="10">Nueva Contrase&ntilde;a</label>
-					                        <div class="col-md-10">
-					                          <input  type="password" class="form-control" id="name" placeholder="escriba su nueva contraseña" 
-					                          required name="clientes[telefono]" maxlength="10" >
-					                          <input type="hidden" name="clientes[id]"
-					                          value="<?=  $cliente->id_clientes ?>"">
-					                        </div>
-					                     </div>
-									</p>
-									</div>
+									<div class="tab-pane fadeIn active" id="tab-3">
+										<h4><i class="zmdi zmdi-exposure zmdi-hc-fw"></i>Cambio de foto.. </a></h4>
+										<figure><img src="fotos/<?= $cliente->logo ?>" alt="" class="img-thumbnail pull-left m-r-10 "></figure>
+										<button class="btn btn-info btn-fab btn-fab-sm"
+											data-toggle="modal" data-target="#basic_modal"><i class="zmdi zmdi-edit" ></i><div class="ripple-container"></div></button>
 
+									</div>
 								</div><br><br><br><br><br><br><br><br>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 46.9688px; top: 23.5625px; background-color: rgb(104, 134, 150); transform: scale(14.5);"></div></div></button>
@@ -146,6 +144,86 @@
 					</form>
 						<!-- modal-dialog -->
 					</div>
+					<!--	<div class="tab-content  p-20">
+								<div class="tab-pane fadeIn" id="tab-2">
+									<h4></h4>
+									<p><form method="Post" action="index.php?c=clientes&a=telefono">
+                      					<div class="form-group is-empty">
+					                        <label for="name" class="col-md-2 control-label"
+					                        maxlegth="10">Telefono</label>
+					                        <div class="col-md-10">
+					                          <input  type="text" class="form-control" id="name" placeholder="<?=  $cliente->telefono ?>" 
+					                          required name="clientes[telefono]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
+					                          value="<?=  $cliente->id_clientes ?>">
+					                        </div>
+					                     </div>
+									</p>
+									</div>
+
+									<div class="tab-pane fadeIn" id="tab-3">
+									<h4></h4>
+									<p><form method="Post" action="index.php?c=clientes&a=email">
+                      					<div class="form-group is-empty">
+					                        <label for="name" class="col-md-2 control-label"
+					                        maxlegth="10">Email</label>
+					                        <div class="col-md-10">
+					                          <input  type="text" class="form-control" id="name" placeholder="<?=  $cliente->email ?>" 
+					                          required name="clientes[email]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
+					                          value="<?=  $cliente->id_clientes ?>">
+					                        </div>
+					                     </div>
+									</p>
+									</div>
+								<div class="tab-pane fadeIn" id="tab-3">
+									<h4></h4>
+									<p><form method="Post" action="index.php?c=clientes&a=email">
+                      					<div class="form-group is-empty">
+					                        <label for="name" class="col-md-2 control-label"
+					                        maxlegth="10">Email</label>
+					                        <div class="col-md-10">
+					                          <input  type="text" class="form-control" id="name" placeholder="<?=  $cliente->email ?>" 
+					                          required name="clientes[email]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
+					                          value="<?=  $cliente->id_clientes ?>">
+					                        </div>
+					                     </div>
+									</p>
+									</div>
+								<div class="tab-pane fadeIn active" id="tab-4">
+									<h4></h4>
+									<p><form method="Post" action="index.php?c=clientes&a=password&id=<?=$cliente->id_clientes ?>">
+                      					<div class="form-group is-empty">
+					                        <label for="name" class="col-md-2 control-label"
+					                        maxlegth="10">Nueva Contrase&ntilde;a</label>
+					                        <div class="col-md-10">
+					                          <input  type="password" class="form-control" id="name" placeholder="escriba su nueva contraseña" 
+					                          required name="clientes[pass]" maxlength="10" >
+					                          <input type="hidden" name="clientes[id]"
+					                          value="<?=  $cliente->id_clientes ?>"">
+					                        </div>
+					                     </div>
+									</p>
+									</div>
+									<div class="tab-pane fadeIn active" id="tab-1">
+										<h4><i class="zmdi zmdi-exposure zmdi-hc-fw"></i>Cambio de foto.. </a></h4>
+										<figure><img src="fotos/<?= $cliente->logo ?>" alt="" class="img-thumbnail pull-left m-r-10 "></figure>
+										<button class="btn btn-info btn-fab btn-fab-sm"
+											data-toggle="modal" data-target="#basic_modal"><i class="zmdi zmdi-edit" ></i><div class="ripple-container"></div></button>
+
+
+								</div><br><br><br><br><br><br><br><br>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 46.9688px; top: 23.5625px; background-color: rgb(104, 134, 150); transform: scale(14.5);"></div></div></button>
+									<button type="submit" class="btn btn-primary">Ok</button>
+								</div>
+							</div>
+							
+						</div>
+					</form>
+					
+					</div>-->
 
 
 <!--editar foto-->
@@ -163,9 +241,9 @@
 							
 						</ul>
 					</div>
-					<form action="index.php?c=clientes&a=foto&id=<?=  $cliente->id_clientes ?>&tipo=perfil" enctype="multipart/form-data" method="POST">
+					<form action="index.php?c=clientes&a=logo&id=<?=  $cliente->id_clientes ?>&tipo=perfil" enctype="multipart/form-data" method="POST">
 					<div class="modal-body" >
-						<p><input type="file" name="imagen" value="<?= $_SESSION["u"]->foto ?>"></p>
+						<p><input type="file" name="imagen" value="<?= $_SESSION["u"]->logo?>"></p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cancel<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 29.9688px; top: 2.5625px; background-color: rgb(104, 134, 150); transform: scale(14.5);"></div><div class="ripple ripple-on ripple-out" style="left: 34.9688px; top: 14.5625px; background-color: rgb(104, 134, 150); transform: scale(14.5);"></div></div></button>

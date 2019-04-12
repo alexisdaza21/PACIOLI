@@ -50,7 +50,7 @@ require_once("Modelos/Trabajadores.php");
 			
 			if(isset($_POST["trabajadores"])){
 
-$id =  $_POST["trabajadores"]["id"];
+			$id =  $_POST["trabajadores"]["id"];
 			$trabajador = new trabajadores();	
 			
 			
@@ -133,7 +133,7 @@ $id =  $_POST["trabajadores"]["id"];
 
 			require"vistas/trabajadores/admin.php";
 		}
-
+ 
 		private function foto(){
 
 			$trabajador = new trabajadores();
@@ -156,7 +156,8 @@ $id =  $_POST["trabajadores"]["id"];
 			 $_SESSION["foto"] = $nombre_img;
 
 			$trabajador->foto();
-			if(isset($_FILES["imagen"])){
+
+			if(isset($_GET["tipo"])){
 
 			header("Location: index.php?c=trabajadores&a=perfil");
 				}else{
@@ -247,6 +248,17 @@ $id =  $_POST["trabajadores"]["id"];
 		private function delete(){
 			$trabajador	= new Trabajadores();
 			if(isset($_GET["id"])){
+
+				$trabaja->findByPk ($_GET["id"]);
+
+				//eliminar archivo
+				$documento = $trabaja->hojavida;
+				unlink('documentos/'.$documento);
+				//eliminar foto
+				$foto = $trabaja->foto;
+				unlink('fotos/'.$foto);
+
+
 			$trabajador->delete($_GET["id"]); 
 				
 			header("Location: index.php?c=trabajadores&a=admin");

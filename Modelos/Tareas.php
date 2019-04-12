@@ -29,7 +29,7 @@ class Tareas extends Conexion{
 	$this->id_trabajos = $tra;
 
 		$conexion = $this->getConexion();
-		$stm = $conexion-> prepare("INSERT INTO tareas VALUES (:id_tareas,:nombreTarea,:fechaInicio,:fechaFin, :estado, :id_trabajadores, :id_clientes, :id_trabajos)");
+		$stm = $conexion-> prepare("INSERT INTO tareas VALUES (:id_tareas,:nombreTarea,:fechaInicio,:fechaFin, :estado, :id_trabajadores, :id_trabajos,:id_clientes)");
 		try {
 
 				return $stm->execute((array) $this);
@@ -114,7 +114,9 @@ class Tareas extends Conexion{
 
 		public function adminTra($id){
 		$conexion = $this->getConexion();
-		$stm =$conexion->prepare("SELECT * FROM tareas WHERE id_trabajadores = :id");
+
+		$stm =$conexion->prepare("SELECT * FROM tareas WHERE id_trabajadores = :id and 
+			fechaInicio = curdate()");
 		$stm->setFetchMode(PDO::FETCH_CLASS,'Tareas');
 			$stm->bindParam(":id",$id);
 		$tareas = array();	
@@ -177,7 +179,33 @@ public function adminTrab($id){
 			return $tareas;
 
 	}
+
+		public function saveuno($nomtar, $fechin, $fefin, $est, $trab, $clien , $tra){
+
+	$this->nombreTarea= $nomtar;
+	$this->fechaInicio = $fechin;
+	$this->fechaFin = $fefin;
+	$this->estado = $est;
+	$this->id_trabajadores = $trab;
+	$this->id_clientes = $clien;
+	$this->id_trabajos = $tra;
+
+		$conexion = $this->getConexion();
+		$stm = $conexion-> prepare("INSERT INTO tareas VALUES (:id_tareas,:nombreTarea,:fechaInicio,:fechaFin, :estado, :id_trabajadores, :id_clientes, :id_trabajos)");
+		try {
+
+				return $stm->execute((array) $this);
+		} 
+
+			catch (Exception $e) {
+			
+		}
+
+		
+	}
 }
+
+
 
 
  ?>

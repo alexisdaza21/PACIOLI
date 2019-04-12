@@ -1,6 +1,5 @@
 
 	<title>Lista de Tareas</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- fullcalendar-->
     <link href='fullcalendar/fullcalendar.min.css' rel='stylesheet' />
@@ -30,10 +29,21 @@
         
       
         {
+          textcolor: '#fff',
           title: '<?= $cal->nombreTarea; ?>',
           start: '<?= $cal->fechaInicio; ?>',
+          end: '<?= $cal->fechaFin ?>',
+        
           url: 'index.php?c=tareas&a=update&id=<?= $cal->id_tareas; ?>',
-          
+          <?php if ($cal->estado == "Activa") { ?>
+              color: '#e6e600',
+          <?php } ?>
+                    <?php if ($cal->estado == "Terminada") { ?>
+              color: '#00e600',
+          <?php } ?>
+                    <?php if ($cal->estado == "En Curso") { ?>
+              color: '#00B32C',
+          <?php } ?>
         },
       <?php } ?> 
       ]
@@ -79,12 +89,13 @@
           <div style="background: #fff;" id="header_wrapper" class="header-xl  profile-header">
             <ul class="card-actions fab-action right">
               <li>
+                <!--
                 <?php
                   if ($_SESSION["u"]->documento == 7181470) {
                 ?>
                         <button class="btn btn-primary btn-fab"  data-toggle="modal" data-target="#basic_modal"><i class="zmdi zmdi-plus"></i><div class="ripple-container" ></div></button>
               <?php    }
-                ?>
+                ?>-->
                 
               </li>
             </ul>
@@ -100,25 +111,9 @@
 
 
 <?php include("footer.php"); ?>
-  </div>
-</div>
-
- 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-<br>
 
 
-   
-</div>
-<?php include("footer.php"); ?>
-	</div>
-</div>
+
 
 
             <script type="text/javascript" >
