@@ -42,9 +42,9 @@
     <td align="center"><?= $trabajo->id_trabajos; ?></td>
     <td align="center"><?= $trabajo->fechaInicio;?></td>
     <td align="center"><?= $trabajo->tipo;?></td>
-   <td align="center"><?= $trabajo->Trab->nombres;?></td>
-    <td align="center"><?= $trabajo->Trab2->nombres;?></td>
-    <td align="center"><?= $trabajo->Trab3->nombres;?></td>
+   <td align="center"><a title="Ver perfil" href="index.php?c=clientes&a=perfiltra&id=<?= $trabajo->Trab->id_trabajadores;?>"> <?= $trabajo->Trab->nombres;?> </a></td>
+    <td align="center"><a title="Ver perfil" href="index.php?c=clientes&a=perfiltra&id=<?= $trabajo->Trab2->id_trabajadores;?>"><?= $trabajo->Trab2->nombres;?></a></td>
+    <td align="center"><a title="Ver perfil" href="index.php?c=clientes&a=perfiltra&id=<?= $trabajo->Trab3->id_trabajadores;?>"><?= $trabajo->Trab3->nombres;?></a></td>
     <td align="center"><?= $trabajo->Clie->nit;?></td>
    <?php if ($_SESSION["sesion"] =="cliente") { ?>
 

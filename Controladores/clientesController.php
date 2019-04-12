@@ -26,6 +26,9 @@ class clientesController{
 			break;
 			case "perfil":
 				$_this->perfil();
+			break;
+			case "perfiltra":
+				$_this->perfiltra();
 			break;	
 			case "carpetas":
 				$_this->carpetas();
@@ -35,11 +38,15 @@ class clientesController{
 			break;
 			case "logo":
 			$_this->logo();
+			break;
 			case "telefono":
 			$_this->telefono();
 			break;
 			case "email":
 			$_this->email();
+			break;
+			case "password":
+			$_this->password();
 			default:
 				throw new Exception("Accion no definido");
 				break;
@@ -62,6 +69,14 @@ class clientesController{
 
 
 			require"vistas/clientes/perfil.php";
+		}
+		private function perfiltra (){
+			$id =$_GET["id"];
+			$tra = new Trabajadores();
+			$tra->findByPk($id);
+
+
+			require"vistas/trabajos/perfiltra.php";
 		}
 
 private function subcarpetas (){
@@ -101,6 +116,12 @@ private function trabajos (){
 	private function admin (){
 		$clie = new Clientes();
 		$clientes = $clie->admin();
+
+		if (isset($_GET["ed"])) {
+			$clie = new Clientes();
+		$clie->findByPk($_GET["ed"]);
+			
+		}
 
 		require"Vistas/clientes/admin.php";
 	}
@@ -164,18 +185,22 @@ private function trabajos (){
 		$clientes = new Clientes();
 		$clientes->findByPk($_GET["id"]);
 
+
 		if(isset($_POST["Clientes"])){
 			$clientes->nit = $_POST["Clientes"]["nit"];
 			$clientes->direccion = $_POST["Clientes"]["direccion"];
 			$clientes->razonSocial = $_POST["Clientes"]["razonSocial"];
 			$clientes->email = $_POST["Clientes"]["email"];
 			$clientes->telefono = $_POST["Clientes"]["telefono"];
+
+			//borrar logo
+			$logo = $clientes->logo;
 		
-			
+			unlink('fotos/'.$logo);
 			$clientes->update();
 			header("Location: index.php?c=clientes&a=admin");
 		}else{
-			require "Vistas/clientes/update.php";
+			require "Vistas/clientes/admin.php";
 		}
 	}	
 		
@@ -188,7 +213,7 @@ private function trabajos (){
         }
 
 		}
-
+ 
 			private function logo(){
 
 			$cliente = new Clientes();
@@ -212,9 +237,9 @@ private function trabajos (){
 			$cliente->logo();
 			if(isset($_FILES["imagen"])){
 
-			header("Location: index.php?c=clientes&a=admin");
+			header("Location: index.php?c=clientes&a=perfil");
 				}else{
-					header("Location: index.php?c=clientes&a=admin");
+					header("Location: index.php?c=clientes&a=perfil");
 				}
 
 			}else{
@@ -232,7 +257,7 @@ private function trabajos (){
 			$cliente = new Clientes();	
 			
 			
-			$cliente	->findByPk($id);	
+			$cliente->findByPk($id);	
 			$cliente->telefono = $_POST["clientes"]["telefono"];
 					
 			$cliente->telefono();
@@ -251,16 +276,31 @@ private function email(){
 			$cliente = new Clientes();	
 			
 			
-			$cliente	->findByPk($id);	
-			$cliente->telefono = $_POST["clientes"]["email"];
+			$cliente->findByPk($id);	
+			$cliente->email = $_POST["clientes"]["email"];
 					
-			$trabajador->telefono();
+			$cliente->email();
 			header("Location: index.php?c=clientes&a=perfil");
 			}else{
 			require "vistas/clientes/perfil.php";
 			}
 		}
+private function password(){
+		$cliente = new Clientes();
+		$cliente->findByPk($_GET["id"]);
 
+		if(isset($_POST["Clientes"])){
+			
+			$password =$_POST["Clientes"]["pass"];
+			$BCRYPT = password_hash($password, PASSWORD_DEFAULT);
+			$cliente->password = $BCRYPT;
+
+			$clientes->password();
+			header("Location: index.php?c=clientes&a=admin&pass=true");
+		}else{
+			require "Vistas/clientes/admin.php";
+		}
+	}
 
 }
 

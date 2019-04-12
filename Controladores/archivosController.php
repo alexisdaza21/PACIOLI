@@ -25,7 +25,7 @@
 	 				break;
 	 		}
 	 	}
-	 
+	 	
 	 	private function delete(){
 			$archivos = new Archivos();
 

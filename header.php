@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="assets/css/vendor.bundle.css">
 	<link rel="stylesheet" href="assets/css/app.bundle.css">
 	<link rel="stylesheet" href="assets/css/theme-a.css">
+	<script src="assets/js/jquery-1.12.0.min.js"></script>
   	<style type="text/css">
   		.imagen{
     		background-image: url(assets/images/banner_inicio.jpg);
@@ -155,19 +156,30 @@
 	  					   <?php if ($_GET["c"] == "clientes") { ?>
 							 	 class="active"
 							<?php }?>><a href="index.php?c=clientes&a=admin"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i>Clientes</Wa></li>	
-						<?php }?>
-						<li 		
+						
+					
+
+						
+					<?php if ($_SESSION["u"]->documento == 7181470) {?>
+					<li
 	  					   <?php if ($_GET["c"] == "trabajos") { ?>
 							 	 class="active"
-							<?php }?>><a href="index.php?c=trabajos&a=admintra">&nbsp;&nbsp;<i class="zmdi zmdi-folder"></i>
-
-							<?php if ($_SESSION["sesion"] =="trabajador") { ?>	
+							<?php }?>><a href="index.php?c=trabajos&a=admintra">&nbsp;&nbsp;<i class="zmdi zmdi-folder"></i>	
 							Trabajos
-						<?php }?>
-						<?php if ($_SESSION["sesion"] =="cliente") { ?>
-							Mis Trabajos
-						<?php }?>
 							</a></li>
+					<?php }?>
+<?php }?>
+
+						
+						<?php if ($_SESSION["sesion"] =="cliente") { ?>
+							<li
+							 <?php if ($_GET["c"] == "trabajos") { ?>
+							 	 class="active"
+							<?php }?>><a href="index.php?c=trabajos&a=admintra">&nbsp;&nbsp;<i class="zmdi zmdi-folder"></i>	
+							Mis Trabajos
+							</a></li>
+					
+							
 						<?php if ($_SESSION["sesion"] =="cliente" &&$_GET["c"] == "carpetas" && $_GET["a"] == "admin") { ?>
 							<li
 						
@@ -175,6 +187,7 @@
 								>
 							<a><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>Mis Carpetas</a></li>	
 						<?php } ?>		
+							<?php }?>
 
 					
 					

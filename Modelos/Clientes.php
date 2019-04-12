@@ -171,7 +171,16 @@ public function email(){
 		$conexion = $this->getConexion();
 		$stm = $conexion->prepare("UPDATE clientes SET 	email = :email WHERE id_clientes = :id");
 
-		$stm->bindParam(":telefono",$this->telefono);
+		$stm->bindParam(":email",$this->email);
+		$stm->bindParam(":id",$this->id_clientes);
+		$stm->execute();
+	} 
+
+public function password(){
+		$conexion = $this->getConexion();
+		$stm = $conexion->prepare("UPDATE clientes SET 	pass = :pass WHERE id_clientes = :id");
+
+		$stm->bindParam(":pass",$this->pass);
 		$stm->bindParam(":id",$this->id_clientes);
 		$stm->execute();
 	}
